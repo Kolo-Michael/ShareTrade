@@ -1,0 +1,29 @@
+[
+  { "filename": "Investor/idashboard.html", "title": "Investor Dashboard", "role": "investor", "active": "dashboard", "page_title": "Overview", "depth": 1 },
+  { "filename": "Investor/kyc.html", "title": "KYC Status", "role": "investor", "active": "kyc", "page_title": "KYC Verification", "depth": 1 },
+  { "filename": "Investor/marketplace.html", "title": "Marketplace", "role": "investor", "active": "marketplace", "page_title": "Browse Shares", "depth": 1 },
+  { "filename": "Investor/notifications.html", "title": "Notifications", "role": "investor", "active": "notifications", "page_title": "Notifications", "depth": 1 },
+  { "filename": "Investor/portfolio.html", "title": "Portfolio", "role": "investor", "active": "portfolio", "page_title": "My Holdings", "depth": 1 },
+  { "filename": "Investor/trades.html", "title": "Trades", "role": "investor", "active": "trades", "page_title": "Active Trades", "depth": 1 },
+  { "filename": "Investor/wallet.html", "title": "Wallet", "role": "investor", "active": "wallet", "page_title": "My Wallet", "depth": 1 },
+
+  { "filename": "Company/dashboard.html", "title": "Company Dashboard", "role": "company", "active": "dashboard", "page_title": "Company Overview", "depth": 1 },
+  { "filename": "Company/analytics.html", "title": "Analytics", "role": "company", "active": "analytics", "page_title": "Share Analytics", "depth": 1 },
+  { "filename": "Company/approvals.html", "title": "Trade Approvals", "role": "company", "active": "approvals", "page_title": "Pending Requests", "depth": 1 },
+  { "filename": "Company/captable.html", "title": "Cap Table", "role": "company", "active": "captable", "page_title": "Shareholder Registry", "depth": 1 },
+  { "filename": "Company/listings.html", "title": "Share Listings", "role": "company", "active": "listings", "page_title": "Manage Listings", "depth": 1 },
+  { "filename": "Company/buybacks.html", "title": "Buybacks", "role": "company", "active": "buybacks", "page_title": "Share Buybacks", "depth": 1 },
+  { "filename": "Company/transactions.html", "title": "Transactions", "role": "company", "active": "transactions", "page_title": "Financial History", "depth": 1 },
+  { "filename": "Company/certificates.html", "title": "Certificates", "role": "company", "active": "certificates", "page_title": "Share Certificates", "depth": 1 },
+
+  { "filename": "Administrator/dashboard.html", "title": "Admin Dashboard", "role": "admin", "active": "dashboard", "page_title": "Platform Overview", "depth": 1 },
+  { "filename": "Administrator/alerts.html", "title": "System Alerts", "role": "admin", "active": "alerts", "page_title": "Active Alerts", "depth": 1 },
+  { "filename": "Administrator/kyc.html", "title": "KYC Queue", "role": "admin", "active": "kyc", "page_title": "Verification Queue", "depth": 1 },
+  { "filename": "Administrator/investors.html", "title": "Manage Investors", "role": "admin", "active": "investors", "page_title": "Investor Directory", "depth": 1 },
+  { "filename": "Administrator/companies.html", "title": "Manage Companies", "role": "admin", "active": "companies", "page_title": "Company Directory", "depth": 1 },
+  { "filename": "Administrator/trades.html", "title": "All Trades", "role": "admin", "active": "trades", "page_title": "Trading History", "depth": 1 },
+  { "filename": "Administrator/escrow.html", "title": "Escrow Monitor", "role": "admin", "active": "escrow", "page_title": "Escrow Management", "depth": 1 },
+  { "filename": "Administrator/disputes.html", "title": "Disputes", "role": "admin", "active": "disputes", "page_title": "Dispute Resolution", "depth": 1 },
+  { "filename": "Administrator/auditlogs.html", "title": "Audit Logs", "role": "admin", "active": "auditlogs", "page_title": "System Logs", "depth": 1 },
+  { "filename": "Administrator/settings.html", "title": "System Settings", "role": "admin", "active": "settings", "page_title": "General Settings", "depth": 1 }
+]

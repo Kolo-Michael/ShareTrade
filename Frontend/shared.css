@@ -696,6 +696,17 @@ img { max-width:100%; display:block; }
 .divider-x { height:1px; background:var(--border); margin:1rem 0; }
 .sr-label { font-size:.7rem; color:var(--text3); text-transform:uppercase; letter-spacing:.08em; font-weight:700; }
 
+/* ── Mobile UI ──────────────────────────────────────────────── */
+.mobile-toggle {
+  display:none; width:34px; height:34px; border-radius:8px;
+  background:var(--green-muted); border:1px solid var(--border2);
+  color:var(--green); align-items:center; justify-content:center;
+  cursor:pointer; transition:all .25s;
+}
+.mobile-toggle:hover { background:var(--green); color:#fff; }
+
+.table-responsive { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media(max-width:1300px) {
   .stats-grid { grid-template-columns:repeat(2,1fr); }
@@ -715,6 +726,8 @@ img { max-width:100%; display:block; }
   .content { padding:1.25rem; }
   .action-btns { gap:.5rem; }
   .action-btn { min-width:0; flex:1; font-size:.75rem; padding:.7rem .5rem; }
+  .mobile-toggle { display:flex; }
+  .topbar { padding:.85rem 1.25rem; }
 }
 @media(max-width:480px) {
   .stats-grid { grid-template-columns:1fr; }

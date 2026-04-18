@@ -1,0 +1,78 @@
+<div class="page-header fade-in">
+  <div class="page-header-left"><h2>My Trades</h2><p>All buy and sell orders — history, status and escrow</p></div>
+  <button class="btn btn-primary"><i class="fas fa-plus"></i> New Trade</button>
+</div>
+
+<div class="stats-grid fade-in-2">
+  <div class="stat-card"><div class="stat-icon"><i class="fas fa-exchange-alt"></i></div><div class="stat-label">Total Trades</div><div class="stat-value">28</div><div class="stat-change up"><i class="fas fa-check"></i> All time</div></div>
+  <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-label">Pending</div><div class="stat-value">2</div><div class="stat-change amber"><i class="fas fa-clock"></i> Awaiting approval</div></div>
+  <div class="stat-card"><div class="stat-icon"><i class="fas fa-lock"></i></div><div class="stat-label">In Escrow</div><div class="stat-value">XAF 770K</div><div class="stat-change amber"><i class="fas fa-shield-alt"></i> Protected</div></div>
+  <div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-label">Completed</div><div class="stat-value">25</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> 89.3% success rate</div></div>
+</div>
+
+<div class="tab-bar fade-in-2">
+  <div class="tab active">All (28)</div><div class="tab">Pending (2)</div><div class="tab">In Escrow (1)</div><div class="tab">Completed (25)</div><div class="tab">Rejected (0)</div>
+</div>
+
+<div class="grid-3-2 fade-in-3">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Trade History</span>
+      <div class="flex gap-sm">
+        <div class="search-bar" style="width:180px;"><i class="fas fa-search"></i><input placeholder="Search..."></div>
+        <button class="btn btn-outline btn-sm"><i class="fas fa-download"></i> Export</button>
+      </div>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead><tr><th>Trade ID</th><th>Company</th><th>Type</th><th>Shares</th><th>Price</th><th>Total</th><th>Date</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>#T-00241</td><td>TechVent SA</td><td style="color:#4ade80;font-weight:700;">BUY</td><td>500</td><td>XAF 1,000</td><td>XAF 500,000</td><td class="text-muted">Apr 5</td><td><span class="badge badge-amber">Pending</span></td><td><button class="btn btn-outline btn-xs">Cancel</button></td></tr>
+          <tr><td>#T-00238</td><td>AgroCam SARL</td><td style="color:#4ade80;font-weight:700;">BUY</td><td>300</td><td>XAF 900</td><td>XAF 270,000</td><td class="text-muted">Apr 3</td><td><span class="badge badge-blue">In Escrow</span></td><td><button class="btn btn-outline btn-xs">View</button></td></tr>
+          <tr><td>#T-00235</td><td>EnerSol GIE</td><td style="color:#f87171;font-weight:700;">SELL</td><td>200</td><td>XAF 810</td><td>XAF 162,000</td><td class="text-muted">Apr 1</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
+          <tr><td>#T-00220</td><td>TechVent SA</td><td style="color:#4ade80;font-weight:700;">BUY</td><td>900</td><td>XAF 980</td><td>XAF 882,000</td><td class="text-muted">Mar 22</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
+          <tr><td>#T-00210</td><td>AgroCam SARL</td><td style="color:#f87171;font-weight:700;">SELL</td><td>200</td><td>XAF 920</td><td>XAF 184,000</td><td class="text-muted">Mar 10</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="flex-col">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Active Escrow</span><span class="badge badge-blue">1 active</span></div>
+      <div class="card-body">
+        <div class="escrow-item">
+          <div class="flex" style="justify-content:space-between;align-items:center;margin-bottom:.4rem;">
+            <div class="escrow-label">Trade #T-00238</div>
+            <span class="badge badge-blue">In Escrow</span>
+          </div>
+          <div class="escrow-sub">AgroCam SARL · 300 shares · XAF 270,000 locked</div>
+          <div class="metric-row" style="margin-bottom:.4rem;">
+            <div class="metric-label"><span>Company confirmation</span><span style="color:#fbbf24;">Pending</span></div>
+            <div class="metric-bar"><div class="metric-fill" style="width:45%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div>
+          </div>
+          <div style="font-size:.72rem;color:var(--text3);">Funds protected · Expires in 5 days</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Quick Trade</span></div>
+      <div class="card-body">
+        <div class="form-group"><label>Company</label>
+          <select><option>TechVent SA — XAF 1,200/share</option><option>AgroCam SARL — XAF 960/share</option><option>MediCare SARL — XAF 3,500/share</option></select>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group"><label>Action</label>
+            <select><option>Buy</option><option>Sell</option></select>
+          </div>
+          <div class="form-group"><label>Quantity</label><input type="number" placeholder="Shares"></div>
+        </div>
+        <div style="background:var(--input);border:1px solid var(--border);border-radius:9px;padding:.75rem;margin-bottom:1rem;">
+          <div class="flex" style="justify-content:space-between;font-size:.82rem;"><span class="text-muted">Estimated Total</span><span style="font-family:Syne,sans-serif;font-weight:800;color:var(--text);">XAF 0</span></div>
+          <div class="flex" style="justify-content:space-between;font-size:.72rem;margin-top:.3rem;"><span class="text-muted">Platform fee (1%)</span><span class="text-muted">XAF 0</span></div>
+        </div>
+        <button class="btn btn-primary w-full"><i class="fas fa-exchange-alt"></i> Submit Trade</button>
+      </div>
+    </div>
+  </div>
+</div>

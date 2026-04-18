@@ -1,0 +1,32 @@
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <a href="{{ root_path }}index.html" class="sidebar-logo">
+    <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+    <span class="logo-text">Share<span>Trade</span></span>
+  </a>
+  <div class="sidebar-user">
+    <div class="user-avatar">JD</div>
+    <div class="user-info">
+      <div class="user-name">Jean Dupont</div>
+      <div class="user-role">Investor · KYC Pending</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">Main</div>
+    <a class="nav-item {{ 'active' if active_page == 'dashboard' else '' }}" href="idashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+    <a class="nav-item {{ 'active' if active_page == 'portfolio' else '' }}" href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
+    <a class="nav-item {{ 'active' if active_page == 'trades' else '' }}" href="trades.html"><i class="fas fa-exchange-alt"></i> Trades <span class="nav-badge">3</span></a>
+    <a class="nav-item {{ 'active' if active_page == 'marketplace' else '' }}" href="marketplace.html"><i class="fas fa-search-dollar"></i> Marketplace</a>
+    <div class="nav-section">Finance</div>
+    <a class="nav-item {{ 'active' if active_page == 'wallet' else '' }}" href="wallet.html"><i class="fas fa-wallet"></i> Wallet</a>
+    <a class="nav-item {{ 'active' if active_page == 'history' else '' }}" href="history.html"><i class="fas fa-history"></i> History</a>
+    <a class="nav-item {{ 'active' if active_page == 'certificates' else '' }}" href="certificates.html"><i class="fas fa-file-alt"></i> Certificates</a>
+    <div class="nav-section">Account</div>
+    <a class="nav-item {{ 'active' if active_page == 'kyc' else '' }}" href="kyc.html"><i class="fas fa-id-card"></i> KYC Status</a>
+    <a class="nav-item {{ 'active' if active_page == 'notifications' else '' }}" href="notifications.html"><i class="fas fa-bell"></i> Notifications <span class="nav-badge">5</span></a>
+    <a class="nav-item {{ 'active' if active_page == 'settings' else '' }}" href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <a class="nav-item" href="{{ root_path }}login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+  </div>
+</aside>

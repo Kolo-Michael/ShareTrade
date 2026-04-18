@@ -1,0 +1,144 @@
+<div class="page-header fade-in"><div class="page-header-left"><h2>KYC Review Queue</h2><p>Identity and document verification for investors and companies</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" ><i class="fas fa-download"></i> Export Queue</button><div class="search-bar"><i class="fas fa-search"></i><input placeholder="Search by name..."></div></div></div>
+<div class="stats-grid fade-in-2">
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-label">Pending Review</div><div class="stat-value">12</div><div class="stat-change amber"><i class="fas fa-clock"></i> Awaiting action</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-eye"></i></div><div class="stat-label">In Admin Review</div><div class="stat-value">3</div><div class="stat-change amber"><i class="fas fa-clock"></i> Being processed</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-label">Approved (30d)</div><div class="stat-value">84</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> This month</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-times-circle"></i></div><div class="stat-label">Rejected (30d)</div><div class="stat-value">6</div><div class="stat-change down"><i class="fas fa-arrow-down"></i> This month</div></div>
+</div>
+<div class="tab-bar fade-in-2"><div class="tab  active">All Pending (12)</div><div class="tab">Investors (7)</div><div class="tab">Companies (5)</div><div class="tab">In Review (3)</div><div class="tab">Incomplete</div></div>
+<div class="grid-3-2 fade-in-3">
+<div style="display:flex;flex-direction:column;gap:1rem;"><div class="card fade-in" style="border-left:3px solid #f59e0b;">
+<div class="card-body">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem;">
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;color:#fff;flex-shrink:0;">JK</div>
+      <div>
+        <div style="font-size:.92rem;font-weight:700;color:var(--text);">Jean-Paul Kamga</div>
+        <div style="font-size:.75rem;color:var(--text3);">Investor &bull; Submitted 3 hours ago</div>
+      </div>
+    </div>
+    <span class="badge badge-amber">Pending</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:.15rem;margin-bottom:.75rem;padding:.75rem;background:var(--hover);border-radius:10px;border:1px solid var(--border);"><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Passport</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> CNI Front</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> CNI Back</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Proof of Address</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> Selfie with ID</span></div>
+  <div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:9px;padding:.7rem;margin-bottom:.85rem;font-size:.8rem;color:var(--text2);"><i class="fas fa-exclamation-triangle" style="color:#fbbf24;margin-right:.4rem;"></i>Selfie with ID is missing. Cannot approve until all 5 documents are submitted.</div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-primary" style="font-size:.82rem;"><i class="fas fa-check"></i> Approve</button>
+    <button class="btn btn-danger" style="font-size:.82rem;"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-eye"></i> View Documents</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-comment"></i> Request Info</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-flag"></i> Flag for Review</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #3b82f6;">
+<div class="card-body">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem;">
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;color:#fff;flex-shrink:0;">BC</div>
+      <div>
+        <div style="font-size:.92rem;font-weight:700;color:var(--text);">BuildCam SA</div>
+        <div style="font-size:.75rem;color:var(--text3);">Company &bull; Submitted 1 day ago</div>
+      </div>
+    </div>
+    <span class="badge badge-blue">In Review</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:.15rem;margin-bottom:.75rem;padding:.75rem;background:var(--hover);border-radius:10px;border:1px solid var(--border);"><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> RCCM Certificate</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Statuts</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> NIU Attestation</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Attestation de Localisation</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> PV Constitutif</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> Patente</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Rep ID Card</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> Plan de Localisation</span></div>
+  <div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:9px;padding:.7rem;margin-bottom:.85rem;font-size:.8rem;color:var(--text2);"><i class="fas fa-exclamation-triangle" style="color:#fbbf24;margin-right:.4rem;"></i>Patente and Plan de Localisation are missing. Company has been notified to upload.</div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-primary" style="font-size:.82rem;"><i class="fas fa-check"></i> Approve</button>
+    <button class="btn btn-danger" style="font-size:.82rem;"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-eye"></i> View Documents</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-comment"></i> Request Info</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-flag"></i> Flag for Review</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #f59e0b;">
+<div class="card-body">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem;">
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;color:#fff;flex-shrink:0;">SE</div>
+      <div>
+        <div style="font-size:.92rem;font-weight:700;color:var(--text);">Sophie Etoa Mba</div>
+        <div style="font-size:.75rem;color:var(--text3);">Investor &bull; Submitted 2 days ago</div>
+      </div>
+    </div>
+    <span class="badge badge-amber">Pending</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:.15rem;margin-bottom:.75rem;padding:.75rem;background:var(--hover);border-radius:10px;border:1px solid var(--border);"><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Passport</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> CNI Front</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> CNI Back</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Proof of Address</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Selfie with ID</span></div>
+  
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-primary" style="font-size:.82rem;"><i class="fas fa-check"></i> Approve</button>
+    <button class="btn btn-danger" style="font-size:.82rem;"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-eye"></i> View Documents</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-comment"></i> Request Info</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-flag"></i> Flag for Review</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #ef4444;">
+<div class="card-body">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem;">
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;color:#fff;flex-shrink:0;">TL</div>
+      <div>
+        <div style="font-size:.92rem;font-weight:700;color:var(--text);">TransLog SARL</div>
+        <div style="font-size:.75rem;color:var(--text3);">Company &bull; Submitted 3 days ago</div>
+      </div>
+    </div>
+    <span class="badge badge-red">Incomplete</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:.15rem;margin-bottom:.75rem;padding:.75rem;background:var(--hover);border-radius:10px;border:1px solid var(--border);"><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> RCCM Certificate</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> Statuts</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> NIU Attestation</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> Attestation de Localisation</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> PV Constitutif</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> Patente</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Rep ID Card</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> Plan de Localisation</span></div>
+  <div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:9px;padding:.7rem;margin-bottom:.85rem;font-size:.8rem;color:var(--text2);"><i class="fas fa-exclamation-triangle" style="color:#fbbf24;margin-right:.4rem;"></i>Only 3 of 8 required documents submitted. Insufficient for review. Account on hold.</div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-primary" style="font-size:.82rem;"><i class="fas fa-check"></i> Approve</button>
+    <button class="btn btn-danger" style="font-size:.82rem;"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-eye"></i> View Documents</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-comment"></i> Request Info</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-flag"></i> Flag for Review</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #f59e0b;">
+<div class="card-body">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem;">
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;color:#fff;flex-shrink:0;">ME</div>
+      <div>
+        <div style="font-size:.92rem;font-weight:700;color:var(--text);">Michel Essomba</div>
+        <div style="font-size:.75rem;color:var(--text3);">Investor &bull; Submitted 3 days ago</div>
+      </div>
+    </div>
+    <span class="badge badge-amber">Pending</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:.15rem;margin-bottom:.75rem;padding:.75rem;background:var(--hover);border-radius:10px;border:1px solid var(--border);"><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Passport</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> CNI Front</span><span class="kyc-doc-chip badge-red"><i class="fas fa-times"></i> CNI Back</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Proof of Address</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Selfie with ID</span></div>
+  <div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:9px;padding:.7rem;margin-bottom:.85rem;font-size:.8rem;color:var(--text2);"><i class="fas fa-exclamation-triangle" style="color:#fbbf24;margin-right:.4rem;"></i>CNI back side image is missing. Investor has been emailed a reminder.</div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-primary" style="font-size:.82rem;"><i class="fas fa-check"></i> Approve</button>
+    <button class="btn btn-danger" style="font-size:.82rem;"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-eye"></i> View Documents</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-comment"></i> Request Info</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-flag"></i> Flag for Review</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #f59e0b;">
+<div class="card-body">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:.5rem;">
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;color:#fff;flex-shrink:0;">RN</div>
+      <div>
+        <div style="font-size:.92rem;font-weight:700;color:var(--text);">Robert Nkongolo</div>
+        <div style="font-size:.75rem;color:var(--text3);">Investor &bull; Submitted 4 days ago</div>
+      </div>
+    </div>
+    <span class="badge badge-amber">Pending</span>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:.15rem;margin-bottom:.75rem;padding:.75rem;background:var(--hover);border-radius:10px;border:1px solid var(--border);"><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Passport</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> CNI Front</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> CNI Back</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Proof of Address</span><span class="kyc-doc-chip badge-green"><i class="fas fa-check"></i> Selfie with ID</span></div>
+  
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-primary" style="font-size:.82rem;"><i class="fas fa-check"></i> Approve</button>
+    <button class="btn btn-danger" style="font-size:.82rem;"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-eye"></i> View Documents</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-comment"></i> Request Info</button>
+    <button class="btn btn-outline" style="font-size:.82rem;"><i class="fas fa-flag"></i> Flag for Review</button>
+  </div>
+</div>
+</div></div>
+<div style="display:flex;flex-direction:column;gap:1.25rem;"><div class="card"><div class="card-header"><span class="card-title">KYC Pipeline</span></div><div class="card-body"><div style="display:flex;flex-direction:column;gap:.55rem;font-size:.84rem;"><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Pending (all docs complete)</span><span style="color:var(--text);font-weight:700;">4</span></div><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">In Review (admin checking)</span><span style="color:var(--text);font-weight:700;">3</span></div><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Incomplete (docs missing)</span><span style="color:var(--text);font-weight:700;">5</span></div><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Approved this month</span><span style="color:#4ade80;font-weight:700;">84</span></div><div style="display:flex;justify-content:space-between;padding:.5rem 0;"><span style="color:var(--text2);">Rejected this month</span><span style="color:#f87171;font-weight:700;">6</span></div></div></div></div><div class="card"><div class="card-header"><span class="card-title">Required Documents</span></div><div class="card-body"><div style="font-size:.82rem;color:var(--text2);line-height:1.7;"><div style="font-weight:700;color:var(--text);margin-bottom:.5rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;">Investor (5 required)</div><div style="display:flex;flex-direction:column;gap:.3rem;margin-bottom:1rem;"><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>International Passport</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>CNI Front Side</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>CNI Back Side</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Proof of Address (Utility Bill / Bank Statement)</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Selfie Holding ID Document</span></div></div><div style="font-weight:700;color:var(--text);margin-bottom:.5rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;">Company (8 required)</div><div style="display:flex;flex-direction:column;gap:.3rem;"><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>RCCM Certificate</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Statuts de la Société</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Attestation NIU (DGI)</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Attestation de Localisation</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Plan de Localisation</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>PV d'Assemblée Constitutive</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>ID of Legal Representative</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Patente Commerciale</span></div></div></div></div></div></div>
+</div>

@@ -1,0 +1,210 @@
+<!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-coins"></i></div>
+        <div class="stat-label">Total Share Capital</div>
+        <div class="stat-value">XAF 50M</div>
+        <div class="stat-change up"><i class="fas fa-check-circle"></i> Registered capital</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-label">Total Shareholders</div>
+        <div class="stat-value">128</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +6 this month</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-exchange-alt"></i></div>
+        <div class="stat-label">Pending Approvals</div>
+        <div class="stat-value">4</div>
+        <div class="stat-change amber"><i class="fas fa-clock"></i> Requires action</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="stat-label">Trading Volume (30d)</div>
+        <div class="stat-value">XAF 8.4M</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +22% vs last month</div>
+      </div>
+    </div>
+
+    <!-- Trade approvals + share price -->
+    <div class="grid-3-2">
+      <!-- Trade approvals -->
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;">
+          <span>Pending Trade Approvals</span>
+          <span class="badge badge-amber">4</span>
+        </div>
+
+        <div class="trade-confirm-card">
+          <div class="trade-confirm-top">
+            <span class="trade-type" style="color:#4ade80;">BUY REQUEST</span>
+            <span class="badge badge-amber"><i class="fas fa-clock"></i> 2h ago</span>
+          </div>
+          <div class="trade-confirm-meta">
+            <span><i class="fas fa-user"></i> Jean Dupont</span>
+            <span><i class="fas fa-layer-group"></i> 500 shares @ XAF 1,000</span>
+            <span><i class="fas fa-coins"></i> XAF 500,000</span>
+          </div>
+          <div class="trade-actions">
+            <button class="btn-confirm">✓ Confirm Transfer</button>
+            <button class="btn-reject">✗ Reject</button>
+            <button class="btn-hold">⏸ Request Info</button>
+          </div>
+        </div>
+
+        <div class="trade-confirm-card">
+          <div class="trade-confirm-top">
+            <span class="trade-type" style="color:#f87171;">SELL REQUEST</span>
+            <span class="badge badge-amber"><i class="fas fa-clock"></i> 5h ago</span>
+          </div>
+          <div class="trade-confirm-meta">
+            <span><i class="fas fa-user"></i> Marie Ngono</span>
+            <span><i class="fas fa-layer-group"></i> 200 shares @ XAF 1,200</span>
+            <span><i class="fas fa-coins"></i> XAF 240,000</span>
+          </div>
+          <div class="trade-actions">
+            <button class="btn-confirm">✓ Confirm Transfer</button>
+            <button class="btn-reject">✗ Reject</button>
+            <button class="btn-hold">⏸ Request Info</button>
+          </div>
+        </div>
+
+        <div class="trade-confirm-card">
+          <div class="trade-confirm-top">
+            <span class="trade-type" style="color:#4ade80;">BUY REQUEST</span>
+            <span class="badge badge-blue"><i class="fas fa-clock"></i> 1d ago</span>
+          </div>
+          <div class="trade-confirm-meta">
+            <span><i class="fas fa-user"></i> Paul Biya Jr.</span>
+            <span><i class="fas fa-layer-group"></i> 1,000 shares @ XAF 1,000</span>
+            <span><i class="fas fa-coins"></i> XAF 1,000,000</span>
+          </div>
+          <div class="trade-actions">
+            <button class="btn-confirm">✓ Confirm Transfer</button>
+            <button class="btn-reject">✗ Reject</button>
+            <button class="btn-hold">⏸ Request Info</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Share price + metrics -->
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <!-- Share price card -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Share Price</span>
+            <span style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:#4ade80;">XAF 1,200 <span style="font-size:.7rem;font-weight:600;">+20%</span></span>
+          </div>
+          <div class="card-body">
+            <svg viewBox="0 0 280 80" style="width:100%;height:80px;">
+              <defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22c55e" stop-opacity=".25"/><stop offset="100%" stop-color="#22c55e" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0,65 C30,60 55,55 80,48 S130,35 160,28 S210,16 240,12 S265,8 280,6 L280,80 L0,80 Z" fill="url(#pg)"/>
+              <path d="M0,65 C30,60 55,55 80,48 S130,35 160,28 S210,16 240,12 S265,8 280,6" fill="none" stroke="#22c55e" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Company metrics -->
+        <div class="card">
+          <div class="card-header"><span class="card-title">Share Distribution</span></div>
+          <div class="card-body">
+            <div class="metric-row">
+              <div class="metric-label"><span>Shares Issued</span><span>42,000 / 50,000</span></div>
+              <div class="metric-bar"><div class="metric-fill" style="width:84%;"></div></div>
+            </div>
+            <div class="metric-row">
+              <div class="metric-label"><span>Shares Traded (30d)</span><span>7,200</span></div>
+              <div class="metric-bar"><div class="metric-fill" style="width:17%;"></div></div>
+            </div>
+            <div class="metric-row">
+              <div class="metric-label"><span>Shares in Escrow</span><span>1,700</span></div>
+              <div class="metric-bar"><div class="metric-fill" style="width:4%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cap table + recent transactions -->
+    <div class="grid-2">
+      <!-- Cap Table -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Cap Table — Top Shareholders</span>
+          <span class="card-action">Full cap table →</span>
+        </div>
+        <div class="card-body">
+          <div class="cap-row">
+            <div class="cap-rank">1</div>
+            <div style="flex:1;"><div class="cap-name">Fondateurs (Promoteurs)</div><div class="cap-shares">20,000 shares</div></div>
+            <div class="cap-bar-wrap"><div class="cap-bar" style="width:47.6%;"></div></div>
+            <div class="cap-pct">47.6%</div>
+          </div>
+          <div class="cap-row">
+            <div class="cap-rank">2</div>
+            <div style="flex:1;"><div class="cap-name">Jean Dupont</div><div class="cap-shares">5,000 shares</div></div>
+            <div class="cap-bar-wrap"><div class="cap-bar" style="width:11.9%;"></div></div>
+            <div class="cap-pct">11.9%</div>
+          </div>
+          <div class="cap-row">
+            <div class="cap-rank">3</div>
+            <div style="flex:1;"><div class="cap-name">AfroCap Investments</div><div class="cap-shares">4,200 shares</div></div>
+            <div class="cap-bar-wrap"><div class="cap-bar" style="width:10%;"></div></div>
+            <div class="cap-pct">10.0%</div>
+          </div>
+          <div class="cap-row">
+            <div class="cap-rank">4</div>
+            <div style="flex:1;"><div class="cap-name">Marie Ngono</div><div class="cap-shares">2,100 shares</div></div>
+            <div class="cap-bar-wrap"><div class="cap-bar" style="width:5%;"></div></div>
+            <div class="cap-pct">5.0%</div>
+          </div>
+          <div class="cap-row">
+            <div class="cap-rank">5</div>
+            <div style="flex:1;"><div class="cap-name">Other shareholders (124)</div><div class="cap-shares">10,700 shares</div></div>
+            <div class="cap-bar-wrap"><div class="cap-bar" style="width:25.5%;background:linear-gradient(90deg,#064a1a,#0d7a34);"></div></div>
+            <div class="cap-pct">25.5%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent transactions -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recent Transactions</span>
+          <span class="card-action">All history →</span>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <table class="data-table">
+            <thead><tr><th>Investor</th><th>Type</th><th>Shares</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Jean Dupont</td><td style="color:#4ade80;">BUY</td><td>500</td><td><span class="badge badge-green">Confirmed</span></td></tr>
+              <tr><td>AfroCap Inv.</td><td style="color:#4ade80;">BUY</td><td>1,200</td><td><span class="badge badge-green">Confirmed</span></td></tr>
+              <tr><td>Marie Ngono</td><td style="color:#f87171;">SELL</td><td>300</td><td><span class="badge badge-amber">Pending</span></td></tr>
+              <tr><td>Paul Biya Jr.</td><td style="color:#4ade80;">BUY</td><td>1,000</td><td><span class="badge badge-amber">Pending</span></td></tr>
+              <tr><td>Sophie Etoa</td><td style="color:#f87171;">SELL</td><td>150</td><td><span class="badge badge-red">Rejected</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents & Compliance -->
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Documents &amp; Compliance Status</span>
+        <span class="card-action">Manage documents →</span>
+      </div>
+      <div class="card-body" style="padding:0;">
+        <table class="data-table">
+          <thead><tr><th>Document</th><th>Submitted</th><th>Verified</th><th>Expiry</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>RCCM Certificate</td><td>Jan 2021</td><td>Feb 2021</td><td>Permanent</td><td><span class="badge badge-green">Valid</span></td></tr>
+            <tr><td>Statuts de la Société</td><td>Jan 2021</td><td>Feb 2021</td><td>Permanent</td><td><span class="badge badge-green">Valid</span></td></tr>
+            <tr><td>Attestation NIU (DGI)</td><td>Mar 2024</td><td>Mar 2024</td><td>Dec 2026</td><td><span class="badge badge-green">Valid</span></td></tr>
+            <tr><td>Patente Commerciale</td><td>Jan 2026</td><td>Jan 2026</td><td>Dec 2026</td><td><span class="badge badge-green">Valid</span></td></tr>
+            <tr><td>Attestation de Localisation</td><td>Jan 2021</td><td>Jan 2021</td><td>Jan 2027</td><td><span class="badge badge-amber">Renewal Due</span></td></tr>
+            <tr><td>Plan de Localisation</td><td>Jan 2021</td><td>—</td><td>—</td><td><span class="badge badge-red">Needs Update</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>

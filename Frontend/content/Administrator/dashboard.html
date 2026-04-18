@@ -1,0 +1,257 @@
+<!-- Platform stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-label">Total Users</div>
+        <div class="stat-value">50,842</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +318 this week</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-building"></i></div>
+        <div class="stat-label">Companies</div>
+        <div class="stat-value">512</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +14 this month</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-exchange-alt"></i></div>
+        <div class="stat-label">Total Trades</div>
+        <div class="stat-value">18,620</div>
+        <div class="stat-change up"><i class="fas fa-arrow-up"></i> +241 today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-lock"></i></div>
+        <div class="stat-label">Escrow Locked</div>
+        <div class="stat-value">XAF 2.1B</div>
+        <div class="stat-change amber"><i class="fas fa-clock"></i> 84 active holds</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-id-card"></i></div>
+        <div class="stat-label">KYC Pending</div>
+        <div class="stat-value">12</div>
+        <div class="stat-change red"><i class="fas fa-exclamation"></i> Action needed</div>
+      </div>
+    </div>
+
+    <!-- Platform chart + system health -->
+    <div class="grid-3-2">
+      <!-- Volume chart -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Monthly Trading Volume</span>
+          <span style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#4ade80;">XAF 100M+ YTD</span>
+        </div>
+        <div class="card-body">
+          <div class="bar-chart">
+            <div class="bar" style="height:30%;"></div>
+            <div class="bar" style="height:42%;"></div>
+            <div class="bar" style="height:55%;"></div>
+            <div class="bar" style="height:38%;"></div>
+            <div class="bar" style="height:65%;"></div>
+            <div class="bar" style="height:78%;"></div>
+            <div class="bar" style="height:60%;"></div>
+            <div class="bar" style="height:85%;"></div>
+            <div class="bar" style="height:70%;"></div>
+            <div class="bar" style="height:92%;"></div>
+            <div class="bar" style="height:88%;"></div>
+            <div class="bar" style="height:100%;opacity:1;"></div>
+          </div>
+          <div class="bar-labels">
+            <div class="bar-label">Jan</div><div class="bar-label">Feb</div><div class="bar-label">Mar</div>
+            <div class="bar-label">Apr</div><div class="bar-label">May</div><div class="bar-label">Jun</div>
+            <div class="bar-label">Jul</div><div class="bar-label">Aug</div><div class="bar-label">Sep</div>
+            <div class="bar-label">Oct</div><div class="bar-label">Nov</div><div class="bar-label">Dec</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.25rem;">
+            <div><div style="font-size:.7rem;color:var(--text3);margin-bottom:.2rem;">Total Volume</div><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--text);">XAF 8.4B</div></div>
+            <div><div style="font-size:.7rem;color:var(--text3);margin-bottom:.2rem;">Avg Trade Size</div><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--text);">XAF 451K</div></div>
+            <div><div style="font-size:.7rem;color:var(--text3);margin-bottom:.2rem;">Platform Fee Earned</div><div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#4ade80;">XAF 84M</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System status -->
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+        <div class="card">
+          <div class="card-header"><span class="card-title">System Health</span><span class="badge badge-green"><i class="fas fa-circle"></i> All Systems Go</span></div>
+          <div class="card-body">
+            <div class="status-row"><span class="status-label">API Gateway</span><span class="badge badge-green">Operational</span></div>
+            <div class="status-row"><span class="status-label">Escrow Engine</span><span class="badge badge-green">Operational</span></div>
+            <div class="status-row"><span class="status-label">KYC Processor</span><span class="badge badge-green">Operational</span></div>
+            <div class="status-row"><span class="status-label">Notification Service</span><span class="badge badge-amber">Degraded</span></div>
+            <div class="status-row"><span class="status-label">Document Storage</span><span class="badge badge-green">Operational</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Feature Flags</span></div>
+          <div class="card-body">
+            <div class="toggle-row"><span class="toggle-label">Allow new registrations</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><span class="toggle-label">Enable P2P trading</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><span class="toggle-label">Maintenance mode</span><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
+            <div class="toggle-row"><span class="toggle-label">KYC auto-screening</span><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KYC Queue + Activity -->
+    <div class="grid-2">
+      <!-- KYC Queue -->
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;">
+          KYC Review Queue <span class="badge badge-amber">12 pending</span>
+        </div>
+
+        <div class="kyc-card">
+          <div class="kyc-top">
+            <div><div class="kyc-name">Jean-Paul Kamga</div><div class="kyc-type">Individual Investor · Submitted 3h ago</div></div>
+            <span class="badge badge-amber">Pending</span>
+          </div>
+          <div class="kyc-docs">
+            <span class="doc-chip"><i class="fas fa-check"></i> Passport</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> CNI Front</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> CNI Back</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> Proof of Address</span>
+            <span class="doc-chip missing"><i class="fas fa-times"></i> Selfie with ID</span>
+          </div>
+          <div class="kyc-actions">
+            <button class="btn-sm btn-approve">✓ Approve</button>
+            <button class="btn-sm btn-reject-sm">✗ Reject</button>
+            <button class="btn-sm btn-view"><i class="fas fa-eye"></i> View Docs</button>
+          </div>
+        </div>
+
+        <div class="kyc-card">
+          <div class="kyc-top">
+            <div><div class="kyc-name">BuildCam SA</div><div class="kyc-type">Company · Submitted 1d ago</div></div>
+            <span class="badge badge-blue">In Review</span>
+          </div>
+          <div class="kyc-docs">
+            <span class="doc-chip"><i class="fas fa-check"></i> RCCM</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> Statuts</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> NIU</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> Localisation</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> PV Constitutif</span>
+            <span class="doc-chip missing"><i class="fas fa-times"></i> Patente</span>
+          </div>
+          <div class="kyc-actions">
+            <button class="btn-sm btn-approve">✓ Approve</button>
+            <button class="btn-sm btn-reject-sm">✗ Reject</button>
+            <button class="btn-sm btn-view"><i class="fas fa-eye"></i> View Docs</button>
+          </div>
+        </div>
+
+        <div class="kyc-card">
+          <div class="kyc-top">
+            <div><div class="kyc-name">Sophie Etoa Mba</div><div class="kyc-type">Individual Investor · Submitted 2d ago</div></div>
+            <span class="badge badge-amber">Pending</span>
+          </div>
+          <div class="kyc-docs">
+            <span class="doc-chip"><i class="fas fa-check"></i> Passport</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> CNI Front</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> CNI Back</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> Proof of Address</span>
+            <span class="doc-chip"><i class="fas fa-check"></i> Selfie with ID</span>
+          </div>
+          <div class="kyc-actions">
+            <button class="btn-sm btn-approve">✓ Approve</button>
+            <button class="btn-sm btn-reject-sm">✗ Reject</button>
+            <button class="btn-sm btn-view"><i class="fas fa-eye"></i> View Docs</button>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:.75rem;"><span class="card-action">View all 12 in queue →</span></div>
+      </div>
+
+      <!-- Activity feed -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Live Platform Activity</span>
+          <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--green);"><span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;animation:pulse 1.5s infinite;"></span> Live</span>
+        </div>
+        <div class="card-body">
+          <div class="activity-item">
+            <div class="activity-dot green"><i class="fas fa-check"></i></div>
+            <div><div class="activity-text"><strong>Jean Dupont</strong> completed KYC verification</div><div class="activity-time">2 minutes ago</div></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot amber"><i class="fas fa-exchange-alt"></i></div>
+            <div><div class="activity-text"><strong>TechVent SA</strong> received a buy request for 500 shares (XAF 500K)</div><div class="activity-time">8 minutes ago</div></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot blue"><i class="fas fa-user-plus"></i></div>
+            <div><div class="activity-text"><strong>New company registered:</strong> MediCare SARL (Douala)</div><div class="activity-time">14 minutes ago</div></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot green"><i class="fas fa-lock-open"></i></div>
+            <div><div class="activity-text"><strong>Escrow released</strong> — XAF 240,000 disbursed to Marie Ngono</div><div class="activity-time">22 minutes ago</div></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot red"><i class="fas fa-flag"></i></div>
+            <div><div class="activity-text"><strong>Dispute filed</strong> on Trade #18,204 — AgroCam SARL vs. Investor</div><div class="activity-time">1 hour ago</div></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot amber"><i class="fas fa-id-card"></i></div>
+            <div><div class="activity-text"><strong>BuildCam SA</strong> submitted company documents for review</div><div class="activity-time">1 hour ago</div></div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-dot green"><i class="fas fa-certificate"></i></div>
+            <div><div class="activity-text"><strong>Share certificate</strong> auto-generated for Trade #18,201</div><div class="activity-time">2 hours ago</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Users + Disputes -->
+    <div class="grid-2">
+      <!-- Recent users -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recently Registered Users</span>
+          <span class="card-action">All users →</span>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Type</th><th>Location</th><th>KYC</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>Jean-Paul Kamga</td><td><span class="badge badge-blue">Investor</span></td><td style="color:var(--text3);">Yaoundé</td><td><span class="badge badge-amber">Pending</span></td><td><button class="btn-sm btn-view" style="font-size:.7rem;padding:.25rem .6rem;">View</button></td></tr>
+              <tr><td>BuildCam SA</td><td><span class="badge badge-purple">Company</span></td><td style="color:var(--text3);">Douala</td><td><span class="badge badge-blue">In Review</span></td><td><button class="btn-sm btn-view" style="font-size:.7rem;padding:.25rem .6rem;">View</button></td></tr>
+              <tr><td>Sophie Etoa Mba</td><td><span class="badge badge-blue">Investor</span></td><td style="color:var(--text3);">Douala</td><td><span class="badge badge-amber">Pending</span></td><td><button class="btn-sm btn-view" style="font-size:.7rem;padding:.25rem .6rem;">View</button></td></tr>
+              <tr><td>AgroCam SARL</td><td><span class="badge badge-purple">Company</span></td><td style="color:var(--text3);">Bafoussam</td><td><span class="badge badge-green">Verified</span></td><td><button class="btn-sm btn-view" style="font-size:.7rem;padding:.25rem .6rem;">View</button></td></tr>
+              <tr><td>Michel Essomba</td><td><span class="badge badge-blue">Investor</span></td><td style="color:var(--text3);">Yaoundé</td><td><span class="badge badge-green">Verified</span></td><td><button class="btn-sm btn-view" style="font-size:.7rem;padding:.25rem .6rem;">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Open disputes -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Open Disputes</span>
+          <span class="badge badge-red">2 open</span>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <table class="data-table">
+            <thead><tr><th>Trade #</th><th>Parties</th><th>Value</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>#18,204</td>
+                <td style="font-size:.78rem;color:var(--text3);">AgroCam vs. Investor</td>
+                <td>XAF 480K</td>
+                <td><span class="badge badge-red">Open</span></td>
+                <td><button class="btn-sm btn-view" style="font-size:.7rem;padding:.25rem .6rem;">Resolve</button></td>
+              </tr>
+              <tr>
+                <td>#18,198</td>
+                <td style="font-size:.78rem;color:var(--text3);">EnerSol vs. Buyer</td>
+                <td>XAF 120K</td>
+                <td><span class="badge badge-amber">Mediating</span></td>
+                <td><button class="btn-sm btn-view" style="font-size:.7rem;padding:.25rem .6rem;">Resolve</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="padding:1rem 1.5rem;border-top:1px solid var(--border);">
+            <div style="font-size:.78rem;color:var(--text3);">Escrow funds are frozen for disputed trades until resolved by admin.</div>
+          </div>
+        </div>
+      </div>
+    </div>

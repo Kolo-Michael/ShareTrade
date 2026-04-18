@@ -1,0 +1,19 @@
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <!-- Mobile Hamburger -->
+    <button class="mobile-toggle" id="sidebarToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div>
+      <div class="page-title">{{ page_title }}</div>
+      <div class="page-sub">{{ date_string }}</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+    <button class="topbar-btn"><i class="fas fa-search"></i></button>
+    <button class="topbar-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+    <div class="user-avatar" style="width:34px;height:34px;font-size:.78rem;cursor:pointer;">{{ user_initials }}</div>
+  </div>
+</header>

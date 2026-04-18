@@ -1,0 +1,38 @@
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <a href="{{ root_path }}index.html" class="sidebar-logo">
+    <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+    <span class="logo-text">Share<span>Trade</span></span>
+  </a>
+  <div class="sidebar-user">
+    <div class="admin-avatar"><i class="fas fa-crown"></i></div>
+    <div>
+      <div class="user-name">Admin Console</div>
+      <div class="user-role"><i class="fas fa-shield-alt"></i> Super Admin</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">Platform</div>
+    <a class="nav-item {{ 'active' if active_page == 'dashboard' else '' }}" href="dashboard.html"><i class="fas fa-th-large"></i> Overview</a>
+    <a class="nav-item {{ 'active' if active_page == 'alerts' else '' }}" href="alerts.html"><i class="fas fa-bell"></i> Alerts <span class="nav-badge red">7</span></a>
+    
+    <div class="nav-section">Users</div>
+    <a class="nav-item {{ 'active' if active_page == 'kyc' else '' }}" href="kyc.html"><i class="fas fa-id-card"></i> KYC Queue <span class="nav-badge amber">12</span></a>
+    <a class="nav-item {{ 'active' if active_page == 'investors' else '' }}" href="investors.html"><i class="fas fa-users"></i> Investors</a>
+    <a class="nav-item {{ 'active' if active_page == 'companies' else '' }}" href="companies.html"><i class="fas fa-building"></i> Companies <span class="nav-badge amber">3</span></a>
+    <a class="nav-item {{ 'active' if active_page == 'suspended' else '' }}" href="suspended.html"><i class="fas fa-user-slash"></i> Suspended</a>
+    
+    <div class="nav-section">Trading</div>
+    <a class="nav-item {{ 'active' if active_page == 'trades' else '' }}" href="trades.html"><i class="fas fa-exchange-alt"></i> All Trades</a>
+    <a class="nav-item {{ 'active' if active_page == 'escrow' else '' }}" href="escrow.html"><i class="fas fa-lock"></i> Escrow Monitor</a>
+    <a class="nav-item {{ 'active' if active_page == 'disputes' else '' }}" href="disputes.html"><i class="fas fa-flag"></i> Disputes <span class="nav-badge red">2</span></a>
+    
+    <div class="nav-section">System</div>
+    <a class="nav-item {{ 'active' if active_page == 'settings' else '' }}" href="settings.html"><i class="fas fa-sliders-h"></i> Settings</a>
+    <a class="nav-item {{ 'active' if active_page == 'auditlogs' else '' }}" href="auditlogs.html"><i class="fas fa-file-alt"></i> Audit Logs</a>
+    <a class="nav-item {{ 'active' if active_page == 'maintenance' else '' }}" href="maintenance.html"><i class="fas fa-tools"></i> Maintenance</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <a class="nav-item" href="{{ root_path }}login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+  </div>
+</aside>
