@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Share Listings | ShareTrade P2P</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../shared.css">
+
+<style>
+.admin-avatar{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#064a1a,#16a34a);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.admin-avatar i{color:#fff;font-size:14px;}
+.company-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(34,197,94,.1);
+  border:1px solid rgba(34,197,94,.2);color:var(--green);padding:.28rem .65rem;border-radius:7px;
+  font-size:.7rem;font-weight:700;}
+.toggle-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;
+  border-bottom:1px solid var(--border);gap:1rem;}
+.toggle-label{font-size:.85rem;font-weight:600;color:var(--text);}
+.toggle-sublabel{font-size:.72rem;color:var(--text3);margin-top:.1rem;}
+.trade-timeline{display:flex;flex-direction:column;gap:0;padding-left:1.5rem;position:relative;}
+.trade-timeline::before{content:'';position:absolute;left:.4rem;top:.5rem;bottom:.5rem;
+  width:2px;background:var(--border);}
+.tl-step{position:relative;padding-bottom:1.1rem;}
+.tl-step:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-1.1rem;top:.28rem;width:10px;height:10px;border-radius:50%;
+  border:2px solid var(--border);background:var(--bg);}
+.tl-dot.done{background:var(--green);border-color:var(--green);}
+.tl-dot.active{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.2);}
+.tl-step-label{font-size:.85rem;font-weight:600;color:var(--text);}
+.tl-step-sub{font-size:.78rem;color:var(--text2);margin-top:.1rem;}
+.tl-step-time{font-size:.7rem;color:var(--text3);}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;
+  align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.modal-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  width:100%;max-width:560px;margin:1rem;box-shadow:0 24px 64px var(--shadow);overflow:hidden;}
+.modal-head{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;}
+.modal-body{padding:1.5rem;}
+.doc-row{display:flex;align-items:center;gap:.85rem;padding:.7rem 0;border-bottom:1px solid var(--border);}
+.doc-row:last-child{border-bottom:none;}
+.doc-icon-wrap{width:36px;height:36px;border-radius:9px;background:var(--hover);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+select,input[type=date],input[type=month]{padding:.4rem .75rem;border-radius:8px;
+  border:1px solid var(--border);background:var(--card);color:var(--text2);
+  font-size:.8rem;font-family:'DM Sans',sans-serif;}
+.info-chip{display:inline-flex;align-items:center;gap:.35rem;font-size:.78rem;
+  color:var(--text2);background:var(--hover);border:1px solid var(--border);
+  padding:.3rem .7rem;border-radius:8px;}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+<a href="../index.html" class="sidebar-logo">
+  <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+  <span class="logo-text">Share<span>Trade</span></span>
+</a>
+<div class="sidebar-user">
+  <div>
+    <div class="company-badge"><i class="fas fa-check-circle"></i> Verified</div>
+    <div class="user-name">TechVent SA</div>
+    <div style="font-size:.7rem;color:var(--text3);">RC/YAO/2021/B/04512</div>
+  </div>
+</div>
+<nav class="sidebar-nav"><div class="nav-section">Overview</div>
+<a class="nav-item " href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+<a class="nav-item " href="analytics.html"><i class="fas fa-chart-bar"></i> Analytics</a>
+<div class="nav-section">Shares</div>
+<a class="nav-item " href="approvals.html"><i class="fas fa-exchange-alt"></i> Trade Approvals<span class="nav-badge amber">4</span></a>
+<a class="nav-item " href="captable.html"><i class="fas fa-users"></i> Cap Table</a>
+<a class="nav-item active" href="listings.html"><i class="fas fa-tag"></i> Share Listings</a>
+<a class="nav-item " href="buybacks.html"><i class="fas fa-undo"></i> Buybacks</a>
+<div class="nav-section">Finance</div>
+<a class="nav-item " href="transactions.html"><i class="fas fa-file-invoice-dollar"></i> Transactions</a>
+<a class="nav-item " href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+<a class="nav-item " href="certificates.html"><i class="fas fa-certificate"></i> Certificates</a>
+<div class="nav-section">Company</div>
+<a class="nav-item " href="profile.html"><i class="fas fa-building"></i> Company Profile</a>
+<a class="nav-item " href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+</nav>
+<div class="sidebar-bottom">
+  <a class="nav-item" href="../login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<div><div class="page-title">Share Listings</div><div class="page-sub">Manage marketplace offerings</div></div>
+<div class="topbar-right">
+  
+  <button class="topbar-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+  <button class="topbar-btn" style="position:relative;">
+    <i class="fas fa-bell"></i><span class="notif-dot"></span>
+  </button>
+</div>
+</header>
+<main class="content">
+
+<div class="page-header fade-in">
+<div class="page-header-left"><h2>Share Listings</h2><p>Manage marketplace share offerings</p></div>
+<div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-primary" style="" ><i class="fas fa-plus"></i> + Create New Listing</button></div>
+</div>
+<div class="stats-grid fade-in-2">
+  <div class="stat-card fade-in">
+<div class="stat-icon"><i class="fas fa-tag"></i></div>
+<div class="stat-label">Active Listings</div>
+<div class="stat-value">2</div>
+<div class="stat-change up"><i class="fas fa-arrow-up"></i> Live on marketplace</div>
+</div>
+  <div class="stat-card fade-in">
+<div class="stat-icon"><i class="fas fa-eye"></i></div>
+<div class="stat-label">Total Interest</div>
+<div class="stat-value">22</div>
+<div class="stat-change up"><i class="fas fa-arrow-up"></i> Investors interested</div>
+</div>
+  <div class="stat-card fade-in">
+<div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+<div class="stat-label">Shares Available</div>
+<div class="stat-value">2,000</div>
+<div class="stat-change up"><i class="fas fa-arrow-up"></i> Currently listed</div>
+</div>
+  <div class="stat-card fade-in">
+<div class="stat-icon"><i class="fas fa-clock"></i></div>
+<div class="stat-label">Expired Listings</div>
+<div class="stat-value">1</div>
+<div class="stat-change amber"><i class="fas fa-clock"></i> Needs renewal</div>
+</div>
+</div>
+<div class="fade-in-2">
+  <div class="card">
+<div class="card-header">
+  <span class="card-title">Current Listings</span>
+  
+</div>
+<div class="card-body" style="padding:0;"><div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Listing ID</th><th>Shares</th><th>Price/Share</th><th>Min. Invest</th><th>Interested</th><th>Expires</th><th>Eligible</th><th>Status</th><th>Action</th></tr></thead><tbody><tr><td>#LST-0041</td><td>2,000</td><td>XAF 1,200</td><td>XAF 120,000</td><td>14 investors</td><td>Apr 30, 2026</td><td>Open to all</td><td><span class="badge badge-green">Active</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" >Edit</button> <button class="btn btn-danger" style="font-size:.72rem;padding:.25rem .6rem;" >Close</button></td></tr><tr><td>#LST-0038</td><td>1,000</td><td>XAF 1,100</td><td>XAF 110,000</td><td>8 investors</td><td>Mar 31, 2026</td><td>Verified only</td><td><span class="badge badge-red">Expired</span></td><td><button class="btn btn-primary" style="font-size:.72rem;padding:.25rem .6rem;" >Renew</button></td></tr><tr><td>#LST-0030</td><td>500</td><td>XAF 1,050</td><td>XAF 105,000</td><td>22 investors</td><td>Dec 15, 2025</td><td>Open to all</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" >View</button></td></tr></tbody></table></div></div>
+</div>
+</div>
+<div style="margin-top:1.25rem;"><div class="card">
+<div class="card-header">
+  <span class="card-title">Create New Listing</span>
+  
+</div>
+<div class="card-body"><div class="form-row-3">
+<div class="form-group"><label>Shares to Offer</label><input type="number" placeholder="e.g. 1000"  ></div>
+<div class="form-group"><label>Price per Share (XAF)</label><input type="number" placeholder="e.g. 1200"  ></div>
+<div class="form-group"><label>Minimum Investment (XAF)</label><input type="number" placeholder="e.g. 120000"  ></div>
+<div class="form-group"><label>Listing Start Date</label><input type="date" placeholder=""  ></div>
+<div class="form-group"><label>Listing End Date</label><input type="date" placeholder=""  ></div>
+<div class="form-group"><label>Eligible Investors</label><select><option >Open to all KYC-verified</option><option >Institutional investors only</option><option >Invite-only</option></select></div>
+</div>
+<div class="form-group"><label>Offering Description</label><textarea placeholder="Describe this share offering — use of proceeds, expected returns, company update..." style="min-height:90px;width:100%;padding:.72rem;border:1px solid var(--border);border-radius:10px;background:var(--input);color:var(--text);font-family:DM Sans,sans-serif;resize:vertical;"></textarea></div>
+<div style="background:rgba(34,197,94,.05);border:1px solid var(--border2);border-radius:9px;padding:.85rem;margin-bottom:1rem;font-size:.82rem;color:var(--text2);">
+  <i class="fas fa-info-circle" style="color:var(--green);margin-right:.4rem;"></i>
+  Listings are reviewed by ShareTrade admin within <strong style="color:var(--text);">24 hours</strong> before going live on the marketplace.
+</div>
+<button class="btn btn-primary" style="" ><i class="fas fa-plus"></i> Publish Listing</button></div>
+</div></div>
+</main>
+</div>
+
+<script>
+(function(){
+  var h=document.documentElement,t=localStorage.getItem('st-theme')||'dark';
+  h.setAttribute('data-theme',t);
+  var b=document.getElementById('themeBtn'),i=document.getElementById('themeIcon');
+  if(i)i.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  if(b)b.addEventListener('click',function(){
+    var n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',n);
+    if(i)i.className=n==='dark'?'fas fa-sun':'fas fa-moon';
+    localStorage.setItem('st-theme',n);
+  });
+  // Tabs
+  document.querySelectorAll('.tab-bar').forEach(function(bar){
+    bar.querySelectorAll('.tab').forEach(function(tab){
+      tab.addEventListener('click',function(){
+        bar.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+        this.classList.add('active');
+      });
+    });
+  });
+  // Modals
+  document.querySelectorAll('[data-open]').forEach(function(el){
+    el.addEventListener('click',function(){
+      var m=document.getElementById(this.getAttribute('data-open'));
+      if(m){m.style.display='flex';}
+    });
+  });
+  document.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',function(){
+      this.closest('.modal-overlay').style.display='none';
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Suspended Accounts | ShareTrade P2P</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<aside class="sidebar">
+<a href="../index.html" class="sidebar-logo"><div class="logo-icon"><i class="fas fa-chart-line"></i></div><span class="logo-text">Share<span>Trade</span></span></a>
+<div class="sidebar-user"><div class="admin-avatar"><i class="fas fa-crown"></i></div><div class="user-info"><div class="user-name">Admin Console</div><div class="user-role"><i class="fas fa-shield-alt"></i> Super Admin</div></div></div>
+<nav class="sidebar-nav"><div class="nav-section">Platform</div>
+<a class="nav-item " href="dashboard.html"><i class="fas fa-th-large"></i> Overview</a>
+
+<a class="nav-item " href="alerts.html"><i class="fas fa-bell"></i> Alerts<span class="nav-badge amber">7</span></a>
+<div class="nav-section">Users</div>
+<a class="nav-item " href="kyc.html"><i class="fas fa-id-card"></i> KYC Queue<span class="nav-badge amber">12</span></a>
+<a class="nav-item " href="investors.html"><i class="fas fa-users"></i> Investors</a>
+<a class="nav-item " href="companies.html"><i class="fas fa-building"></i> Companies<span class="nav-badge amber">3</span></a>
+<a class="nav-item active" href="suspended.html"><i class="fas fa-user-slash"></i> Suspended</a>
+<div class="nav-section">Trading</div>
+<a class="nav-item " href="trades.html"><i class="fas fa-exchange-alt"></i> All Trades</a>
+<a class="nav-item " href="escrow.html"><i class="fas fa-lock"></i> Escrow Monitor</a>
+<a class="nav-item " href="disputes.html"><i class="fas fa-flag"></i> Disputes<span class="nav-badge red">2</span></a>
+<div class="nav-section">System</div>
+<a class="nav-item " href="settings.html"><i class="fas fa-sliders-h"></i> Settings</a>
+<a class="nav-item " href="auditlogs.html"><i class="fas fa-file-alt"></i> Audit Logs</a>
+<a class="nav-item " href="maintenance.html"><i class="fas fa-tools"></i> Maintenance</a>
+</nav>
+<div class="sidebar-bottom"><a class="nav-item" href="../login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a></div></aside>
+<div class="main">
+<header class="topbar">
+<div><div class="page-title">Suspended Accounts</div><div class="page-sub">Accounts with restricted access</div></div>
+<div class="topbar-right"><button class="topbar-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+<button class="topbar-btn" style="position:relative;"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+</div></header>
+<main class="content">
+
+<div class="page-header fade-in"><div class="page-header-left"><h2>Suspended Accounts</h2><p>Accounts with restricted access requiring admin review</p></div><div class="flex gap-sm"></div></div>
+<div class="stats-grid fade-in-2">
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-ban"></i></div><div class="stat-label">Total Suspended</div><div class="stat-value">8</div><div class="stat-change down"><i class="fas fa-arrow-down"></i> Currently restricted</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div><div class="stat-label">High Risk</div><div class="stat-value">3</div><div class="stat-change down"><i class="fas fa-arrow-down"></i> Immediate review</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-label">Medium Risk</div><div class="stat-value">2</div><div class="stat-change amber"><i class="fas fa-clock"></i> Review when possible</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-label">Reinstated (30d)</div><div class="stat-value">2</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> This month</div></div>
+</div>
+<div class="banner error fade-in">
+  <i class="fas fa-exclamation-circle"></i>
+  <div class="banner-text"><strong>8 accounts are currently suspended.</strong> Review each case carefully before reinstating access — all decisions are logged in the audit trail.</div>
+</div>
+<div class="grid-3-2 fade-in-3">
+<div style="display:flex;flex-direction:column;gap:1rem;"><div class="card fade-in" style="border-left:3px solid #f87171;">
+<div class="card-body">
+  <div class="flex" style="justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem;margin-bottom:.9rem;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);">Anonymous User #1024</div>
+      <div class="sr-label">Retail Investor &bull; Suspended by Admin on Mar 15, 2026</div>
+    </div>
+    <div class="flex gap-sm">
+      <span class="badge" style="background:rgba(248,113,113,.1);color:#f87171;">
+        <i class="fas fa-exclamation-triangle"></i> High Risk
+      </span>
+      <span class="badge badge-red">Suspended</span>
+    </div>
+  </div>
+  <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:10px;padding:.85rem;margin-bottom:1rem;font-size:.85rem;color:var(--text2);">
+    <i class="fas fa-info-circle" style="color:#f87171;margin-right:.4rem;"></i><strong style="color:var(--text);">Reason:</strong> Multiple failed KYC attempts with inconsistent documents — possible fraud or identity theft.
+  </div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-outline" style=""><i class="fas fa-user"></i> View Full Profile</button>
+    <button class="btn btn-outline" style=""><i class="fas fa-eye"></i> View Evidence</button>
+    <button class="btn btn-primary" style=""><i class="fas fa-check"></i> Reinstate Account</button>
+    <button class="btn btn-danger" style=""><i class="fas fa-ban"></i> Permanently Ban</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #fbbf24;">
+<div class="card-body">
+  <div class="flex" style="justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem;margin-bottom:.9rem;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);">Anonymous User #0882</div>
+      <div class="sr-label">Retail Investor &bull; Suspended by Admin on Feb 28, 2026</div>
+    </div>
+    <div class="flex gap-sm">
+      <span class="badge" style="background:rgba(251,191,36,.1);color:#fbbf24;">
+        <i class="fas fa-exclamation-triangle"></i> Medium Risk
+      </span>
+      <span class="badge badge-red">Suspended</span>
+    </div>
+  </div>
+  <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:10px;padding:.85rem;margin-bottom:1rem;font-size:.85rem;color:var(--text2);">
+    <i class="fas fa-info-circle" style="color:#f87171;margin-right:.4rem;"></i><strong style="color:var(--text);">Reason:</strong> Filed a disputed trade (#T-18204) against AgroCam SARL. Account frozen pending resolution.
+  </div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-outline" style=""><i class="fas fa-user"></i> View Full Profile</button>
+    <button class="btn btn-outline" style=""><i class="fas fa-eye"></i> View Evidence</button>
+    <button class="btn btn-primary" style=""><i class="fas fa-check"></i> Reinstate Account</button>
+    <button class="btn btn-danger" style=""><i class="fas fa-ban"></i> Permanently Ban</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #f87171;">
+<div class="card-body">
+  <div class="flex" style="justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem;margin-bottom:.9rem;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);">Anonymous User #0741</div>
+      <div class="sr-label">Retail Investor &bull; Suspended by System on Jan 12, 2026</div>
+    </div>
+    <div class="flex gap-sm">
+      <span class="badge" style="background:rgba(248,113,113,.1);color:#f87171;">
+        <i class="fas fa-exclamation-triangle"></i> High Risk
+      </span>
+      <span class="badge badge-red">Suspended</span>
+    </div>
+  </div>
+  <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:10px;padding:.85rem;margin-bottom:1rem;font-size:.85rem;color:var(--text2);">
+    <i class="fas fa-info-circle" style="color:#f87171;margin-right:.4rem;"></i><strong style="color:var(--text);">Reason:</strong> Terms of service violation — attempted to manipulate share price by placing and cancelling large orders.
+  </div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-outline" style=""><i class="fas fa-user"></i> View Full Profile</button>
+    <button class="btn btn-outline" style=""><i class="fas fa-eye"></i> View Evidence</button>
+    <button class="btn btn-primary" style=""><i class="fas fa-check"></i> Reinstate Account</button>
+    <button class="btn btn-danger" style=""><i class="fas fa-ban"></i> Permanently Ban</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #fbbf24;">
+<div class="card-body">
+  <div class="flex" style="justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem;margin-bottom:.9rem;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);">Anonymous User #0612</div>
+      <div class="sr-label">Retail Investor &bull; Suspended by System on Dec 5, 2025</div>
+    </div>
+    <div class="flex gap-sm">
+      <span class="badge" style="background:rgba(251,191,36,.1);color:#fbbf24;">
+        <i class="fas fa-exclamation-triangle"></i> Medium Risk
+      </span>
+      <span class="badge badge-red">Suspended</span>
+    </div>
+  </div>
+  <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:10px;padding:.85rem;margin-bottom:1rem;font-size:.85rem;color:var(--text2);">
+    <i class="fas fa-info-circle" style="color:#f87171;margin-right:.4rem;"></i><strong style="color:var(--text);">Reason:</strong> Unverified KYC with expired documents submitted more than 90 days ago. No response to reminders.
+  </div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-outline" style=""><i class="fas fa-user"></i> View Full Profile</button>
+    <button class="btn btn-outline" style=""><i class="fas fa-eye"></i> View Evidence</button>
+    <button class="btn btn-primary" style=""><i class="fas fa-check"></i> Reinstate Account</button>
+    <button class="btn btn-danger" style=""><i class="fas fa-ban"></i> Permanently Ban</button>
+  </div>
+</div>
+</div><div class="card fade-in" style="border-left:3px solid #f87171;">
+<div class="card-body">
+  <div class="flex" style="justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem;margin-bottom:.9rem;">
+    <div>
+      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;color:var(--text);">Anonymous User #0540</div>
+      <div class="sr-label">Retail Investor &bull; Suspended by Admin on Nov 20, 2025</div>
+    </div>
+    <div class="flex gap-sm">
+      <span class="badge" style="background:rgba(248,113,113,.1);color:#f87171;">
+        <i class="fas fa-exclamation-triangle"></i> High Risk
+      </span>
+      <span class="badge badge-red">Suspended</span>
+    </div>
+  </div>
+  <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.15);border-radius:10px;padding:.85rem;margin-bottom:1rem;font-size:.85rem;color:var(--text2);">
+    <i class="fas fa-info-circle" style="color:#f87171;margin-right:.4rem;"></i><strong style="color:var(--text);">Reason:</strong> Withdrawal requested to unlinked bank account — potential money laundering flag raised by screening.
+  </div>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <button class="btn btn-outline" style=""><i class="fas fa-user"></i> View Full Profile</button>
+    <button class="btn btn-outline" style=""><i class="fas fa-eye"></i> View Evidence</button>
+    <button class="btn btn-primary" style=""><i class="fas fa-check"></i> Reinstate Account</button>
+    <button class="btn btn-danger" style=""><i class="fas fa-ban"></i> Permanently Ban</button>
+  </div>
+</div>
+</div></div>
+<div class="card"><div class="card-header"><span class="card-title">Suspension Policy</span></div><div class="card-body">
+<div style="font-size:.85rem;color:var(--text2);line-height:1.75;display:flex;flex-direction:column;gap:.75rem;">
+  <div class="flex gap" style="align-items:flex-start;">
+    <div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:7px;"></div>
+    <div><strong style="color:var(--text);">Automatic suspension</strong> is triggered after 5 failed KYC attempts or a security flag from our AML screening service.</div>
+  </div>
+  <div class="flex gap" style="align-items:flex-start;">
+    <div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:7px;"></div>
+    <div><strong style="color:var(--text);">Manual suspension</strong> is applied by an admin when a dispute, fraud allegation or ToS violation is confirmed.</div>
+  </div>
+  <div class="flex gap" style="align-items:flex-start;">
+    <div style="width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:7px;"></div>
+    <div><strong style="color:var(--text);">Reinstatement</strong> requires admin approval after the underlying issue has been resolved and documented.</div>
+  </div>
+  <div class="flex gap" style="align-items:flex-start;">
+    <div style="width:6px;height:6px;border-radius:50%;background:#f87171;flex-shrink:0;margin-top:7px;"></div>
+    <div><strong style="color:var(--text);">Permanent bans</strong> are reserved for confirmed fraud, repeated violations or criminal referrals.</div>
+  </div>
+</div></div></div>
+</div>
+</main>
+</div>
+<script>
+(function(){
+  var h=document.documentElement,t=localStorage.getItem('st-theme')||'dark';
+  h.setAttribute('data-theme',t);
+  var b=document.getElementById('themeBtn'),i=document.getElementById('themeIcon');
+  if(i)i.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  if(b)b.addEventListener('click',function(){
+    var n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',n);
+    if(i)i.className=n==='dark'?'fas fa-sun':'fas fa-moon';
+    localStorage.setItem('st-theme',n);
+  });
+  document.querySelectorAll('.tab').forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var bar=this.closest('.tab-bar');
+      if(bar){bar.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});this.classList.add('active');}
+    });
+  });
+})();
+</script>
+</body>
+</html>

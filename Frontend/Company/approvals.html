@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trade Approvals | ShareTrade P2P</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../shared.css">
+
+</head>
+<body>
+<aside class="sidebar">
+<a href="../index.html" class="sidebar-logo"><div class="logo-icon"><i class="fas fa-chart-line"></i></div><span class="logo-text">Share<span>Trade</span></span></a>
+<div class="sidebar-user">
+  <div style="flex:1;">
+    <div class="company-badge"><i class="fas fa-check-circle"></i> Verified</div>
+    <div class="company-name">TechVent SA</div>
+    <div class="company-reg">RC/YAO/2021/B/04512</div>
+  </div>
+</div>
+<nav class="sidebar-nav"><div class="nav-section">Overview</div>
+<a class="nav-item " href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+<a class="nav-item " href="analytics.html"><i class="fas fa-chart-bar"></i> Analytics</a>
+<div class="nav-section">Shares</div>
+<a class="nav-item active" href="approvals.html"><i class="fas fa-exchange-alt"></i> Trade Approvals<span class="nav-badge amber">4</span></a>
+<a class="nav-item " href="captable.html"><i class="fas fa-users"></i> Cap Table</a>
+<a class="nav-item " href="listings.html"><i class="fas fa-tag"></i> Share Listings</a>
+<a class="nav-item " href="buybacks.html"><i class="fas fa-undo"></i> Buybacks</a>
+<div class="nav-section">Finance</div>
+<a class="nav-item " href="transactions.html"><i class="fas fa-file-invoice-dollar"></i> Transactions</a>
+<a class="nav-item " href="documents.html"><i class="fas fa-folder-open"></i> Documents</a>
+<a class="nav-item " href="certificates.html"><i class="fas fa-certificate"></i> Certificates</a>
+<div class="nav-section">Company</div>
+<a class="nav-item " href="profile.html"><i class="fas fa-building"></i> Company Profile</a>
+<a class="nav-item " href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+</nav>
+<div class="sidebar-bottom"><a class="nav-item" href="../login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a></div>
+</aside>
+<div class="main">
+<header class="topbar">
+<div><div class="page-title">Trade Approvals</div><div class="page-sub">Review and action pending transfers</div></div>
+<div class="topbar-right"><button class="topbar-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button><button class="topbar-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button></div>
+</header>
+<main class="content">
+
+<div class="page-header fade-in">
+  <div class="page-header-left"><h2>Trade Approvals</h2><p>Confirm or reject share transfer requests from investors</p></div>
+  <div class="flex gap-sm">
+    <span class="badge badge-amber" style="font-size:.82rem;padding:.38rem .85rem;">4 pending</span>
+    <button class="btn btn-outline btn-sm"><i class="fas fa-check-double"></i> Approve All</button>
+  </div>
+</div>
+
+<div class="stats-grid fade-in-2">
+  <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-label">Pending Review</div><div class="stat-value">4</div><div class="stat-change amber"><i class="fas fa-exclamation"></i> Action needed</div></div>
+  <div class="stat-card"><div class="stat-icon"><i class="fas fa-lock"></i></div><div class="stat-label">Total in Escrow</div><div class="stat-value">XAF 3.74M</div><div class="stat-change amber"><i class="fas fa-shield-alt"></i> Awaiting your decision</div></div>
+  <div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-label">Confirmed (30d)</div><div class="stat-value">38</div><div class="stat-change up"><i class="fas fa-check"></i> This month</div></div>
+  <div class="stat-card"><div class="stat-icon"><i class="fas fa-times-circle"></i></div><div class="stat-label">Rejected (30d)</div><div class="stat-value">2</div><div class="stat-change down"><i class="fas fa-check"></i> 5.3% rejection rate</div></div>
+</div>
+
+<div class="tab-bar fade-in-2">
+  <div class="tab active">Pending (4)</div><div class="tab">Confirmed</div><div class="tab">Rejected</div><div class="tab">All</div>
+</div>
+
+<div class="fade-in-3">
+  <div class="trade-confirm-card" style="border-left:3px solid var(--green);">
+  <div class="trade-confirm-top">
+    <div class="flex gap-sm" style="align-items:center;">
+      <span class="trade-type" style="color:#4ade80;">BUY REQUEST</span>
+      <span class="badge badge-amber"><i class="fas fa-clock"></i> 2h ago</span>
+    </div>
+    <span class="text-muted" style="font-size:.76rem;">Trade #T-00241</span>
+  </div>
+  <div class="trade-confirm-meta">
+    <span><i class="fas fa-user"></i> Jean Dupont</span>
+    <span><i class="fas fa-layer-group"></i> 500 shares @ XAF 1,000</span>
+    <span><i class="fas fa-coins"></i> XAF 500,000</span>
+    <span><i class="fas fa-shield-alt"></i> Escrow: Active</span>
+  </div>
+  <div class="trade-actions">
+    <button class="btn-confirm"><i class="fas fa-check"></i> Confirm Transfer</button>
+    <button class="btn-reject"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn-hold"><i class="fas fa-pause"></i> Request Info</button>
+    <button class="btn btn-outline btn-sm"><i class="fas fa-user"></i> Investor Profile</button>
+  </div>
+</div>
+  <div class="trade-confirm-card" style="border-left:3px solid var(--red);">
+  <div class="trade-confirm-top">
+    <div class="flex gap-sm" style="align-items:center;">
+      <span class="trade-type" style="color:#f87171;">SELL REQUEST</span>
+      <span class="badge badge-amber"><i class="fas fa-clock"></i> 5h ago</span>
+    </div>
+    <span class="text-muted" style="font-size:.76rem;">Trade #T-00240</span>
+  </div>
+  <div class="trade-confirm-meta">
+    <span><i class="fas fa-user"></i> Marie Ngono</span>
+    <span><i class="fas fa-layer-group"></i> 200 shares @ XAF 1,200</span>
+    <span><i class="fas fa-coins"></i> XAF 240,000</span>
+    <span><i class="fas fa-shield-alt"></i> Escrow: Active</span>
+  </div>
+  <div class="trade-actions">
+    <button class="btn-confirm"><i class="fas fa-check"></i> Confirm Transfer</button>
+    <button class="btn-reject"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn-hold"><i class="fas fa-pause"></i> Request Info</button>
+    <button class="btn btn-outline btn-sm"><i class="fas fa-user"></i> Investor Profile</button>
+  </div>
+</div>
+  <div class="trade-confirm-card" style="border-left:3px solid var(--green);">
+  <div class="trade-confirm-top">
+    <div class="flex gap-sm" style="align-items:center;">
+      <span class="trade-type" style="color:#4ade80;">BUY REQUEST</span>
+      <span class="badge badge-amber"><i class="fas fa-clock"></i> 1d ago</span>
+    </div>
+    <span class="text-muted" style="font-size:.76rem;">Trade #T-00239</span>
+  </div>
+  <div class="trade-confirm-meta">
+    <span><i class="fas fa-user"></i> Paul Biya Jr.</span>
+    <span><i class="fas fa-layer-group"></i> 1000 shares @ XAF 1,000</span>
+    <span><i class="fas fa-coins"></i> XAF 1,000,000</span>
+    <span><i class="fas fa-shield-alt"></i> Escrow: Active</span>
+  </div>
+  <div class="trade-actions">
+    <button class="btn-confirm"><i class="fas fa-check"></i> Confirm Transfer</button>
+    <button class="btn-reject"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn-hold"><i class="fas fa-pause"></i> Request Info</button>
+    <button class="btn btn-outline btn-sm"><i class="fas fa-user"></i> Investor Profile</button>
+  </div>
+</div>
+  <div class="trade-confirm-card" style="border-left:3px solid var(--green);">
+  <div class="trade-confirm-top">
+    <div class="flex gap-sm" style="align-items:center;">
+      <span class="trade-type" style="color:#4ade80;">BUY REQUEST</span>
+      <span class="badge badge-amber"><i class="fas fa-clock"></i> 2d ago</span>
+    </div>
+    <span class="text-muted" style="font-size:.76rem;">Trade #T-00237</span>
+  </div>
+  <div class="trade-confirm-meta">
+    <span><i class="fas fa-user"></i> AfroCap Investments</span>
+    <span><i class="fas fa-layer-group"></i> 2000 shares @ XAF 950</span>
+    <span><i class="fas fa-coins"></i> XAF 1,900,000</span>
+    <span><i class="fas fa-shield-alt"></i> Escrow: Active</span>
+  </div>
+  <div class="trade-actions">
+    <button class="btn-confirm"><i class="fas fa-check"></i> Confirm Transfer</button>
+    <button class="btn-reject"><i class="fas fa-times"></i> Reject</button>
+    <button class="btn-hold"><i class="fas fa-pause"></i> Request Info</button>
+    <button class="btn btn-outline btn-sm"><i class="fas fa-user"></i> Investor Profile</button>
+  </div>
+</div>
+</div>
+</main>
+</div>
+<script>
+(function(){
+  var h=document.documentElement,t=localStorage.getItem('st-theme')||'dark';
+  h.setAttribute('data-theme',t);
+  var b=document.getElementById('themeBtn'),i=document.getElementById('themeIcon');
+  if(i) i.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  if(b) b.addEventListener('click',function(){
+    var n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',n);
+    if(i) i.className=n==='dark'?'fas fa-sun':'fas fa-moon';
+    localStorage.setItem('st-theme',n);
+  });
+})();
+</script>
+</body>
+</html>

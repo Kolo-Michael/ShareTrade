@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Maintenance | ShareTrade P2P Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../shared.css">
+<style>
+.admin-avatar{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#064a1a,var(--green-dark));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.admin-avatar i{color:#fff;font-size:14px;}
+.company-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--green);padding:.28rem .65rem;border-radius:7px;font-size:.7rem;font-weight:700;}
+.trade-detail-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;padding:1rem;background:var(--hover);border-radius:10px;border:1px solid var(--border);margin:.75rem 0;}
+.detail-item .sr-label{margin-bottom:.2rem;}
+.detail-item .detail-val{font-size:.9rem;font-weight:600;color:var(--text);}
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:1.5rem;}
+.timeline::before{content:'';position:absolute;left:.35rem;top:.5rem;bottom:.5rem;width:2px;background:var(--border);}
+.tl-item{position:relative;padding-bottom:1.25rem;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-1.15rem;top:.25rem;width:10px;height:10px;border-radius:50%;border:2px solid var(--green);background:var(--bg);}
+.tl-dot.done{background:var(--green);}
+.tl-dot.pending{border-color:var(--amber);}
+.tl-time{font-size:.72rem;color:var(--text3);margin-bottom:.15rem;}
+.tl-label{font-size:.85rem;font-weight:600;color:var(--text);}
+.tl-sub{font-size:.78rem;color:var(--text2);margin-top:.1rem;}
+.user-row{display:flex;align-items:center;gap:.85rem;padding:.8rem 1.5rem;border-bottom:1px solid var(--border);transition:background .2s;}
+.user-row:hover{background:var(--hover);}
+.user-row:last-child{border-bottom:none;}
+.user-ava{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;color:#fff;flex-shrink:0;}
+.co-ava{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#064a1a,#0d7a34);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.72rem;color:#fff;flex-shrink:0;}
+.risk-high{color:#f87171;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.2);}
+.risk-med{color:#fbbf24;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2);}
+.escrow-bar-wrap{width:80px;height:6px;background:var(--border);border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:.4rem;}
+.escrow-bar-fill{height:100%;border-radius:3px;}
+select,input[type=date]{padding:.4rem .75rem;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:.8rem;font-family:'DM Sans',sans-serif;}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+<a href="../index.html" class="sidebar-logo">
+  <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+  <span class="logo-text">Share<span>Trade</span></span>
+</a>
+<div class="sidebar-user">
+  <div class="admin-avatar"><i class="fas fa-crown"></i></div>
+  <div class="user-info"><div class="user-name">Admin Console</div>
+  <div class="user-role" style="color:var(--green);font-size:.7rem;"><i class="fas fa-shield-alt"></i> Super Admin</div></div>
+</div>
+<nav class="sidebar-nav">
+<div class="nav-section">Platform</div>
+<a class="nav-item " href="dashboard.html"><i class="fas fa-th-large"></i> Overview</a>
+
+<a class="nav-item " href="alerts.html"><i class="fas fa-bell"></i> Alerts<span class="nav-badge red">7</span></a>
+<div class="nav-section">Users</div>
+<a class="nav-item " href="kyc.html"><i class="fas fa-id-card"></i> KYC Queue<span class="nav-badge amber">12</span></a>
+<a class="nav-item " href="investors.html"><i class="fas fa-users"></i> Investors</a>
+<a class="nav-item " href="companies.html"><i class="fas fa-building"></i> Companies<span class="nav-badge amber">3</span></a>
+<a class="nav-item " href="suspended.html"><i class="fas fa-user-slash"></i> Suspended</a>
+<div class="nav-section">Trading</div>
+<a class="nav-item " href="trades.html"><i class="fas fa-exchange-alt"></i> All Trades</a>
+<a class="nav-item " href="escrow.html"><i class="fas fa-lock"></i> Escrow Monitor</a>
+<a class="nav-item " href="disputes.html"><i class="fas fa-flag"></i> Disputes<span class="nav-badge red">2</span></a>
+<div class="nav-section">System</div>
+<a class="nav-item " href="settings.html"><i class="fas fa-sliders-h"></i> Settings</a>
+<a class="nav-item " href="auditlogs.html"><i class="fas fa-file-alt"></i> Audit Logs</a>
+<a class="nav-item active" href="maintenance.html"><i class="fas fa-tools"></i> Maintenance</a>
+</nav>
+<div class="sidebar-bottom">
+  <a class="nav-item" href="../login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<div><div class="page-title">Maintenance</div><div class="page-sub">Platform health and system tools</div></div>
+<div class="topbar-right">
+  
+  <span class="admin-tag"><i class="fas fa-crown"></i> Super Admin</span>
+  <button class="topbar-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+  <button class="topbar-btn" style="position:relative;"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+</div>
+</header>
+<main class="content">
+
+<div class="page-header fade-in"><div class="page-header-left"><h2>Maintenance</h2><p>Platform health, services and system tools</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"></div></div>
+<div class="banner" style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);margin-bottom:1.75rem;">
+  <i class="fas fa-exclamation-triangle" style="color:#fbbf24;flex-shrink:0;font-size:1rem;"></i>
+  <div class="banner-text" style="font-size:.84rem;color:var(--text2);">
+    <strong style="color:var(--text);">1 service is currently degraded.</strong>
+    The Notification Service is experiencing email delivery delays of 2-5 minutes. Engineering team has been notified.
+  </div>
+  <button class="btn btn-outline" style="font-size:.82rem;flex-shrink:0;" ><i class="fas fa-arrow-right"></i> View Details</button>
+</div>
+<div class="grid-2 fade-in-2">
+<div class="card">
+  <div class="card-header">
+    <span class="card-title">Service Health</span>
+    <div class="flex gap-sm">
+      <span style="display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:#4ade80;"><span class="live-dot"></span> Live</span>
+      <span style="font-size:.78rem;color:var(--text3);">Last check: 2 min ago</span>
+    </div>
+  </div>
+  <div class="card-body"><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 5px #22c55e66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">API Gateway</span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">99.99% uptime</span><span class="badge badge-green">Operational</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 5px #22c55e66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">Escrow Engine</span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">99.98% uptime</span><span class="badge badge-green">Operational</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 5px #22c55e66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">KYC Document Processor</span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">99.95% uptime</span><span class="badge badge-green">Operational</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#f59e0b;display:inline-block;box-shadow:0 0 5px #f59e0b66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">Notification Service<span style="font-size:.72rem;color:var(--text3);"> — email delays 2-5 min</span></span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">97.2% uptime</span><span class="badge badge-amber">Degraded</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 5px #22c55e66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">Share Certificate Generator</span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">99.92% uptime</span><span class="badge badge-green">Operational</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 5px #22c55e66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">Cap Table Sync Service</span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">99.88% uptime</span><span class="badge badge-green">Operational</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 5px #22c55e66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">Document Storage</span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">99.97% uptime</span><span class="badge badge-green">Operational</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 5px #22c55e66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">Payment Gateway</span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">99.91% uptime</span><span class="badge badge-green">Operational</span></div></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);"><div class="flex gap-sm" style="align-items:center;"><span style="width:9px;height:9px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 5px #22c55e66;flex-shrink:0;"></span><span style="font-size:.85rem;color:var(--text2);">Search & Indexing</span></div><div class="flex gap-sm" style="align-items:center;"><span style="font-size:.76rem;color:var(--text3);">99.85% uptime</span><span class="badge badge-green">Operational</span></div></div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:1.25rem;">
+<div class="card "><div class="card-header"><span class="card-title">System Resources</span></div><div class="card-body"><div class="metric-row"><div class="metric-label"><span>CPU Usage (Current)</span><span>28%</span></div><div class="metric-bar"><div class="metric-fill" style="width:28%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Memory / RAM</span><span>54%</span></div><div class="metric-bar"><div class="metric-fill" style="width:54%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Database Storage</span><span>41%</span></div><div class="metric-bar"><div class="metric-fill" style="width:41%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Document Storage</span><span>67%</span></div><div class="metric-bar"><div class="metric-fill" style="width:67%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div></div><div class="metric-row"><div class="metric-label"><span>Network Bandwidth</span><span>18%</span></div><div class="metric-bar"><div class="metric-fill" style="width:18%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Cache Usage</span><span>35%</span></div><div class="metric-bar"><div class="metric-fill" style="width:35%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div></div></div>
+<div class="card "><div class="card-header"><span class="card-title">Recent Incidents</span></div><div class="card-body"><div style="display:flex;flex-direction:column;gap:.5rem;font-size:.84rem;"><div style="display:flex;justify-content:space-between;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border);"><div><div style="color:var(--text);font-weight:600;">Notification service degraded</div><div style="font-size:.75rem;color:var(--text3);">Email delays of 2-5 minutes · Ongoing</div></div><span class="badge badge-amber">Active</span></div><div style="display:flex;justify-content:space-between;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border);"><div><div style="color:var(--text);font-weight:600;">Document storage at 67% capacity</div><div style="font-size:.75rem;color:var(--text3);">Monitor closely · Apr 3, 2026</div></div><span class="badge badge-amber">Warning</span></div><div style="display:flex;justify-content:space-between;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border);"><div><div style="color:var(--text);font-weight:600;">Database response time spike</div><div style="font-size:.75rem;color:var(--text3);">Resolved in 4 minutes · Mar 28, 2026</div></div><span class="badge badge-green">Resolved</span></div><div style="display:flex;justify-content:space-between;align-items:flex-start;padding:.6rem 0;"><div><div style="color:var(--text);font-weight:600;">Scheduled security scan completed</div><div style="font-size:.75rem;color:var(--text3);">No issues found · Apr 5, 2026</div></div><span class="badge badge-green">OK</span></div></div></div></div>
+</div>
+</div>
+<div style="margin-top:1.25rem;">
+<div style="font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:1rem;">Maintenance Actions</div>
+<div class="grid-3 fade-in-3">
+<div class="card" style="cursor:pointer;transition:all .25s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:var(--hover);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-broom" style="color:var(--green);font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:var(--text);">Clear Cache</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Free up server memory & CDN cache</div></div></div></div>
+<div class="card" style="cursor:pointer;transition:all .25s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:var(--hover);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-database" style="color:var(--green);font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:var(--text);">Database Backup</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Trigger immediate full database snapshot</div></div></div></div>
+<div class="card" style="cursor:pointer;transition:all .25s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:var(--hover);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-sync" style="color:var(--green);font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:var(--text);">Restart Services</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Gracefully restart all microservices</div></div></div></div>
+<div class="card" style="cursor:pointer;transition:all .25s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:var(--hover);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-shield-alt" style="color:var(--green);font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:var(--text);">Security Scan</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Run full vulnerability and threat scan</div></div></div></div>
+<div class="card" style="cursor:pointer;transition:all .25s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:var(--hover);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-file-export" style="color:var(--green);font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:var(--text);">Export Audit Logs</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Download complete system audit trail</div></div></div></div>
+<div class="card" style="cursor:pointer;transition:all .25s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:var(--hover);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-envelope" style="color:var(--green);font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:var(--text);">Test Email Config</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Send a test email to verify SMTP config</div></div></div></div>
+<div class="card" style="cursor:pointer;transition:all .25s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:var(--hover);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-search" style="color:var(--green);font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:var(--text);">Re-index Search</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Rebuild search index for investors and companies</div></div></div></div>
+<div class="card" style="cursor:pointer;transition:all .25s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:var(--hover);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-certificate" style="color:var(--green);font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:var(--text);">Regenerate Certs</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Re-generate any missing share certificates</div></div></div></div>
+<div class="card" style="cursor:pointer;border-color:rgba(248,113,113,.3);" onmouseover="this.style.borderColor='#ef4444'" onmouseout="this.style.borderColor='rgba(248,113,113,.3)'"><div class="card-body" style="display:flex;align-items:center;gap:1rem;"><div style="width:44px;height:44px;border-radius:12px;background:rgba(248,113,113,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-power-off" style="color:#f87171;font-size:1.1rem;"></i></div><div><div style="font-family:Syne,sans-serif;font-weight:700;font-size:.88rem;color:#f87171;">Enable Maintenance Mode</div><div style="font-size:.75rem;color:var(--text3);margin-top:.1rem;">Take platform offline — shows maintenance page to users</div></div></div></div>
+</div>
+</div>
+</main>
+</div>
+<script>
+(function(){
+  var h=document.documentElement,t=localStorage.getItem('st-theme')||'dark';
+  h.setAttribute('data-theme',t);
+  var b=document.getElementById('themeBtn'),i=document.getElementById('themeIcon');
+  if(i)i.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  if(b)b.addEventListener('click',function(){
+    var n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',n);
+    if(i)i.className=n==='dark'?'fas fa-sun':'fas fa-moon';
+    localStorage.setItem('st-theme',n);
+  });
+  // Tab switching
+  document.querySelectorAll('.tab-bar').forEach(function(bar){
+    bar.querySelectorAll('.tab').forEach(function(tab){
+      tab.addEventListener('click',function(){
+        bar.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+        this.classList.add('active');
+      });
+    });
+  });
+  // Modal close
+  document.querySelectorAll('[data-close-modal]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.modal-overlay').forEach(function(m){m.style.display='none';});
+    });
+  });
+  document.querySelectorAll('[data-open-modal]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var id=this.getAttribute('data-open-modal');
+      var m=document.getElementById(id);
+      if(m) m.style.display='flex';
+    });
+  });
+})();
+</script>
+</body>
+</html>

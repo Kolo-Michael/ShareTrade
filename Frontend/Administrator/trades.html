@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>All Trades | ShareTrade P2P Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../shared.css">
+<style>
+.admin-avatar{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#064a1a,var(--green-dark));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.admin-avatar i{color:#fff;font-size:14px;}
+.company-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--green);padding:.28rem .65rem;border-radius:7px;font-size:.7rem;font-weight:700;}
+.trade-detail-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;padding:1rem;background:var(--hover);border-radius:10px;border:1px solid var(--border);margin:.75rem 0;}
+.detail-item .sr-label{margin-bottom:.2rem;}
+.detail-item .detail-val{font-size:.9rem;font-weight:600;color:var(--text);}
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;padding-left:1.5rem;}
+.timeline::before{content:'';position:absolute;left:.35rem;top:.5rem;bottom:.5rem;width:2px;background:var(--border);}
+.tl-item{position:relative;padding-bottom:1.25rem;}
+.tl-item:last-child{padding-bottom:0;}
+.tl-dot{position:absolute;left:-1.15rem;top:.25rem;width:10px;height:10px;border-radius:50%;border:2px solid var(--green);background:var(--bg);}
+.tl-dot.done{background:var(--green);}
+.tl-dot.pending{border-color:var(--amber);}
+.tl-time{font-size:.72rem;color:var(--text3);margin-bottom:.15rem;}
+.tl-label{font-size:.85rem;font-weight:600;color:var(--text);}
+.tl-sub{font-size:.78rem;color:var(--text2);margin-top:.1rem;}
+.user-row{display:flex;align-items:center;gap:.85rem;padding:.8rem 1.5rem;border-bottom:1px solid var(--border);transition:background .2s;}
+.user-row:hover{background:var(--hover);}
+.user-row:last-child{border-bottom:none;}
+.user-ava{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--green-dark),var(--green));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.78rem;color:#fff;flex-shrink:0;}
+.co-ava{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#064a1a,#0d7a34);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.72rem;color:#fff;flex-shrink:0;}
+.risk-high{color:#f87171;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.2);}
+.risk-med{color:#fbbf24;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2);}
+.escrow-bar-wrap{width:80px;height:6px;background:var(--border);border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:.4rem;}
+.escrow-bar-fill{height:100%;border-radius:3px;}
+select,input[type=date]{padding:.4rem .75rem;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:.8rem;font-family:'DM Sans',sans-serif;}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+<a href="../index.html" class="sidebar-logo">
+  <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+  <span class="logo-text">Share<span>Trade</span></span>
+</a>
+<div class="sidebar-user">
+  <div class="admin-avatar"><i class="fas fa-crown"></i></div>
+  <div class="user-info"><div class="user-name">Admin Console</div>
+  <div class="user-role" style="color:var(--green);font-size:.7rem;"><i class="fas fa-shield-alt"></i> Super Admin</div></div>
+</div>
+<nav class="sidebar-nav">
+<div class="nav-section">Platform</div>
+<a class="nav-item " href="dashboard.html"><i class="fas fa-th-large"></i> Overview</a>
+
+<a class="nav-item " href="alerts.html"><i class="fas fa-bell"></i> Alerts<span class="nav-badge red">7</span></a>
+<div class="nav-section">Users</div>
+<a class="nav-item " href="kyc.html"><i class="fas fa-id-card"></i> KYC Queue<span class="nav-badge amber">12</span></a>
+<a class="nav-item " href="investors.html"><i class="fas fa-users"></i> Investors</a>
+<a class="nav-item " href="companies.html"><i class="fas fa-building"></i> Companies<span class="nav-badge amber">3</span></a>
+<a class="nav-item " href="suspended.html"><i class="fas fa-user-slash"></i> Suspended</a>
+<div class="nav-section">Trading</div>
+<a class="nav-item active" href="trades.html"><i class="fas fa-exchange-alt"></i> All Trades</a>
+<a class="nav-item " href="escrow.html"><i class="fas fa-lock"></i> Escrow Monitor</a>
+<a class="nav-item " href="disputes.html"><i class="fas fa-flag"></i> Disputes<span class="nav-badge red">2</span></a>
+<div class="nav-section">System</div>
+<a class="nav-item " href="settings.html"><i class="fas fa-sliders-h"></i> Settings</a>
+<a class="nav-item " href="auditlogs.html"><i class="fas fa-file-alt"></i> Audit Logs</a>
+<a class="nav-item " href="maintenance.html"><i class="fas fa-tools"></i> Maintenance</a>
+</nav>
+<div class="sidebar-bottom">
+  <a class="nav-item" href="../login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+</div>
+</aside>
+<div class="main">
+<header class="topbar">
+<div><div class="page-title">All Trades</div><div class="page-sub">Platform-wide trade ledger</div></div>
+<div class="topbar-right">
+  
+  <span class="admin-tag"><i class="fas fa-crown"></i> Super Admin</span>
+  <button class="topbar-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+  <button class="topbar-btn" style="position:relative;"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+</div>
+</header>
+<main class="content">
+
+<div class="page-header fade-in"><div class="page-header-left"><h2>All Trades</h2><p>Complete platform-wide trade ledger</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" style="" ><i class="fas fa-download"></i> Export CSV</button><button class="btn btn-primary" style="" ><i class="fas fa-plus"></i> + New Manual Entry</button></div></div>
+<div class="stats-grid fade-in-2">
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-exchange-alt"></i></div><div class="stat-label">Total Trades</div><div class="stat-value">18,620</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> All time</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-label">Completed</div><div class="stat-value">17,842</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> 95.8% success rate</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-label">Pending / Escrow</div><div class="stat-value">744</div><div class="stat-change amber"><i class="fas fa-clock"></i> Awaiting action</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-times-circle"></i></div><div class="stat-label">Rejected</div><div class="stat-value">34</div><div class="stat-change down"><i class="fas fa-arrow-down"></i> 0.18% rejection rate</div></div>
+</div>
+<div class="tab-bar fade-in-2"><div class="tab  active">All (18,620)</div><div class="tab">Awaiting Approval (4)</div><div class="tab">In Escrow (744)</div><div class="tab">Completed</div><div class="tab">Rejected</div></div>
+<div class="grid-3-2 fade-in-3">
+<div class="card">
+<div class="card-header">
+  <span class="card-title">Trade Ledger</span>
+  <div class="flex gap-sm" style="flex-wrap:wrap;">
+    <select><option >All Status</option><option >Awaiting Approval</option><option >In Escrow</option><option >Completed</option><option >Rejected</option></select>
+    <select><option >All Companies</option><option >TechVent SA</option><option >AgroCam SARL</option><option >EnerSol GIE</option><option >MediCare SARL</option></select>
+    <input type="date" value="2026-04-01">
+    <div class="search-bar"><i class="fas fa-search"></i><input placeholder="Search by trade #, investor..."></div>
+  </div>
+</div>
+<div class="card-body" style="padding:0;">
+<div style="overflow-x:auto;">
+<table class="data-table">
+<thead><tr><th>Trade #</th><th>Company</th><th>Investor</th><th>Type</th><th>Shares</th><th>Total</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+<tbody><tr><td>#T-00241</td><td>TechVent SA</td><td>Jean Dupont</td><td><span style="color:#4ade80;font-weight:700;">BUY</span></td><td>500</td><td>XAF 500,000</td><td style='color:var(--text3)'>Apr 5, 2026</td><td><span class="badge badge-amber">Awaiting Approval</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00241','TechVent SA','Jean Dupont','500','XAF 1,000','XAF 500,000','Apr 5, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00240</td><td>TechVent SA</td><td>Marie Ngono</td><td><span style="color:#4ade80;font-weight:700;">BUY</span></td><td>200</td><td>XAF 240,000</td><td style='color:var(--text3)'>Apr 3, 2026</td><td><span class="badge badge-amber">Awaiting Approval</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00240','TechVent SA','Marie Ngono','200','XAF 1,200','XAF 240,000','Apr 3, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00239</td><td>TechVent SA</td><td>Paul Biya Jr.</td><td><span style="color:#4ade80;font-weight:700;">BUY</span></td><td>1,000</td><td>XAF 1,000,000</td><td style='color:var(--text3)'>Apr 2, 2026</td><td><span class="badge badge-amber">In Escrow</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00239','TechVent SA','Paul Biya Jr.','1,000','XAF 1,000','XAF 1,000,000','Apr 2, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00238</td><td>AgroCam SARL</td><td>Jean Dupont</td><td><span style="color:#4ade80;font-weight:700;">BUY</span></td><td>300</td><td>XAF 270,000</td><td style='color:var(--text3)'>Apr 3, 2026</td><td><span class="badge badge-amber">In Escrow</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00238','AgroCam SARL','Jean Dupont','300','XAF 900','XAF 270,000','Apr 3, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00235</td><td>EnerSol GIE</td><td>Jean Dupont</td><td><span style="color:#f87171;font-weight:700;">SELL</span></td><td>200</td><td>XAF 162,000</td><td style='color:var(--text3)'>Apr 1, 2026</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00235','EnerSol GIE','Jean Dupont','200','XAF 810','XAF 162,000','Apr 1, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00220</td><td>TechVent SA</td><td>Jean Dupont</td><td><span style="color:#4ade80;font-weight:700;">BUY</span></td><td>900</td><td>XAF 882,000</td><td style='color:var(--text3)'>Mar 22, 2026</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00220','TechVent SA','Jean Dupont','900','XAF 980','XAF 882,000','Mar 22, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00215</td><td>MediCare SARL</td><td>Celestine Atangana</td><td><span style="color:#4ade80;font-weight:700;">BUY</span></td><td>50</td><td>XAF 170,000</td><td style='color:var(--text3)'>Mar 18, 2026</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00215','MediCare SARL','Celestine Atangana','50','XAF 3,400','XAF 170,000','Mar 18, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00210</td><td>AgroCam SARL</td><td>Sophie Etoa</td><td><span style="color:#f87171;font-weight:700;">SELL</span></td><td>150</td><td>XAF 132,000</td><td style='color:var(--text3)'>Mar 15, 2026</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00210','AgroCam SARL','Sophie Etoa','150','XAF 880','XAF 132,000','Mar 15, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00198</td><td>AgroCam SARL</td><td>Sophie Etoa</td><td><span style="color:#f87171;font-weight:700;">SELL</span></td><td>100</td><td>XAF 88,000</td><td style='color:var(--text3)'>Mar 10, 2026</td><td><span class="badge badge-red">Rejected</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00198','AgroCam SARL','Sophie Etoa','100','XAF 880','XAF 88,000','Mar 10, 2026')"><i class="fas fa-eye"></i> View</button></td></tr><tr><td>#T-00188</td><td>TechVent SA</td><td>Marie Ngono</td><td><span style="color:#4ade80;font-weight:700;">BUY</span></td><td>500</td><td>XAF 450,000</td><td style='color:var(--text3)'>Jan 8, 2026</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline" style="font-size:.72rem;padding:.25rem .6rem;" data-open-modal="tradeModal" onclick="fillTradeModal('#T-00188','TechVent SA','Marie Ngono','500','XAF 900','XAF 450,000','Jan 8, 2026')"><i class="fas fa-eye"></i> View</button></td></tr></tbody>
+</table>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.5rem;border-top:1px solid var(--border);">
+  <div style="font-size:.8rem;color:var(--text3);">Showing 10 of 18,620 trades</div>
+  <div class="flex gap-sm">
+    <button class="btn btn-outline" style="font-size:.8rem;padding:.4rem .8rem;">← Prev</button>
+    <button class="btn btn-outline" style="font-size:.8rem;padding:.4rem .8rem;background:var(--green-muted);border-color:var(--green);color:var(--green);">1</button>
+    <button class="btn btn-outline" style="font-size:.8rem;padding:.4rem .8rem;">2</button>
+    <button class="btn btn-outline" style="font-size:.8rem;padding:.4rem .8rem;">3</button>
+    <button class="btn btn-outline" style="font-size:.8rem;padding:.4rem .8rem;">Next →</button>
+  </div>
+</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:1.25rem;">
+<div class="card "><div class="card-header"><span class="card-title">Volume by Company</span></div><div class="card-body"><div class="metric-row"><div class="metric-label"><span>TechVent SA</span><span>48%</span></div><div class="metric-bar"><div class="metric-fill" style="width:48%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>AgroCam SARL</span><span>28%</span></div><div class="metric-bar"><div class="metric-fill" style="width:28%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>MediCare SARL</span><span>12%</span></div><div class="metric-bar"><div class="metric-fill" style="width:12%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>EnerSol GIE</span><span>8%</span></div><div class="metric-bar"><div class="metric-fill" style="width:8%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>BuildCam SA</span><span>4%</span></div><div class="metric-bar"><div class="metric-fill" style="width:4%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div></div></div>
+<div class="card "><div class="card-header"><span class="card-title">Trade Type Split</span></div><div class="card-body"><div class="flex gap-lg" style="justify-content:center;padding:.5rem 0;"><div style="text-align:center;"><div style="font-family:Syne,sans-serif;font-size:2rem;font-weight:800;color:#4ade80;">72%</div><div class="sr-label">BUY orders</div></div><div style="width:1px;background:var(--border);"></div><div style="text-align:center;"><div style="font-family:Syne,sans-serif;font-size:2rem;font-weight:800;color:#f87171;">28%</div><div class="sr-label">SELL orders</div></div></div></div></div>
+<div class="card "><div class="card-header"><span class="card-title">Platform Fee Summary</span></div><div class="card-body"><div style="display:flex;flex-direction:column;gap:.5rem;"><div style="display:flex;justify-content:space-between;font-size:.85rem;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Fee Rate</span><span style="color:var(--text);font-weight:700;">1.0%</span></div><div style="display:flex;justify-content:space-between;font-size:.85rem;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Fees Collected (30d)</span><span style="color:#4ade80;font-weight:700;">XAF 8.4M</span></div><div style="display:flex;justify-content:space-between;font-size:.85rem;padding:.5rem 0;"><span style="color:var(--text2);">Total Fees (YTD)</span><span style="color:#4ade80;font-weight:700;">XAF 84M</span></div></div></div></div>
+</div>
+</div>
+
+<div class="modal-overlay" id="tradeModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:500;align-items:center;justify-content:center;backdrop-filter:blur(4px);">
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:580px;margin:1rem;box-shadow:0 24px 64px rgba(0,0,0,.5);overflow:hidden;">
+    <div style="padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;color:var(--text);" id="modalTradeId">Trade Details</div>
+        <div style="font-size:.78rem;color:var(--text3);" id="modalTradeSub">Loading...</div>
+      </div>
+      <button data-close-modal style="background:transparent;border:none;color:var(--text2);font-size:1.1rem;cursor:pointer;"><i class="fas fa-times"></i></button>
+    </div>
+    <div style="padding:1.5rem;">
+      <div class="trade-detail-row" id="modalDetails"></div>
+      <div style="margin-bottom:1rem;">
+        <div style="font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:.75rem;">Trade Timeline</div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-time">Step 1</div><div class="tl-label">Trade Submitted</div><div class="tl-sub">Investor placed order — funds moved to escrow</div></div>
+          <div class="tl-item"><div class="tl-dot done"></div><div class="tl-time">Step 2</div><div class="tl-label">Escrow Locked</div><div class="tl-sub">XAF held securely awaiting company confirmation</div></div>
+          <div class="tl-item"><div class="tl-dot pending"></div><div class="tl-time">Step 3</div><div class="tl-label">Company Confirmation</div><div class="tl-sub">Awaiting company to approve share transfer</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">Step 4</div><div class="tl-label">Registry Update &amp; Settlement</div><div class="tl-sub">Cap table updated, certificate generated, funds released</div></div>
+        </div>
+      </div>
+      <div class="flex gap-sm" style="flex-wrap:wrap;">
+        <button class="btn btn-primary"><i class="fas fa-flag"></i> Flag for Review</button>
+        <button class="btn btn-outline"><i class="fas fa-lock-open"></i> Release Escrow</button>
+        <button class="btn btn-danger"><i class="fas fa-times"></i> Cancel Trade</button>
+        <button data-close-modal class="btn btn-outline">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function fillTradeModal(id,co,inv,shares,price,total,date){
+  document.getElementById('modalTradeId').textContent = 'Trade ' + id;
+  document.getElementById('modalTradeSub').textContent = co + ' — ' + date;
+  document.getElementById('modalDetails').innerHTML = 
+    '<div class="detail-item"><div class="sr-label">Company</div><div class="detail-val">'+co+'</div></div>' +
+    '<div class="detail-item"><div class="sr-label">Investor</div><div class="detail-val">'+inv+'</div></div>' +
+    '<div class="detail-item"><div class="sr-label">Shares</div><div class="detail-val">'+shares+'</div></div>' +
+    '<div class="detail-item"><div class="sr-label">Price/Share</div><div class="detail-val">'+price+'</div></div>' +
+    '<div class="detail-item"><div class="sr-label">Total Value</div><div class="detail-val">'+total+'</div></div>' +
+    '<div class="detail-item"><div class="sr-label">Date</div><div class="detail-val">'+date+'</div></div>';
+}
+</script>
+</main>
+</div>
+<script>
+(function(){
+  var h=document.documentElement,t=localStorage.getItem('st-theme')||'dark';
+  h.setAttribute('data-theme',t);
+  var b=document.getElementById('themeBtn'),i=document.getElementById('themeIcon');
+  if(i)i.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  if(b)b.addEventListener('click',function(){
+    var n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',n);
+    if(i)i.className=n==='dark'?'fas fa-sun':'fas fa-moon';
+    localStorage.setItem('st-theme',n);
+  });
+  // Tab switching
+  document.querySelectorAll('.tab-bar').forEach(function(bar){
+    bar.querySelectorAll('.tab').forEach(function(tab){
+      tab.addEventListener('click',function(){
+        bar.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+        this.classList.add('active');
+      });
+    });
+  });
+  // Modal close
+  document.querySelectorAll('[data-close-modal]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.modal-overlay').forEach(function(m){m.style.display='none';});
+    });
+  });
+  document.querySelectorAll('[data-open-modal]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var id=this.getAttribute('data-open-modal');
+      var m=document.getElementById(id);
+      if(m) m.style.display='flex';
+    });
+  });
+})();
+</script>
+</body>
+</html>

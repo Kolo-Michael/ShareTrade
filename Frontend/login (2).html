@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | ShareTrade P2P</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{--green:#22c55e;--green-dark:#16a34a;--green-light:#4ade80;}
+[data-theme="dark"]{--bg:#070d07;--surface:#0f1a0f;--border:rgba(255,255,255,0.08);--text:#f0faf0;--text2:#7a9e7a;--text3:#4a6a4a;--input-bg:#0a120a;--card-bg:rgba(15,26,15,0.9);--placeholder:#3a5a3a;}
+[data-theme="light"]{--bg:#f0faf0;--surface:#ffffff;--border:rgba(0,0,0,0.1);--text:#0a1a0a;--text2:#3a6a3a;--text3:#6a8f6a;--input-bg:#f8fff8;--card-bg:rgba(255,255,255,0.95);--placeholder:#8ab48a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;align-items:stretch;background:var(--bg);color:var(--text);transition:background .4s,color .4s;overflow:hidden;}
+h1,h2,h3{font-family:'Syne',sans-serif;}
+
+#bgCanvas{position:fixed;inset:0;z-index:0;}
+
+.theme-btn{position:fixed;top:1.5rem;right:1.5rem;z-index:100;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .3s;}
+.theme-btn:hover{color:var(--green);border-color:var(--green);}
+
+.auth-layout{display:flex;width:100%;min-height:100vh;position:relative;z-index:1;}
+
+/* Left branding panel */
+.auth-left{flex:1;display:flex;flex-direction:column;justify-content:center;padding:4rem 5%;position:relative;overflow:hidden;}
+.auth-left-inner{max-width:480px;}
+.auth-brand{display:flex;align-items:center;gap:10px;margin-bottom:3rem;text-decoration:none;}
+.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--green-dark),var(--green));border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(34,197,94,.4);}
+.logo-icon i{color:white;font-size:20px;}
+.logo-text{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:var(--text);}
+.logo-text span{color:var(--green);}
+.auth-left h1{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;line-height:1.15;color:var(--text);margin-bottom:1.25rem;}
+.auth-left h1 em{font-style:normal;color:var(--green);}
+.auth-left p{color:var(--text2);font-size:1rem;line-height:1.75;margin-bottom:2.5rem;}
+.feature-pills{display:flex;flex-direction:column;gap:.75rem;}
+.feature-pill{display:flex;align-items:center;gap:.75rem;color:var(--text2);font-size:.9rem;}
+.feature-pill i{width:32px;height:32px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;font-size:13px;}
+
+/* Right form panel */
+.auth-right{width:460px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding:2rem;position:relative;}
+.auth-card{background:var(--card-bg);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:24px;padding:2.5rem;width:100%;box-shadow:0 24px 64px rgba(0,0,0,.4);}
+[data-theme="light"] .auth-card{box-shadow:0 24px 64px rgba(0,0,0,.12);}
+
+.card-title{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.35rem;}
+.card-sub{color:var(--text2);font-size:.88rem;margin-bottom:1.75rem;}
+
+.form-group{margin-bottom:1.1rem;}
+.form-group label{display:block;margin-bottom:.4rem;color:var(--text2);font-weight:500;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;}
+.input-wrap{position:relative;}
+.input-wrap i{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--text3);font-size:14px;z-index:2;pointer-events:none;transition:color .3s;}
+.form-group input{width:100%;padding:.75rem 1rem .75rem 2.75rem;border:1px solid var(--border);border-radius:10px;font-size:.95rem;background:var(--input-bg);color:var(--text);transition:all .3s;font-family:'DM Sans',sans-serif;}
+.form-group input::placeholder{color:var(--placeholder);}
+.form-group input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(34,197,94,.12);}
+.input-wrap:focus-within i{color:var(--green);}
+
+.form-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;}
+.remember-label{display:flex;align-items:center;gap:.5rem;cursor:pointer;font-size:.85rem;color:var(--text2);}
+.remember-label input[type="checkbox"]{accent-color:var(--green);}
+.forgot-link{font-size:.85rem;color:var(--green);text-decoration:none;font-weight:500;}
+.forgot-link:hover{text-decoration:underline;}
+
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--green-dark),var(--green));color:white;border:none;padding:.85rem;border-radius:10px;font-size:.95rem;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .3s;box-shadow:0 0 20px rgba(34,197,94,.25);letter-spacing:.02em;}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 4px 24px rgba(34,197,94,.45);}
+
+.divider{display:flex;align-items:center;gap:1rem;margin:1.5rem 0;color:var(--text3);font-size:.8rem;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.register-link{text-align:center;font-size:.88rem;color:var(--text2);}
+.register-link a{color:var(--green);text-decoration:none;font-weight:600;}
+.register-link a:hover{text-decoration:underline;}
+
+.alert{padding:.7rem 1rem;border-radius:8px;margin-bottom:1rem;font-size:.85rem;display:none;}
+.alert.error{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);color:#f87171;display:block;}
+
+/* Password visibility toggle */
+.pwd-toggle{position:absolute;right:1rem;top:50%;transform:translateY(-50%);z-index:2;cursor:pointer;color:var(--text3);font-size:14px;border:none;background:transparent;}
+.pwd-toggle:hover{color:var(--green);}
+
+@media(max-width:900px){body{overflow:auto;} .auth-left{display:none;} .auth-right{width:100%;padding:1.5rem;}}
+</style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<button class="theme-btn" id="themeBtn" title="Toggle theme">
+  <i class="fas fa-moon" id="themeIcon"></i>
+</button>
+
+<div class="auth-layout">
+  <!-- Left branding panel -->
+  <div class="auth-left">
+    <div class="auth-left-inner">
+      <a href="index.html" class="auth-brand">
+        <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+        <span class="logo-text">Share<span>Trade</span></span>
+      </a>
+      <h1>Welcome back to <em>secure</em> trading</h1>
+      <p>Log in to access your portfolio, track your investments, and manage your private share trades — all in one place.</p>
+      <div class="feature-pills">
+        <div class="feature-pill"><i class="fas fa-shield-alt"></i> Escrow-protected transactions</div>
+        <div class="feature-pill"><i class="fas fa-bolt"></i> Real-time portfolio tracking</div>
+        <div class="feature-pill"><i class="fas fa-file-contract"></i> Automated share certificates</div>
+        <div class="feature-pill"><i class="fas fa-bell"></i> Instant trade notifications</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right form panel -->
+  <div class="auth-right">
+    <div class="auth-card">
+      <h2 class="card-title">Sign in</h2>
+      <p class="card-sub">Enter your credentials to continue</p>
+
+      <div id="alert" class="alert"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-wrap">
+            <input type="email" id="email" placeholder="you@example.com" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input type="password" id="password" placeholder="••••••••" required>
+            <i class="fas fa-lock"></i>
+            <button type="button" class="pwd-toggle" id="pwdToggle"><i class="fas fa-eye" id="eyeIcon"></i></button>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="remember-label"><input type="checkbox"> Remember me</label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn-submit">Sign In <i class="fas fa-arrow-right"></i></button>
+      </form>
+
+      <div class="divider">or</div>
+
+      <div class="register-link">
+        Don't have an account? <a href="register.html">Create one free</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Theme ──
+const html = document.documentElement;
+const themeBtn = document.getElementById('themeBtn');
+const themeIcon = document.getElementById('themeIcon');
+
+function applyTheme(t) {
+  html.setAttribute('data-theme', t);
+  themeIcon.className = t === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+  localStorage.setItem('st-theme', t);
+  initBg();
+}
+themeBtn.addEventListener('click', () => applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+
+// ── Password toggle ──
+const pwdToggle = document.getElementById('pwdToggle');
+const eyeIcon   = document.getElementById('eyeIcon');
+const pwdInput  = document.getElementById('password');
+pwdToggle.addEventListener('click', () => {
+  const show = pwdInput.type === 'password';
+  pwdInput.type = show ? 'text' : 'password';
+  eyeIcon.className = show ? 'fas fa-eye-slash' : 'fas fa-eye';
+});
+
+// ── Animated background ──
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], animFrame;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  particles = [];
+  const count = Math.floor((W * H) / 18000);
+  for (let i = 0; i < count; i++) {
+    particles.push({ x: Math.random()*W, y: Math.random()*H, vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3, r:Math.random()*2+1 });
+  }
+}
+
+function drawFrame() {
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle = isDark ? '#070d07' : '#f0faf0';
+  ctx.fillRect(0,0,W,H);
+
+  // Ambient glow blobs
+  [{x:W*.15,y:H*.3,r:320},{x:W*.85,y:H*.7,r:260},{x:W*.5,y:H*.5,r:200}].forEach(b => {
+    const g = ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,b.r);
+    g.addColorStop(0, isDark ? 'rgba(34,197,94,0.06)' : 'rgba(34,197,94,0.04)');
+    g.addColorStop(1,'transparent');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2); ctx.fill();
+  });
+
+  // Connecting lines
+  ctx.globalAlpha = 1;
+  for (let i=0;i<particles.length;i++) {
+    for (let j=i+1;j<particles.length;j++) {
+      const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if (d<160) {
+        ctx.strokeStyle = isDark ? 'rgba(34,197,94,0.08)' : 'rgba(34,197,94,0.06)';
+        ctx.lineWidth=.5;
+        ctx.globalAlpha=(1-d/160)*.9;
+        ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.stroke();
+      }
+    }
+  }
+  ctx.globalAlpha=1;
+
+  // Particles
+  particles.forEach(p => {
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0||p.x>W) p.vx*=-1;
+    if(p.y<0||p.y>H) p.vy*=-1;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = isDark ? 'rgba(34,197,94,0.55)' : 'rgba(22,163,74,0.35)';
+    ctx.fill();
+  });
+  animFrame = requestAnimationFrame(drawFrame);
+}
+
+function initBg() { if(animFrame) cancelAnimationFrame(animFrame); drawFrame(); }
+
+window.addEventListener('resize', () => { resize(); });
+resize();
+applyTheme(localStorage.getItem('st-theme') || 'dark');
+
+// ── Login submit ──
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  if (!email || !password) { showAlert('Please fill in all fields.'); return; }
+
+  // In production: POST to /api/auth/login — redirect based on returned role
+  // Demo: route by email prefix
+  if (email.startsWith('admin')) {
+    window.location.href = 'admin/dashboard.html';
+  } else if (email.startsWith('company') || email.includes('@company') || email.includes('@corp')) {
+    window.location.href = 'company/dashboard.html';
+  } else {
+    window.location.href = 'investor/dashboard.html';
+  }
+});
+
+function showAlert(msg) {
+  const el = document.getElementById('alert');
+  el.textContent = msg;
+  el.className = 'alert error';
+  setTimeout(() => { el.style.display='none'; el.className='alert'; }, 3500);
+}
+</script>
+</body>
+</html>

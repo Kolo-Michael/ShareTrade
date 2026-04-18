@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | ShareTrade P2P</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --green: #22c55e;
+            --green-dark: #16a34a;
+            --green-light: #4ade80;
+        }
+
+        [data-theme="dark"] {
+            --bg: #070d07;
+            --surface: #0f1a0f;
+            --border: rgba(255,255,255,0.08);
+            --text: #f0faf0;
+            --text2: #7a9e7a;
+            --text3: #4a6a4a;
+            --input-bg: #0a120a;
+            --card-bg: rgba(15,26,15,0.92);
+            --placeholder: #3a5a3a;
+            --section-bg: rgba(34,197,94,0.04);
+            --section-border: rgba(34,197,94,0.12);
+        }
+
+        [data-theme="light"] {
+            --bg: #f0faf0;
+            --surface: #ffffff;
+            --border: rgba(0,0,0,0.1);
+            --text: #0a1a0a;
+            --text2: #3a6a3a;
+            --text3: #6a8f6a;
+            --input-bg: #f8fff8;
+            --card-bg: rgba(255,255,255,0.95);
+            --placeholder: #8ab48a;
+            --section-bg: rgba(34,197,94,0.04);
+            --section-border: rgba(34,197,94,0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.4s, color 0.4s;
+            overflow-x: hidden;
+        }
+
+        #bgCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        /* Theme btn */
+        .theme-btn {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 100;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .theme-btn:hover { color: var(--green); border-color: var(--green); }
+
+        /* Main container */
+        .register-wrapper {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 3rem 1rem 3rem;
+        }
+
+        .register-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 720px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        [data-theme="light"] .register-card {
+            box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+        }
+
+        /* Card header */
+        .card-header {
+            background: linear-gradient(135deg, var(--green-dark), #0d7a34, var(--green-dark));
+            padding: 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -40px; left: 30%;
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .logo-icon i { color: white; font-size: 17px; }
+
+        .logo-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .card-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.88rem;
+            margin-top: 0.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Card body */
+        .card-body { padding: 2rem 2.5rem 2.5rem; }
+
+        /* Role selector */
+        .role-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .role-option {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-align: center;
+            background: var(--input-bg);
+        }
+
+        .role-option i {
+            font-size: 1.5rem;
+            color: var(--text3);
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.25s;
+        }
+
+        .role-option span {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text2);
+            display: block;
+        }
+
+        .role-option small {
+            font-size: 0.75rem;
+            color: var(--text3);
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        .role-option.active {
+            border-color: var(--green);
+            background: rgba(34,197,94,0.08);
+            box-shadow: 0 0 0 3px rgba(34,197,94,0.12);
+        }
+
+        .role-option.active i { color: var(--green); }
+        .role-option.active span { color: var(--text); }
+
+        /* Alert */
+        .alert {
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 0.88rem;
+            display: none;
+        }
+
+        .alert.error {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.25);
+            color: #f87171;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .alert.success {
+            background: rgba(34,197,94,0.1);
+            border: 1px solid rgba(34,197,94,0.25);
+            color: var(--green-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Section headers */
+        .form-section {
+            margin-bottom: 1.75rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.65rem 1rem;
+            background: var(--section-bg);
+            border: 1px solid var(--section-border);
+            border-radius: 10px;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-header i {
+            color: var(--green);
+            font-size: 14px;
+        }
+
+        .section-header span {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green);
+        }
+
+        /* Form elements */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+        .form-row.full { grid-template-columns: 1fr; }
+
+        .form-group { margin-bottom: 0; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--text2);
+            font-weight: 500;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .input-wrap { position: relative; }
+
+        .input-wrap i.field-icon {
+            position: absolute;
+            left: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text3);
+            font-size: 13px;
+            z-index: 2;
+            pointer-events: none;
+            transition: color 0.3s;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.72rem 0.9rem 0.72rem 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: var(--input-bg);
+            color: var(--text);
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .form-group select { padding-left: 2.5rem; appearance: none; cursor: pointer; }
+        .form-group textarea { padding-left: 0.9rem; resize: vertical; min-height: 80px; }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: var(--placeholder); }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(34,197,94,0.1);
+        }
+
+        .form-group input:focus ~ i,
+        .input-wrap:focus-within i.field-icon { color: var(--green); }
+
+        /* No-icon inputs */
+        .form-group input.no-icon,
+        .form-group select.no-icon,
+        .form-group textarea.no-icon { padding-left: 0.9rem; }
+
+        /* File upload */
+        .file-upload-area {
+            border: 1.5px dashed var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: var(--input-bg);
+            position: relative;
+        }
+
+        .file-upload-area:hover,
+        .file-upload-area.has-file {
+            border-color: var(--green);
+            background: rgba(34,197,94,0.04);
+        }
+
+        .file-upload-area input[type="file"] {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        .file-upload-icon {
+            font-size: 1.5rem;
+            color: var(--text3);
+            margin-bottom: 0.4rem;
+            transition: color 0.3s;
+        }
+
+        .file-upload-area:hover .file-upload-icon,
+        .file-upload-area.has-file .file-upload-icon { color: var(--green); }
+
+        .file-upload-text {
+            font-size: 0.82rem;
+            color: var(--text2);
+            font-weight: 500;
+        }
+
+        .file-upload-sub {
+            font-size: 0.72rem;
+            color: var(--text3);
+            margin-top: 0.2rem;
+        }
+
+        .file-upload-name {
+            font-size: 0.78rem;
+            color: var(--green);
+            margin-top: 0.3rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        /* Two-column file grid */
+        .file-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        /* Terms */
+        .terms-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--input-bg);
+        }
+
+        .terms-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            accent-color: var(--green);
+            cursor: pointer;
+        }
+
+        .terms-group label {
+            font-size: 0.85rem;
+            color: var(--text2);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .terms-group a { color: var(--green); text-decoration: none; }
+        .terms-group a:hover { text-decoration: underline; }
+
+        /* Submit */
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--green-dark), var(--green));
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 24px rgba(34,197,94,0.3);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 32px rgba(34,197,94,0.5);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1.25rem;
+            font-size: 0.88rem;
+            color: var(--text2);
+        }
+
+        .login-link a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover { text-decoration: underline; }
+
+        /* Step progress */
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text3);
+            font-weight: 500;
+        }
+
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: var(--input-bg);
+            flex-shrink: 0;
+        }
+
+        .step.active .step-num {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+        }
+
+        .step.active { color: var(--text); }
+
+        .step-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            margin: 0 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .register-wrapper { padding: 1rem; }
+            .card-header, .card-body { padding: 1.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .form-row.three { grid-template-columns: 1fr; }
+            .file-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bgCanvas"></canvas>
+
+    <button class="theme-btn" id="themeBtn" title="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+
+    <div class="register-wrapper">
+        <div class="register-card">
+
+            <!-- Header -->
+            <div class="card-header">
+                <a href="index.html" class="header-brand">
+                    <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+                    <span class="logo-text">ShareTrade P2P</span>
+                </a>
+                <h1>Create Your Account</h1>
+                <p>Join the leading private share trading platform in Cameroon</p>
+            </div>
+
+            <!-- Body -->
+            <div class="card-body">
+
+                <!-- Role selector -->
+                <div class="role-selector">
+                    <div class="role-option active" data-role="investor">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Investor</span>
+                        <small>Buy &amp; sell shares</small>
+                    </div>
+                    <div class="role-option" data-role="company">
+                        <i class="fas fa-building"></i>
+                        <span>Company</span>
+                        <small>List &amp; manage shares</small>
+                    </div>
+                </div>
+
+                <div id="alert" class="alert"></div>
+
+                <form id="registerForm">
+
+                    <!-- ══ INVESTOR FORM ══ -->
+                    <div id="investorFields">
+
+                        <!-- Personal Info -->
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-user"></i>
+                                <span>Personal Information</span>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="inv_firstName" placeholder="Jean">
+                                        <i class="fas fa-user field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="inv_lastName" placeholder="Dupont">
+                                        <i class="fas fa-user field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <div class="input-wrap">
+                                        <input type="date" id="inv_dob">
+                                        <i class="fas fa-calendar field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nationality</label>
+                                    <div class="input-wrap">
+                                        <select id="inv_nationality">
+                                            <option value="">Select nationality</option>
+                                            <option value="CM" selected>Cameroonian</option>
+                                            <option value="NG">Nigerian</option>
+                                            <option value="SN">Senegalese</option>
+                                            <option value="CI">Ivorian</option>
+                                            <option value="FR">French</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <i class="fas fa-flag field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <div class="input-wrap">
+                                        <input type="tel" id="inv_phone" placeholder="+237 6XX XXX XXX">
+                                        <i class="fas fa-phone field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>City of Residence</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="inv_city" placeholder="Yaoundé">
+                                        <i class="fas fa-map-marker-alt field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Account Credentials -->
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-lock"></i>
+                                <span>Account Credentials</span>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <div class="input-wrap">
+                                        <input type="email" id="inv_email" placeholder="you@example.com">
+                                        <i class="fas fa-envelope field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <div class="input-wrap">
+                                        <input type="password" id="inv_password" placeholder="Min. 8 characters">
+                                        <i class="fas fa-lock field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <div class="input-wrap">
+                                        <input type="password" id="inv_confirmPassword" placeholder="Repeat password">
+                                        <i class="fas fa-lock field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- KYC Documents -->
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-id-card"></i>
+                                <span>KYC Verification &amp; Identity Documents</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>ID Document Type</label>
+                                    <div class="input-wrap">
+                                        <select id="inv_idType">
+                                            <option value="">Select type</option>
+                                            <option value="national_id">National ID Card (CNI)</option>
+                                            <option value="passport">International Passport</option>
+                                            <option value="residence">Residence Permit</option>
+                                        </select>
+                                        <i class="fas fa-id-card field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>ID / Passport Number</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="inv_idNumber" placeholder="e.g. CM12345678">
+                                        <i class="fas fa-hashtag field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p style="font-size:0.8rem;color:var(--text3);margin-bottom:0.75rem;">Upload clear, legible copies of the following documents (PDF, JPG or PNG · max 5MB each)</p>
+
+                            <div class="file-grid">
+                                <div class="form-group">
+                                    <label>Passport Photo Page</label>
+                                    <div class="file-upload-area" id="area_passport">
+                                        <input type="file" id="inv_passport" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_passport','name_passport')">
+                                        <div class="file-upload-icon"><i class="fas fa-passport"></i></div>
+                                        <div class="file-upload-text">Upload Passport</div>
+                                        <div class="file-upload-sub">or click to browse</div>
+                                        <div class="file-upload-name" id="name_passport"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>National ID Card (Front)</label>
+                                    <div class="file-upload-area" id="area_id_front">
+                                        <input type="file" id="inv_idFront" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_id_front','name_id_front')">
+                                        <div class="file-upload-icon"><i class="fas fa-id-card"></i></div>
+                                        <div class="file-upload-text">Upload CNI (Front)</div>
+                                        <div class="file-upload-sub">or click to browse</div>
+                                        <div class="file-upload-name" id="name_id_front"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>National ID Card (Back)</label>
+                                    <div class="file-upload-area" id="area_id_back">
+                                        <input type="file" id="inv_idBack" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_id_back','name_id_back')">
+                                        <div class="file-upload-icon"><i class="fas fa-id-card"></i></div>
+                                        <div class="file-upload-text">Upload CNI (Back)</div>
+                                        <div class="file-upload-sub">or click to browse</div>
+                                        <div class="file-upload-name" id="name_id_back"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Proof of Address</label>
+                                    <div class="file-upload-area" id="area_address">
+                                        <input type="file" id="inv_address" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_address','name_address')">
+                                        <div class="file-upload-icon"><i class="fas fa-home"></i></div>
+                                        <div class="file-upload-text">Utility bill / Bank statement</div>
+                                        <div class="file-upload-sub">Not older than 3 months</div>
+                                        <div class="file-upload-name" id="name_address"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row full" style="margin-top:0.75rem;">
+                                <div class="form-group">
+                                    <label>Selfie with ID</label>
+                                    <div class="file-upload-area" id="area_selfie">
+                                        <input type="file" id="inv_selfie" accept=".jpg,.jpeg,.png" onchange="handleFile(this,'area_selfie','name_selfie')">
+                                        <div class="file-upload-icon"><i class="fas fa-camera"></i></div>
+                                        <div class="file-upload-text">Upload selfie holding your ID document</div>
+                                        <div class="file-upload-sub">Clear face and document must be visible · JPG or PNG</div>
+                                        <div class="file-upload-name" id="name_selfie"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /investorFields -->
+
+
+                    <!-- ══ COMPANY FORM ══ -->
+                    <div id="companyFields" style="display:none;">
+
+                        <!-- Company Details -->
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-building"></i>
+                                <span>Company Information</span>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Official Company Name</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="co_name" placeholder="e.g. Société Commerciale SA">
+                                        <i class="fas fa-building field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Legal Form</label>
+                                    <div class="input-wrap">
+                                        <select id="co_legalForm">
+                                            <option value="">Select form</option>
+                                            <option value="SA">SA – Société Anonyme</option>
+                                            <option value="SARL">SARL – Société à Responsabilité Limitée</option>
+                                            <option value="SAS">SAS – Société par Actions Simplifiée</option>
+                                            <option value="SNC">SNC – Société en Nom Collectif</option>
+                                            <option value="GIE">GIE – Groupement d'Intérêt Économique</option>
+                                            <option value="SE">SE – Société d'État</option>
+                                            <option value="ETS">Établissement</option>
+                                        </select>
+                                        <i class="fas fa-gavel field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>RCCM Number</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="co_rccm" placeholder="RC/YAO/YYYY/B/XXXXX">
+                                        <i class="fas fa-hashtag field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Tax ID (NIU)</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="co_niu" placeholder="Numéro d'Identification Unique">
+                                        <i class="fas fa-receipt field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Share Capital (XAF)</label>
+                                    <div class="input-wrap">
+                                        <input type="number" id="co_capital" placeholder="e.g. 1000000">
+                                        <i class="fas fa-coins field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Date of Incorporation</label>
+                                    <div class="input-wrap">
+                                        <input type="date" id="co_incDate">
+                                        <i class="fas fa-calendar field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Business Sector</label>
+                                    <div class="input-wrap">
+                                        <select id="co_sector">
+                                            <option value="">Select sector</option>
+                                            <option value="agriculture">Agriculture &amp; Agri-business</option>
+                                            <option value="banking">Banking &amp; Finance</option>
+                                            <option value="construction">Construction &amp; Real Estate</option>
+                                            <option value="energy">Energy &amp; Mining</option>
+                                            <option value="health">Health &amp; Pharmaceuticals</option>
+                                            <option value="ict">ICT &amp; Telecoms</option>
+                                            <option value="insurance">Insurance</option>
+                                            <option value="manufacturing">Manufacturing &amp; Industry</option>
+                                            <option value="retail">Retail &amp; Commerce</option>
+                                            <option value="services">Professional Services</option>
+                                            <option value="transport">Transport &amp; Logistics</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <i class="fas fa-industry field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact & Address -->
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Registered Address &amp; Contact</span>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Registered Address</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="co_address" placeholder="Street, Neighbourhood, City">
+                                        <i class="fas fa-map-marker-alt field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row three">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    <div class="input-wrap">
+                                        <select id="co_city">
+                                            <option value="">Select city</option>
+                                            <option value="YDE">Yaoundé</option>
+                                            <option value="DLA">Douala</option>
+                                            <option value="BFN">Bafoussam</option>
+                                            <option value="GRA">Garoua</option>
+                                            <option value="MAR">Maroua</option>
+                                            <option value="BEA">Bertoua</option>
+                                            <option value="EBO">Ebolowa</option>
+                                            <option value="BUI">Buea</option>
+                                            <option value="LIM">Limbé</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <i class="fas fa-city field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Region</label>
+                                    <div class="input-wrap">
+                                        <select id="co_region">
+                                            <option value="">Select region</option>
+                                            <option value="centre">Centre</option>
+                                            <option value="littoral">Littoral</option>
+                                            <option value="ouest">Ouest</option>
+                                            <option value="nord">Nord</option>
+                                            <option value="extreme_nord">Extrême-Nord</option>
+                                            <option value="adamaoua">Adamaoua</option>
+                                            <option value="est">Est</option>
+                                            <option value="sud">Sud</option>
+                                            <option value="sw">South West</option>
+                                            <option value="nw">North West</option>
+                                        </select>
+                                        <i class="fas fa-map field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>BP / PO Box</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="co_bp" placeholder="BP XXXX">
+                                        <i class="fas fa-mailbox field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Company Email</label>
+                                    <div class="input-wrap">
+                                        <input type="email" id="co_email" placeholder="contact@company.cm">
+                                        <i class="fas fa-envelope field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Company Phone</label>
+                                    <div class="input-wrap">
+                                        <input type="tel" id="co_phone" placeholder="+237 2XX XXX XXX">
+                                        <i class="fas fa-phone field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row full">
+                                <div class="form-group">
+                                    <label>Website (optional)</label>
+                                    <div class="input-wrap">
+                                        <input type="url" id="co_website" placeholder="https://www.company.cm">
+                                        <i class="fas fa-globe field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Legal Representative -->
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-user-tie"></i>
+                                <span>Legal Representative / Account Manager</span>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="co_repName" placeholder="Representative full name">
+                                        <i class="fas fa-user field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Title / Position</label>
+                                    <div class="input-wrap">
+                                        <input type="text" id="co_repTitle" placeholder="e.g. Directeur Général">
+                                        <i class="fas fa-briefcase field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Representative Email</label>
+                                    <div class="input-wrap">
+                                        <input type="email" id="co_repEmail" placeholder="rep@company.cm">
+                                        <i class="fas fa-envelope field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Representative Phone</label>
+                                    <div class="input-wrap">
+                                        <input type="tel" id="co_repPhone" placeholder="+237 6XX XXX XXX">
+                                        <i class="fas fa-phone field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Account Credentials -->
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-lock"></i>
+                                <span>Platform Account Credentials</span>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <div class="input-wrap">
+                                        <input type="password" id="co_password" placeholder="Min. 8 characters">
+                                        <i class="fas fa-lock field-icon"></i>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <div class="input-wrap">
+                                        <input type="password" id="co_confirmPassword" placeholder="Repeat password">
+                                        <i class="fas fa-lock field-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cameroon Required Documents -->
+                        <div class="form-section">
+                            <div class="section-header">
+                                <i class="fas fa-folder-open"></i>
+                                <span>Required Cameroon Company Documents</span>
+                            </div>
+
+                            <p style="font-size:0.8rem;color:var(--text3);margin-bottom:1rem;">All documents must be certified copies · PDF, JPG or PNG · max 5MB each</p>
+
+                            <div class="file-grid">
+                                <div class="form-group">
+                                    <label>Registre du Commerce (RCCM)</label>
+                                    <div class="file-upload-area" id="area_rccm">
+                                        <input type="file" id="co_rccmDoc" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_rccm','name_rccm')">
+                                        <div class="file-upload-icon"><i class="fas fa-file-signature"></i></div>
+                                        <div class="file-upload-text">Upload RCCM Certificate</div>
+                                        <div class="file-upload-sub">Issued by CFCE or Tribunal</div>
+                                        <div class="file-upload-name" id="name_rccm"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Statuts de la Société</label>
+                                    <div class="file-upload-area" id="area_statuts">
+                                        <input type="file" id="co_statuts" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_statuts','name_statuts')">
+                                        <div class="file-upload-icon"><i class="fas fa-scroll"></i></div>
+                                        <div class="file-upload-text">Articles of Association</div>
+                                        <div class="file-upload-sub">Signed &amp; notarised copy</div>
+                                        <div class="file-upload-name" id="name_statuts"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Attestation de Localisation</label>
+                                    <div class="file-upload-area" id="area_localisation">
+                                        <input type="file" id="co_localisation" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_localisation','name_localisation')">
+                                        <div class="file-upload-icon"><i class="fas fa-map-pin"></i></div>
+                                        <div class="file-upload-text">Location Certificate</div>
+                                        <div class="file-upload-sub">Issued by local authority</div>
+                                        <div class="file-upload-name" id="name_localisation"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Attestation NIU (DGI)</label>
+                                    <div class="file-upload-area" id="area_niu">
+                                        <input type="file" id="co_niuDoc" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_niu','name_niu')">
+                                        <div class="file-upload-icon"><i class="fas fa-receipt"></i></div>
+                                        <div class="file-upload-text">Tax Registration (NIU)</div>
+                                        <div class="file-upload-sub">From Direction Générale des Impôts</div>
+                                        <div class="file-upload-name" id="name_niu"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Plan de Localisation</label>
+                                    <div class="file-upload-area" id="area_plan">
+                                        <input type="file" id="co_plan" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_plan','name_plan')">
+                                        <div class="file-upload-icon"><i class="fas fa-map"></i></div>
+                                        <div class="file-upload-text">Location Map / Sketch</div>
+                                        <div class="file-upload-sub">Physical address diagram</div>
+                                        <div class="file-upload-name" id="name_plan"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>PV d'Assemblée Constitutive</label>
+                                    <div class="file-upload-area" id="area_pv">
+                                        <input type="file" id="co_pv" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_pv','name_pv')">
+                                        <div class="file-upload-icon"><i class="fas fa-gavel"></i></div>
+                                        <div class="file-upload-text">Founding Assembly Minutes</div>
+                                        <div class="file-upload-sub">Signed by all founding members</div>
+                                        <div class="file-upload-name" id="name_pv"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>ID of Legal Representative</label>
+                                    <div class="file-upload-area" id="area_repId">
+                                        <input type="file" id="co_repId" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_repId','name_repId')">
+                                        <div class="file-upload-icon"><i class="fas fa-id-card"></i></div>
+                                        <div class="file-upload-text">CNI / Passport of Rep.</div>
+                                        <div class="file-upload-sub">Valid government-issued ID</div>
+                                        <div class="file-upload-name" id="name_repId"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Patente (if applicable)</label>
+                                    <div class="file-upload-area" id="area_patente">
+                                        <input type="file" id="co_patente" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_patente','name_patente')">
+                                        <div class="file-upload-icon"><i class="fas fa-stamp"></i></div>
+                                        <div class="file-upload-text">Business Licence (Patente)</div>
+                                        <div class="file-upload-sub">Current year if applicable</div>
+                                        <div class="file-upload-name" id="name_patente"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional optional docs -->
+                            <div class="form-row full" style="margin-top:0.75rem;">
+                                <div class="form-group">
+                                    <label>Acte OHADA / Notarial Deed (optional)</label>
+                                    <div class="file-upload-area" id="area_ohada">
+                                        <input type="file" id="co_ohada" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'area_ohada','name_ohada')">
+                                        <div class="file-upload-icon"><i class="fas fa-file-contract"></i></div>
+                                        <div class="file-upload-text">OHADA Notarial Deed</div>
+                                        <div class="file-upload-sub">Required for SA / SARL – upload if available</div>
+                                        <div class="file-upload-name" id="name_ohada"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /companyFields -->
+
+                    <!-- Terms -->
+                    <div class="terms-group">
+                        <input type="checkbox" id="terms">
+                        <label for="terms">
+                            I confirm that all information and documents provided are accurate and authentic. I agree to the <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, and <a href="#">KYC/AML Policy</a> of ShareTrade P2P.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Create Account &amp; Submit for Review</button>
+                </form>
+
+                <div class="login-link">
+                    Already have an account? <a href="login.html">Sign in</a>
+                </div>
+
+            </div><!-- /card-body -->
+        </div><!-- /register-card -->
+    </div><!-- /register-wrapper -->
+
+    <script>
+        // ── Theme ──
+        const html = document.documentElement;
+        const themeBtn = document.getElementById('themeBtn');
+        const themeIcon = document.getElementById('themeIcon');
+
+        function applyTheme(t) {
+            html.setAttribute('data-theme', t);
+            themeIcon.className = t === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            localStorage.setItem('st-theme', t);
+            drawBg();
+        }
+
+        themeBtn.addEventListener('click', () => {
+            applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+
+        // ── Canvas background ──
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let W, H, particles = [];
+
+        function resize() {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
+            initParticles();
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.floor((W * H) / 22000);
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * W,
+                    y: Math.random() * H,
+                    vx: (Math.random() - 0.5) * 0.25,
+                    vy: (Math.random() - 0.5) * 0.25,
+                    r: Math.random() * 1.8 + 0.8
+                });
+            }
+        }
+
+        function drawBg() {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            ctx.clearRect(0, 0, W, H);
+            ctx.fillStyle = isDark ? '#070d07' : '#f0faf0';
+            ctx.fillRect(0, 0, W, H);
+
+            // Glow blobs
+            [
+                { x: W * 0.1,  y: H * 0.2, r: 280 },
+                { x: W * 0.9,  y: H * 0.8, r: 260 },
+                { x: W * 0.5,  y: H * 0.5, r: 180 },
+                { x: W * 0.8,  y: H * 0.2, r: 200 },
+            ].forEach(b => {
+                const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+                g.addColorStop(0, isDark ? 'rgba(34,197,94,0.07)' : 'rgba(34,197,94,0.05)');
+                g.addColorStop(1, 'transparent');
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // Lines
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 140) {
+                        ctx.strokeStyle = isDark ? 'rgba(34,197,94,0.07)' : 'rgba(34,197,94,0.05)';
+                        ctx.lineWidth = 0.5;
+                        ctx.globalAlpha = (1 - dist / 140);
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            ctx.globalAlpha = 1;
+
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = isDark ? 'rgba(34,197,94,0.5)' : 'rgba(22,163,74,0.35)';
+                ctx.fill();
+            });
+        }
+
+        function update() {
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > W) p.vx *= -1;
+                if (p.y < 0 || p.y > H) p.vy *= -1;
+            });
+            drawBg();
+            requestAnimationFrame(update);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        applyTheme(localStorage.getItem('st-theme') || 'dark');
+        update();
+
+        // ── Role toggle ──
+        let selectedRole = 'investor';
+
+        document.querySelectorAll('.role-option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                document.querySelectorAll('.role-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+                selectedRole = this.dataset.role;
+                document.getElementById('investorFields').style.display = selectedRole === 'investor' ? 'block' : 'none';
+                document.getElementById('companyFields').style.display  = selectedRole === 'company'  ? 'block' : 'none';
+            });
+        });
+
+        // ── File upload handler ──
+        function handleFile(input, areaId, nameId) {
+            const area = document.getElementById(areaId);
+            const nameEl = document.getElementById(nameId);
+            if (input.files && input.files[0]) {
+                area.classList.add('has-file');
+                nameEl.textContent = '✓ ' + input.files[0].name;
+                nameEl.style.display = 'block';
+            }
+        }
+
+        // ── Form submit ──
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const terms = document.getElementById('terms').checked;
+            if (!terms) { showAlert('Please accept the Terms of Service and KYC Policy.', 'error'); return; }
+
+            if (selectedRole === 'investor') {
+                const fn = document.getElementById('inv_firstName').value;
+                const ln = document.getElementById('inv_lastName').value;
+                const email = document.getElementById('inv_email').value;
+                const pw = document.getElementById('inv_password').value;
+                const cpw = document.getElementById('inv_confirmPassword').value;
+                if (!fn || !ln || !email || !pw) { showAlert('Please fill in all required personal information.', 'error'); return; }
+                if (pw !== cpw) { showAlert('Passwords do not match.', 'error'); return; }
+                if (pw.length < 8) { showAlert('Password must be at least 8 characters.', 'error'); return; }
+            } else {
+                const cn = document.getElementById('co_name').value;
+                const rccm = document.getElementById('co_rccm').value;
+                const email = document.getElementById('co_email').value;
+                const pw = document.getElementById('co_password').value;
+                const cpw = document.getElementById('co_confirmPassword').value;
+                if (!cn || !rccm || !email || !pw) { showAlert('Please fill in all required company information.', 'error'); return; }
+                if (pw !== cpw) { showAlert('Passwords do not match.', 'error'); return; }
+                if (pw.length < 8) { showAlert('Password must be at least 8 characters.', 'error'); return; }
+            }
+
+            showAlert('Account created successfully! Your documents are under review. Redirecting…', 'success');
+            setTimeout(() => {
+                window.location.href = selectedRole === 'company' ? 'company/dashboard.html' : 'investor/dashboard.html';
+            }, 2500);
+        });
+
+        function showAlert(msg, type) {
+            const el = document.getElementById('alert');
+            el.innerHTML = (type === 'error' ? '<i class="fas fa-exclamation-circle"></i> ' : '<i class="fas fa-check-circle"></i> ') + msg;
+            el.className = 'alert ' + type;
+            if (type === 'error') {
+                setTimeout(() => { el.style.display = 'none'; el.className = 'alert'; }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>

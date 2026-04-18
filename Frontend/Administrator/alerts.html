@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Alerts | ShareTrade P2P Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../shared.css">
+<style>
+.admin-avatar{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,#064a1a,#16a34a);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.admin-avatar i{color:#fff;font-size:14px;}
+select,input[type=date]{padding:.4rem .75rem;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:.8rem;font-family:'DM Sans',sans-serif;}
+.kyc-doc-chip{display:inline-flex;align-items:center;gap:.3rem;padding:.22rem .55rem;border-radius:6px;font-size:.68rem;font-weight:600;margin:.15rem;}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+<a href="../index.html" class="sidebar-logo"><div class="logo-icon"><i class="fas fa-chart-line"></i></div><span class="logo-text">Share<span>Trade</span></span></a>
+<div class="sidebar-user"><div class="admin-avatar"><i class="fas fa-crown"></i></div><div class="user-info"><div class="user-name">Admin Console</div><div class="user-role" style="color:var(--green);font-size:.7rem;"><i class="fas fa-shield-alt"></i> Super Admin</div></div></div>
+<nav class="sidebar-nav">
+<div class="nav-section">Platform</div>
+<a class="nav-item " href="dashboard.html"><i class="fas fa-th-large"></i> Overview</a>
+<a class="nav-item active" href="alerts.html"><i class="fas fa-bell"></i> Alerts<span class="nav-badge red">7</span></a>
+<div class="nav-section">Users</div>
+<a class="nav-item " href="kyc.html"><i class="fas fa-id-card"></i> KYC Queue<span class="nav-badge amber">12</span></a>
+<a class="nav-item " href="investors.html"><i class="fas fa-users"></i> Investors</a>
+<a class="nav-item " href="companies.html"><i class="fas fa-building"></i> Companies<span class="nav-badge amber">3</span></a>
+<a class="nav-item " href="suspended.html"><i class="fas fa-user-slash"></i> Suspended</a>
+<div class="nav-section">Trading</div>
+<a class="nav-item " href="trades.html"><i class="fas fa-exchange-alt"></i> All Trades</a>
+<a class="nav-item " href="escrow.html"><i class="fas fa-lock"></i> Escrow Monitor</a>
+<a class="nav-item " href="disputes.html"><i class="fas fa-flag"></i> Disputes<span class="nav-badge red">2</span></a>
+<div class="nav-section">System</div>
+<a class="nav-item " href="settings.html"><i class="fas fa-sliders-h"></i> Settings</a>
+<a class="nav-item " href="auditlogs.html"><i class="fas fa-file-alt"></i> Audit Logs</a>
+<a class="nav-item " href="maintenance.html"><i class="fas fa-tools"></i> Maintenance</a>
+</nav>
+<div class="sidebar-bottom"><a class="nav-item" href="../login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a></div>
+</aside>
+<div class="main">
+<header class="topbar">
+<div><div class="page-title">System Alerts</div><div class="page-sub">All platform notifications requiring attention</div></div>
+<div class="topbar-right">
+  <span class="admin-tag"><i class="fas fa-crown"></i> Super Admin</span>
+  <button class="topbar-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+  <button class="topbar-btn" style="position:relative;"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+</div></header>
+<main class="content">
+
+<div class="page-header fade-in"><div class="page-header-left"><h2>System Alerts</h2><p>All platform notifications and alerts requiring attention</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" style=""><i class="fas fa-check-double"></i> Mark All Read</button><button class="btn btn-outline" style=""><i class="fas fa-cog"></i> Alert Settings</button></div></div>
+<div class="stats-grid fade-in-2">
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-exclamation-circle"></i></div><div class="stat-label">Critical</div><div class="stat-value">2</div><div class="stat-change down"><i class="fas fa-arrow-down"></i> Require immediate action</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div><div class="stat-label">Warnings</div><div class="stat-value">3</div><div class="stat-change amber"><i class="fas fa-clock"></i> Review when possible</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-info-circle"></i></div><div class="stat-label">Informational</div><div class="stat-value">3</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> No action required</div></div>
+<div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-label">Resolved (7d)</div><div class="stat-value">14</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> Last 7 days</div></div>
+</div>
+<div class="tab-bar fade-in-2"><div class="tab  active">All (10)</div><div class="tab">Unread (5)</div><div class="tab">Critical (2)</div><div class="tab">Warnings (3)</div><div class="tab">Info</div><div class="tab">Resolved</div></div>
+<div class="grid-3-2 fade-in-3">
+<div class="card"><div class="card-body" style="padding:0;"><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);background:rgba(248,113,113,.05);border-left:3px solid rgba(248,113,113,.4);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(248,113,113,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-flag" style="color:rgb(248,113,113);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">Dispute #D-00018 Opened — Immediate Action Required</div>
+    <span class="badge badge-red">Critical</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">AgroCam SARL vs investor — XAF 480K escrow frozen. Admin mediation required within 14 business days.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">Resolve now →</a>
+    <div style="font-size:.7rem;color:var(--text3);">1 hour ago</div>
+  </div>
+</div>
+<div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;box-shadow:0 0 5px rgba(34,197,94,.6);"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);background:rgba(248,113,113,.05);border-left:3px solid rgba(248,113,113,.4);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(248,113,113,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-user-slash" style="color:rgb(248,113,113);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">Suspicious Login Activity — User Account Flagged</div>
+    <span class="badge badge-red">Critical</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">12 consecutive failed login attempts detected from unknown IP 197.210.x.x on account #50,841.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">View account →</a>
+    <div style="font-size:.7rem;color:var(--text3);">5 hours ago</div>
+  </div>
+</div>
+<div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;box-shadow:0 0 5px rgba(34,197,94,.6);"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);background:rgba(251,191,36,.05);border-left:3px solid rgba(251,191,36,.4);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(251,191,36,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-exclamation-triangle" style="color:rgb(251,191,36);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">BuildCam SA — KYC Documents Incomplete</div>
+    <span class="badge badge-amber">Warning</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">Company submitted 6 of 8 required documents. Patente and Plan de Localisation are missing.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">Review KYC →</a>
+    <div style="font-size:.7rem;color:var(--text3);">3 hours ago</div>
+  </div>
+</div>
+<div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;box-shadow:0 0 5px rgba(34,197,94,.6);"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);background:rgba(251,191,36,.05);border-left:3px solid rgba(251,191,36,.4);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(251,191,36,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-clock" style="color:rgb(251,191,36);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">Escrow Timeout Approaching — Trade #T-00199</div>
+    <span class="badge badge-amber">Warning</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">Escrow hold ESC-000199 (XAF 1,000,000) expires in 18 hours. Company has not responded to confirmation request.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">View escrow →</a>
+    <div style="font-size:.7rem;color:var(--text3);">8 hours ago</div>
+  </div>
+</div>
+<div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;box-shadow:0 0 5px rgba(34,197,94,.6);"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);background:rgba(251,191,36,.05);border-left:3px solid rgba(251,191,36,.4);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(251,191,36,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-exclamation-triangle" style="color:rgb(251,191,36);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">Document Storage Reaching Capacity</div>
+    <span class="badge badge-amber">Warning</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">Document storage is at 67% capacity. At current upload rate, 90% will be reached within 3 weeks.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">View maintenance →</a>
+    <div style="font-size:.7rem;color:var(--text3);">12 hours ago</div>
+  </div>
+</div>
+<div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;margin-top:5px;box-shadow:0 0 5px rgba(34,197,94,.6);"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(96,165,250,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-building" style="color:rgb(96,165,250);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">New Company Registration — TransLog SARL</div>
+    <span class="badge badge-blue">Info</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">TransLog SARL submitted registration with 4/8 documents. Pending admin review and approval.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">View submission →</a>
+    <div style="font-size:.7rem;color:var(--text3);">14 hours ago</div>
+  </div>
+</div>
+<div style="width:8px;"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(96,165,250,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-user-plus" style="color:rgb(96,165,250);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">New Investor Milestone — 50,000 Registered</div>
+    <span class="badge badge-blue">Info</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">Platform reached 50,000 registered investors today. Monthly growth rate: +312 users.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">View analytics →</a>
+    <div style="font-size:.7rem;color:var(--text3);">1 day ago</div>
+  </div>
+</div>
+<div style="width:8px;"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(74,222,128,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-tools" style="color:rgb(74,222,128);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">Notification Service — Degraded Performance</div>
+    <span class="badge badge-blue">Info</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">Email delivery experiencing 2-5 minute delays since 08:00 this morning. Engineering team investigating.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">View maintenance →</a>
+    <div style="font-size:.7rem;color:var(--text3);">1 day ago</div>
+  </div>
+</div>
+<div style="width:8px;"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(74,222,128,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-shield-alt" style="color:rgb(74,222,128);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">Weekly Security Scan — Completed Clean</div>
+    <span class="badge badge-green">Success</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">Automated security scan completed with no vulnerabilities, threats or anomalies detected.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">View report →</a>
+    <div style="font-size:.7rem;color:var(--text3);">2 days ago</div>
+  </div>
+</div>
+<div style="width:8px;"></div>
+</div><div style="display:flex;align-items:flex-start;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+<div style="width:38px;height:38px;border-radius:11px;background:rgba(74,222,128,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+  <i class="fas fa-certificate" style="color:rgb(74,222,128);font-size:14px;"></i>
+</div>
+<div style="flex:1;min-width:0;">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.2rem;flex-wrap:wrap;">
+    <div style="font-size:.88rem;font-weight:700;color:var(--text);">Share Certificate Batch — 12 Generated</div>
+    <span class="badge badge-green">Success</span>
+  </div>
+  <div style="font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.3rem;">Automated batch certificate generation processed 12 completed trades from this week successfully.</div>
+  <div style="display:flex;align-items:center;gap:.75rem;">
+    <a href="#" style="font-size:.75rem;color:var(--green);font-weight:600;white-space:nowrap;">View certificates →</a>
+    <div style="font-size:.7rem;color:var(--text3);">2 days ago</div>
+  </div>
+</div>
+<div style="width:8px;"></div>
+</div></div></div>
+<div style="display:flex;flex-direction:column;gap:1.25rem;">
+<div class="card"><div class="card-header"><span class="card-title">Alert Rules</span></div><div class="card-body"><div style="display:flex;flex-direction:column;gap:.6rem;font-size:.84rem;"><div style="display:flex;align-items:center;gap:.75rem;padding:.6rem;border:1px solid var(--border);border-radius:9px;background:var(--hover);"><div style="width:9px;height:9px;border-radius:50%;background:#f87171;flex-shrink:0;"></div><div style="flex:1;"><div style="color:var(--text);font-weight:600;">Critical</div><div style="color:var(--text3);font-size:.75rem;">Disputes, security incidents, fraud flags</div></div><span style="color:var(--text3);font-size:.75rem;">Immediate</span></div><div style="display:flex;align-items:center;gap:.75rem;padding:.6rem;border:1px solid var(--border);border-radius:9px;background:var(--hover);"><div style="width:9px;height:9px;border-radius:50%;background:#fbbf24;flex-shrink:0;"></div><div style="flex:1;"><div style="color:var(--text);font-weight:600;">Warning</div><div style="color:var(--text3);font-size:.75rem;">KYC issues, escrow timeouts, storage capacity</div></div><span style="color:var(--text3);font-size:.75rem;">Within 4h</span></div><div style="display:flex;align-items:center;gap:.75rem;padding:.6rem;border:1px solid var(--border);border-radius:9px;background:var(--hover);"><div style="width:9px;height:9px;border-radius:50%;background:#60a5fa;flex-shrink:0;"></div><div style="flex:1;"><div style="color:var(--text);font-weight:600;">Info</div><div style="color:var(--text3);font-size:.75rem;">New registrations, milestones, system events</div></div><span style="color:var(--text3);font-size:.75rem;">Same day</span></div><div style="display:flex;align-items:center;gap:.75rem;padding:.6rem;border:1px solid var(--border);border-radius:9px;background:var(--hover);"><div style="width:9px;height:9px;border-radius:50%;background:#4ade80;flex-shrink:0;"></div><div style="flex:1;"><div style="color:var(--text);font-weight:600;">Success</div><div style="color:var(--text3);font-size:.75rem;">Completed operations, clean scans, milestones</div></div><span style="color:var(--text3);font-size:.75rem;">Weekly</span></div></div></div></div>
+<div class="card"><div class="card-header"><span class="card-title">Alert Statistics</span></div><div class="card-body"><div class="metric-row"><div class="metric-label"><span>Critical resolved < 4h</span><span>88%</span></div><div class="metric-bar"><div class="metric-fill" style="width:88%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Warnings actioned</span><span>92%</span></div><div class="metric-bar"><div class="metric-fill" style="width:92%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>False positive rate</span><span>4%</span></div><div class="metric-bar"><div class="metric-fill" style="width:4%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div></div><div class="divider-x" style="margin:.85rem 0;"></div><div style="font-size:.82rem;color:var(--text2);">Avg response time to critical alerts: <strong style="color:var(--text);">47 minutes</strong></div></div></div>
+</div>
+</div>
+</main>
+</div>
+<script>
+(function(){
+  var h=document.documentElement,t=localStorage.getItem('st-theme')||'dark';
+  h.setAttribute('data-theme',t);
+  var b=document.getElementById('themeBtn'),i=document.getElementById('themeIcon');
+  if(i)i.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  if(b)b.addEventListener('click',function(){
+    var n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',n);
+    if(i)i.className=n==='dark'?'fas fa-sun':'fas fa-moon';
+    localStorage.setItem('st-theme',n);
+  });
+  document.querySelectorAll('.tab-bar').forEach(function(bar){
+    bar.querySelectorAll('.tab').forEach(function(tab){
+      tab.addEventListener('click',function(){
+        bar.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+        this.classList.add('active');
+      });
+    });
+  });
+})();
+</script>
+</body></html>

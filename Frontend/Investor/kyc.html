@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KYC Status | ShareTrade P2P</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../shared.css">
+
+</head>
+<body>
+<aside class="sidebar">
+<a href="../index.html" class="sidebar-logo"><div class="logo-icon"><i class="fas fa-chart-line"></i></div><span class="logo-text">Share<span>Trade</span></span></a>
+<div class="sidebar-user">
+  <div class="user-avatar">JD</div>
+  <div class="user-info"><div class="user-name">Jean Dupont</div><div class="user-role">Investor Account</div></div>
+</div>
+<nav class="sidebar-nav"><div class="nav-section">Main</div>
+<a class="nav-item " href="idashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+<a class="nav-item " href="portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a>
+<a class="nav-item " href="trades.html"><i class="fas fa-exchange-alt"></i> Trades<span class="nav-badge">3</span></a>
+<a class="nav-item " href="marketplace.html"><i class="fas fa-search-dollar"></i> Marketplace</a>
+<div class="nav-section">Finance</div>
+<a class="nav-item " href="wallet.html"><i class="fas fa-wallet"></i> Wallet</a>
+<a class="nav-item " href="history.html"><i class="fas fa-history"></i> History</a>
+<a class="nav-item " href="certificates.html"><i class="fas fa-file-certificate"></i> Certificates</a>
+<div class="nav-section">Account</div>
+<a class="nav-item active" href="kyc.html"><i class="fas fa-id-card"></i> KYC Status</a>
+<a class="nav-item " href="notifications.html"><i class="fas fa-bell"></i> Notifications<span class="nav-badge">5</span></a>
+<a class="nav-item " href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+</nav>
+<div class="sidebar-bottom"><a class="nav-item" href="../login.html"><i class="fas fa-sign-out-alt"></i> Sign Out</a></div>
+</aside>
+<div class="main">
+<header class="topbar">
+<div><div class="page-title">KYC Verification</div><div class="page-sub">Identity & document status</div></div>
+<div class="topbar-right"><button class="topbar-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button><button class="topbar-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button></div>
+</header>
+<main class="content">
+
+<div class="page-header fade-in">
+  <div class="page-header-left"><h2>KYC Verification</h2><p>Identity verification and document status</p></div>
+</div>
+
+<div class="banner warning fade-in">
+  <i class="fas fa-exclamation-triangle"></i>
+  <div class="banner-text"><strong>KYC Verification Pending.</strong> Upload your Selfie with ID to complete verification and unlock full trading access.</div>
+  <button class="banner-action"><i class="fas fa-upload"></i> Upload Now</button>
+</div>
+
+<div class="grid-2 fade-in-2">
+  <div class="card">
+    <div class="card-header"><span class="card-title">Document Checklist</span><span class="badge badge-amber">4/5 complete</span></div>
+    <div class="card-body">
+      <div style="display:flex;flex-direction:column;gap:.85rem;">
+        <div class="flex gap" style="align-items:center;">
+          <div style="width:30px;height:30px;border-radius:50%;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>
+          </div>
+          <div style="flex:1;"><div style="font-size:.86rem;font-weight:600;color:var(--text);">International Passport</div><div class="text-muted" style="font-size:.72rem;">Uploaded Apr 2, 2026 · Expires Dec 2029</div></div>
+          <span class="badge badge-green">Verified</span>
+        </div>
+        <div class="flex gap" style="align-items:center;">
+          <div style="width:30px;height:30px;border-radius:50%;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>
+          </div>
+          <div style="flex:1;"><div style="font-size:.86rem;font-weight:600;color:var(--text);">National ID Card — Front</div><div class="text-muted" style="font-size:.72rem;">Uploaded Apr 2, 2026</div></div>
+          <span class="badge badge-green">Verified</span>
+        </div>
+        <div class="flex gap" style="align-items:center;">
+          <div style="width:30px;height:30px;border-radius:50%;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>
+          </div>
+          <div style="flex:1;"><div style="font-size:.86rem;font-weight:600;color:var(--text);">National ID Card — Back</div><div class="text-muted" style="font-size:.72rem;">Uploaded Apr 2, 2026</div></div>
+          <span class="badge badge-green">Verified</span>
+        </div>
+        <div class="flex gap" style="align-items:center;">
+          <div style="width:30px;height:30px;border-radius:50%;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fas fa-check" style="color:#4ade80;font-size:11px;"></i>
+          </div>
+          <div style="flex:1;"><div style="font-size:.86rem;font-weight:600;color:var(--text);">Proof of Address</div><div class="text-muted" style="font-size:.72rem;">Utility bill · Uploaded Apr 2, 2026</div></div>
+          <span class="badge badge-green">Verified</span>
+        </div>
+        <div class="flex gap" style="align-items:center;padding:1rem;background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.15);border-radius:10px;">
+          <div style="width:30px;height:30px;border-radius:50%;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fas fa-times" style="color:#f87171;font-size:11px;"></i>
+          </div>
+          <div style="flex:1;"><div style="font-size:.86rem;font-weight:600;color:var(--text);">Selfie with ID</div><div style="font-size:.72rem;color:#f87171;margin-top:.08rem;">Not uploaded — required to complete KYC</div></div>
+          <button class="btn btn-primary btn-sm"><i class="fas fa-camera"></i> Upload</button>
+        </div>
+      </div>
+
+      <div class="divider-x"></div>
+      <div class="upload-zone" id="selfieZone">
+        <input type="file" accept=".jpg,.jpeg,.png">
+        <i class="fas fa-camera"></i>
+        <div class="upload-text">Upload Selfie holding your ID document</div>
+        <div class="upload-sub">Clear face + document visible · JPG or PNG · Max 5MB</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-col">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Account Limits</span></div>
+      <div class="card-body">
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div class="status-row"><span class="status-label">Max single trade</span><span style="color:#fbbf24;font-weight:700;font-size:.88rem;">XAF 500,000</span></div>
+          <div class="status-row"><span class="status-label">Monthly trading limit</span><span style="color:#fbbf24;font-weight:700;font-size:.88rem;">XAF 2,000,000</span></div>
+          <div class="status-row"><span class="status-label">Daily withdrawal</span><span style="color:#fbbf24;font-weight:700;font-size:.88rem;">XAF 300,000</span></div>
+          <div class="status-row"><span class="status-label">Active positions</span><span style="color:var(--text);font-weight:700;font-size:.88rem;">Unlimited</span></div>
+        </div>
+        <div style="background:var(--green-muted);border:1px solid var(--border2);border-radius:10px;padding:.9rem;margin-top:1rem;">
+          <div style="font-size:.8rem;color:var(--text2);"><i class="fas fa-info-circle" style="color:var(--green);margin-right:.4rem;"></i>Complete KYC to unlock <strong style="color:var(--text);">unlimited trading</strong> and same-day withdrawals.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">KYC Timeline</span></div>
+      <div class="card-body">
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--border);">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-check" style="color:white;font-size:10px;"></i></div>
+            <div><div style="font-size:.84rem;font-weight:600;color:var(--text);">Account created</div><div class="text-muted" style="font-size:.72rem;">Apr 1, 2026</div></div>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--border);">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-check" style="color:white;font-size:10px;"></i></div>
+            <div><div style="font-size:.84rem;font-weight:600;color:var(--text);">Documents submitted</div><div class="text-muted" style="font-size:.72rem;">Apr 2, 2026 · 4 of 5 docs</div></div>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;border-bottom:1px solid var(--border);">
+            <div style="width:24px;height:24px;border-radius:50%;background:rgba(251,191,36,.2);border:2px solid rgba(251,191,36,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-clock" style="color:#fbbf24;font-size:9px;"></i></div>
+            <div><div style="font-size:.84rem;font-weight:600;color:var(--text);">Selfie pending upload</div><div style="font-size:.72rem;color:#fbbf24;">Action required</div></div>
+          </div>
+          <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 0;">
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-hourglass" style="color:var(--text3);font-size:9px;"></i></div>
+            <div><div style="font-size:.84rem;font-weight:600;color:var(--text3);">KYC review by admin</div><div class="text-muted" style="font-size:.72rem;">Est. 24–48 hours after submission</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+</div>
+<script>
+(function(){
+  var h=document.documentElement,t=localStorage.getItem('st-theme')||'dark';
+  h.setAttribute('data-theme',t);
+  var b=document.getElementById('themeBtn'),i=document.getElementById('themeIcon');
+  if(i) i.className=t==='dark'?'fas fa-sun':'fas fa-moon';
+  if(b) b.addEventListener('click',function(){
+    var n=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',n);
+    if(i) i.className=n==='dark'?'fas fa-sun':'fas fa-moon';
+    localStorage.setItem('st-theme',n);
+  });
+})();
+</script>
+</body>
+</html>
