@@ -181,6 +181,26 @@ if(sidebarToggle && sidebar) {
         }
     });
 }
+
+// --- Hero Slideshow (Landing Page) ---
+const slides = document.querySelectorAll('.hero-slide');
+const dots   = document.querySelectorAll('.slide-dot');
+if(slides.length > 0) {
+    let currentSlide = 0;
+    function goToSlide(i) {
+        slides[currentSlide].classList.remove('active');
+        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
+        currentSlide = i;
+        slides[currentSlide].classList.add('active');
+        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
+    }
+    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
+    dots.forEach(d => d.addEventListener('click', function() {
+        clearInterval(iv);
+        goToSlide(+this.dataset.index);
+        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
+    }));
+}
 </script>
 
 </body>
