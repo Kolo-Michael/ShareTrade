@@ -15,7 +15,8 @@
 </head>
 
 <body>
-<!-- SIDEBAR -->
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <a href="../index.html" class="sidebar-logo">
     <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
@@ -48,8 +49,8 @@
   </div>
 </aside>
 
-<div class="main">
-    <!-- TOPBAR -->
+    <div class="main">
+        <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <!-- Mobile Hamburger -->
@@ -69,8 +70,8 @@
   </div>
 </header>
 
-    <main class="content">
-        <div class="page-header fade-in">
+        <main class="content">
+            <div class="page-header fade-in">
   <div class="page-header-left"><h2>Cap Table</h2><p>Complete shareholder registry and ownership breakdown</p></div>
   <div class="flex gap-sm">
     <div class="search-bar"><i class="fas fa-search"></i><input placeholder="Search shareholders..."></div>
@@ -119,7 +120,8 @@
     </div>
   </div>
 </div>
-    </main>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -142,6 +144,18 @@ if(themeBtn) {
         localStorage.setItem('st-theme', next);
         if(themeIcon && themeIcon.tagName === 'I') {
             themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
+
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
@@ -171,26 +185,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 

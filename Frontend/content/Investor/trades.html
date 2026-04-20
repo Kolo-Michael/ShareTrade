@@ -27,11 +27,11 @@
       <table class="data-table">
         <thead><tr><th>Trade ID</th><th>Company</th><th>Type</th><th>Shares</th><th>Price</th><th>Total</th><th>Date</th><th>Status</th><th></th></tr></thead>
         <tbody>
-          <tr><td>#T-00241</td><td>TechVent SA</td><td style="color:#4ade80;font-weight:700;">BUY</td><td>500</td><td>XAF 1,000</td><td>XAF 500,000</td><td class="text-muted">Apr 5</td><td><span class="badge badge-amber">Pending</span></td><td><button class="btn btn-outline btn-xs">Cancel</button></td></tr>
-          <tr><td>#T-00238</td><td>AgroCam SARL</td><td style="color:#4ade80;font-weight:700;">BUY</td><td>300</td><td>XAF 900</td><td>XAF 270,000</td><td class="text-muted">Apr 3</td><td><span class="badge badge-blue">In Escrow</span></td><td><button class="btn btn-outline btn-xs">View</button></td></tr>
-          <tr><td>#T-00235</td><td>EnerSol GIE</td><td style="color:#f87171;font-weight:700;">SELL</td><td>200</td><td>XAF 810</td><td>XAF 162,000</td><td class="text-muted">Apr 1</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
-          <tr><td>#T-00220</td><td>TechVent SA</td><td style="color:#4ade80;font-weight:700;">BUY</td><td>900</td><td>XAF 980</td><td>XAF 882,000</td><td class="text-muted">Mar 22</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
-          <tr><td>#T-00210</td><td>AgroCam SARL</td><td style="color:#f87171;font-weight:700;">SELL</td><td>200</td><td>XAF 920</td><td>XAF 184,000</td><td class="text-muted">Mar 10</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
+          <tr><td>#T-00241</td><td>TechVent SA <span class="verified-badge"><i class="fas fa-check"></i></span></td><td style="color:#4ade80;font-weight:700;">BUY</td><td>500</td><td>XAF 1,000</td><td>XAF 500,000</td><td class="text-muted">Apr 5</td><td><span class="badge badge-amber">Pending</span></td><td><button class="btn btn-outline btn-xs">Cancel</button></td></tr>
+          <tr><td>#T-00238</td><td>AgroCam SARL <span class="verified-badge"><i class="fas fa-check"></i></span></td><td style="color:#4ade80;font-weight:700;">BUY</td><td>300</td><td>XAF 900</td><td>XAF 270,000</td><td class="text-muted">Apr 3</td><td><span class="badge badge-blue">In Escrow</span></td><td><button class="btn btn-outline btn-xs">View</button></td></tr>
+          <tr><td>#T-00235</td><td>EnerSol GIE <span class="verified-badge"><i class="fas fa-check"></i></span></td><td style="color:#f87171;font-weight:700;">SELL</td><td>200</td><td>XAF 810</td><td>XAF 162,000</td><td class="text-muted">Apr 1</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
+          <tr><td>#T-00220</td><td>TechVent SA <span class="verified-badge"><i class="fas fa-check"></i></span></td><td style="color:#4ade80;font-weight:700;">BUY</td><td>900</td><td>XAF 980</td><td>XAF 882,000</td><td class="text-muted">Mar 22</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
+          <tr><td>#T-00210</td><td>AgroCam SARL <span class="verified-badge"><i class="fas fa-check"></i></span></td><td style="color:#f87171;font-weight:700;">SELL</td><td>200</td><td>XAF 920</td><td>XAF 184,000</td><td class="text-muted">Mar 10</td><td><span class="badge badge-green">Completed</span></td><td><button class="btn btn-outline btn-xs">Cert.</button></td></tr>
         </tbody>
       </table>
     </div>
@@ -47,11 +47,27 @@
             <span class="badge badge-blue">In Escrow</span>
           </div>
           <div class="escrow-sub">AgroCam SARL · 300 shares · XAF 270,000 locked</div>
-          <div class="metric-row" style="margin-bottom:.4rem;">
-            <div class="metric-label"><span>Company confirmation</span><span style="color:#fbbf24;">Pending</span></div>
-            <div class="metric-bar"><div class="metric-fill" style="width:45%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div>
+          
+          <div class="trade-stepper">
+            <div class="stepper-step completed">
+              <div class="step-icon"><i class="fas fa-check"></i></div>
+              <div class="step-label">Trade<br>Initiated</div>
+            </div>
+            <div class="stepper-step completed">
+              <div class="step-icon"><i class="fas fa-lock"></i></div>
+              <div class="step-label">Funds<br>Locked</div>
+            </div>
+            <div class="stepper-step active">
+              <div class="step-icon"><i class="fas fa-hourglass-half"></i></div>
+              <div class="step-label">Company<br>Approval</div>
+            </div>
+            <div class="stepper-step">
+              <div class="step-icon"><i class="fas fa-file-contract"></i></div>
+              <div class="step-label">Cert.<br>Issued</div>
+            </div>
           </div>
-          <div style="font-size:.72rem;color:var(--text3);">Funds protected · Expires in 5 days</div>
+
+          <div style="font-size:.72rem;color:var(--text3);margin-top:1rem;text-align:center;">Funds protected · Awaiting issuer signature</div>
         </div>
       </div>
     </div>

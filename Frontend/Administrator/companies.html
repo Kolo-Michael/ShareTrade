@@ -15,7 +15,8 @@
 </head>
 
 <body>
-<!-- SIDEBAR -->
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <a href="../index.html" class="sidebar-logo">
     <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
@@ -54,8 +55,8 @@
   </div>
 </aside>
 
-<div class="main">
-    <!-- TOPBAR -->
+    <div class="main">
+        <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <!-- Mobile Hamburger -->
@@ -75,8 +76,8 @@
   </div>
 </header>
 
-    <main class="content">
-        <div class="page-header fade-in"><div class="page-header-left"><h2>Companies</h2><p>All registered company accounts</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" style="" ><i class="fas fa-download"></i> Export CSV</button><button class="btn btn-primary" style="" ><i class="fas fa-building"></i> Invite Company</button></div></div>
+        <main class="content">
+            <div class="page-header fade-in"><div class="page-header-left"><h2>Companies</h2><p>All registered company accounts</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" style="" ><i class="fas fa-download"></i> Export CSV</button><button class="btn btn-primary" style="" ><i class="fas fa-building"></i> Invite Company</button></div></div>
 <div class="stats-grid fade-in-2">
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-building"></i></div><div class="stat-label">Total Companies</div><div class="stat-value">512</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> +14 this month</div></div>
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-label">Fully Verified</div><div class="stat-value">509</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> 99.4% approved</div></div>
@@ -221,7 +222,8 @@
 </div>
 <div style="display:flex;flex-direction:column;gap:1.25rem;"><div class="card "><div class="card-header"><span class="card-title">Companies by Sector</span></div><div class="card-body"><div class="metric-row"><div class="metric-label"><span>Agriculture</span><span>28%</span></div><div class="metric-bar"><div class="metric-fill" style="width:28%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Technology</span><span>22%</span></div><div class="metric-bar"><div class="metric-fill" style="width:22%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Health</span><span>14%</span></div><div class="metric-bar"><div class="metric-fill" style="width:14%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Finance</span><span>12%</span></div><div class="metric-bar"><div class="metric-fill" style="width:12%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Energy</span><span>10%</span></div><div class="metric-bar"><div class="metric-fill" style="width:10%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Other</span><span>14%</span></div><div class="metric-bar"><div class="metric-fill" style="width:14%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div></div></div></div><div class="card "><div class="card-header"><span class="card-title">Pending Review</span></div><div class="card-body"><div style="display:flex;flex-direction:column;gap:.75rem;"><div style="padding:.9rem;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);border-radius:10px;"><div style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">BuildCam SA</div><div style="font-size:.75rem;color:var(--text3);margin-bottom:.6rem;">Submitted Jan 2026 &bull; Documents: 6/8 complete</div><button class="btn btn-primary" style="width:100%;" ><i class="fas fa-eye"></i> Review KYC</button></div><div style="padding:.9rem;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:10px;"><div style="font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.2rem;">TransLog SARL</div><div style="font-size:.75rem;color:var(--text3);margin-bottom:.6rem;">Submitted Mar 2026 &bull; Documents: 4/8 complete</div><button class="btn btn-primary" style="width:100%;" ><i class="fas fa-eye"></i> Review KYC</button></div></div></div></div></div>
 </div>
-    </main>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -244,6 +246,18 @@ if(themeBtn) {
         localStorage.setItem('st-theme', next);
         if(themeIcon && themeIcon.tagName === 'I') {
             themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
+
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
@@ -273,26 +287,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 

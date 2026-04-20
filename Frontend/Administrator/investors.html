@@ -15,7 +15,8 @@
 </head>
 
 <body>
-<!-- SIDEBAR -->
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <a href="../index.html" class="sidebar-logo">
     <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
@@ -54,8 +55,8 @@
   </div>
 </aside>
 
-<div class="main">
-    <!-- TOPBAR -->
+    <div class="main">
+        <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <!-- Mobile Hamburger -->
@@ -75,8 +76,8 @@
   </div>
 </header>
 
-    <main class="content">
-        <div class="page-header fade-in"><div class="page-header-left"><h2>Investors</h2><p>All registered investor accounts</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" style="" ><i class="fas fa-download"></i> Export CSV</button><button class="btn btn-primary" style="" ><i class="fas fa-user-plus"></i> Invite Investor</button></div></div>
+        <main class="content">
+            <div class="page-header fade-in"><div class="page-header-left"><h2>Investors</h2><p>All registered investor accounts</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" style="" ><i class="fas fa-download"></i> Export CSV</button><button class="btn btn-primary" style="" ><i class="fas fa-user-plus"></i> Invite Investor</button></div></div>
 <div class="stats-grid fade-in-2">
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-users"></i></div><div class="stat-label">Total Investors</div><div class="stat-value">50,330</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> +312 this month</div></div>
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-label">KYC Verified</div><div class="stat-value">47,210</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> 93.8% verified</div></div>
@@ -213,7 +214,8 @@
 </div>
 <div style="display:flex;flex-direction:column;gap:1.25rem;"><div class="card "><div class="card-header"><span class="card-title">KYC Status Breakdown</span></div><div class="card-body"><div class="metric-row"><div class="metric-label"><span>Verified</span><span>93.8%</span></div><div class="metric-bar"><div class="metric-fill" style="width:93.8%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>KYC Pending</span><span>0.02%</span></div><div class="metric-bar"><div class="metric-fill" style="width:0.02%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div></div><div class="metric-row"><div class="metric-label"><span>Rejected / Incomplete</span><span>0.02%</span></div><div class="metric-bar"><div class="metric-fill" style="width:0.02%;background:linear-gradient(90deg,#ef4444,#f87171);"></div></div></div><div class="divider-x" style="margin:.85rem 0;"></div><div style="font-size:.82rem;color:var(--text2);">Auto-screening passes <strong style="color:var(--text);">78%</strong> of submissions on first review.</div></div></div><div class="card "><div class="card-header"><span class="card-title">Geographic Distribution</span></div><div class="card-body"><div style="display:flex;flex-direction:column;gap:.4rem;font-size:.84rem;"><div style="display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Yaounde</span><span style="color:var(--text);font-weight:700;">34%</span></div><div style="display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Douala</span><span style="color:var(--text);font-weight:700;">28%</span></div><div style="display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Bafoussam</span><span style="color:var(--text);font-weight:700;">12%</span></div><div style="display:flex;justify-content:space-between;padding:.45rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Garoua</span><span style="color:var(--text);font-weight:700;">8%</span></div><div style="display:flex;justify-content:space-between;padding:.45rem 0;"><span style="color:var(--text2);">Other cities</span><span style="color:var(--text);font-weight:700;">18%</span></div></div></div></div></div>
 </div>
-    </main>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -236,6 +238,18 @@ if(themeBtn) {
         localStorage.setItem('st-theme', next);
         if(themeIcon && themeIcon.tagName === 'I') {
             themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
+
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
@@ -265,26 +279,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 

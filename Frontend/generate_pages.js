@@ -59,6 +59,18 @@ if(themeBtn) {
     });
 }
 
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
+
 // --- Mobile Sidebar Toggle ---
 const sidebarToggle = document.getElementById('sidebarToggle') || document.getElementById('mobileToggle');
 const sidebar = document.getElementById('sidebar') || document.getElementById('navLinks');
@@ -84,26 +96,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 `;
@@ -135,12 +127,14 @@ function generate() {
         
         const fullHtml = `${head}
 <body>
-${sidebar}
-<div class="main">
-    ${topbar}
-    <main class="content">
-        ${content}
-    </main>
+<div class="dashboard-wrapper">
+    ${sidebar}
+    <div class="main">
+        ${topbar}
+        <main class="content">
+            ${content}
+        </main>
+    </div>
 </div>
 ${sharedJs}
 </body>

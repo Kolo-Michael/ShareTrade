@@ -15,7 +15,8 @@
 </head>
 
 <body>
-<!-- SIDEBAR -->
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <a href="../index.html" class="sidebar-logo">
     <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
@@ -54,8 +55,8 @@
   </div>
 </aside>
 
-<div class="main">
-    <!-- TOPBAR -->
+    <div class="main">
+        <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <!-- Mobile Hamburger -->
@@ -75,8 +76,8 @@
   </div>
 </header>
 
-    <main class="content">
-        <div class="page-header fade-in"><div class="page-header-left"><h2>KYC Review Queue</h2><p>Identity and document verification for investors and companies</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" ><i class="fas fa-download"></i> Export Queue</button><div class="search-bar"><i class="fas fa-search"></i><input placeholder="Search by name..."></div></div></div>
+        <main class="content">
+            <div class="page-header fade-in"><div class="page-header-left"><h2>KYC Review Queue</h2><p>Identity and document verification for investors and companies</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" ><i class="fas fa-download"></i> Export Queue</button><div class="search-bar"><i class="fas fa-search"></i><input placeholder="Search by name..."></div></div></div>
 <div class="stats-grid fade-in-2">
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-label">Pending Review</div><div class="stat-value">12</div><div class="stat-change amber"><i class="fas fa-clock"></i> Awaiting action</div></div>
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-eye"></i></div><div class="stat-label">In Admin Review</div><div class="stat-value">3</div><div class="stat-change amber"><i class="fas fa-clock"></i> Being processed</div></div>
@@ -220,7 +221,8 @@
 </div></div>
 <div style="display:flex;flex-direction:column;gap:1.25rem;"><div class="card"><div class="card-header"><span class="card-title">KYC Pipeline</span></div><div class="card-body"><div style="display:flex;flex-direction:column;gap:.55rem;font-size:.84rem;"><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Pending (all docs complete)</span><span style="color:var(--text);font-weight:700;">4</span></div><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">In Review (admin checking)</span><span style="color:var(--text);font-weight:700;">3</span></div><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Incomplete (docs missing)</span><span style="color:var(--text);font-weight:700;">5</span></div><div style="display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border);"><span style="color:var(--text2);">Approved this month</span><span style="color:#4ade80;font-weight:700;">84</span></div><div style="display:flex;justify-content:space-between;padding:.5rem 0;"><span style="color:var(--text2);">Rejected this month</span><span style="color:#f87171;font-weight:700;">6</span></div></div></div></div><div class="card"><div class="card-header"><span class="card-title">Required Documents</span></div><div class="card-body"><div style="font-size:.82rem;color:var(--text2);line-height:1.7;"><div style="font-weight:700;color:var(--text);margin-bottom:.5rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;">Investor (5 required)</div><div style="display:flex;flex-direction:column;gap:.3rem;margin-bottom:1rem;"><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>International Passport</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>CNI Front Side</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>CNI Back Side</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Proof of Address (Utility Bill / Bank Statement)</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Selfie Holding ID Document</span></div></div><div style="font-weight:700;color:var(--text);margin-bottom:.5rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;">Company (8 required)</div><div style="display:flex;flex-direction:column;gap:.3rem;"><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>RCCM Certificate</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Statuts de la Société</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Attestation NIU (DGI)</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Attestation de Localisation</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Plan de Localisation</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>PV d'Assemblée Constitutive</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>ID of Legal Representative</span></div><div style="display:flex;align-items:center;gap:.4rem;"><i class="fas fa-check-circle" style="color:var(--green);font-size:11px;"></i><span>Patente Commerciale</span></div></div></div></div></div></div>
 </div>
-    </main>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -243,6 +245,18 @@ if(themeBtn) {
         localStorage.setItem('st-theme', next);
         if(themeIcon && themeIcon.tagName === 'I') {
             themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
+
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
@@ -272,26 +286,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 

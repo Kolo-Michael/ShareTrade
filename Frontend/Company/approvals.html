@@ -15,7 +15,8 @@
 </head>
 
 <body>
-<!-- SIDEBAR -->
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <a href="../index.html" class="sidebar-logo">
     <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
@@ -48,8 +49,8 @@
   </div>
 </aside>
 
-<div class="main">
-    <!-- TOPBAR -->
+    <div class="main">
+        <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <!-- Mobile Hamburger -->
@@ -69,8 +70,8 @@
   </div>
 </header>
 
-    <main class="content">
-        <div class="page-header fade-in">
+        <main class="content">
+            <div class="page-header fade-in">
   <div class="page-header-left"><h2>Trade Approvals</h2><p>Confirm or reject share transfer requests from investors</p></div>
   <div class="flex gap-sm">
     <span class="badge badge-amber" style="font-size:.82rem;padding:.38rem .85rem;">4 pending</span>
@@ -99,7 +100,7 @@
     <span class="text-muted" style="font-size:.76rem;">Trade #T-00241</span>
   </div>
   <div class="trade-confirm-meta">
-    <span><i class="fas fa-user"></i> Jean Dupont</span>
+    <span><i class="fas fa-user"></i> Jean Dupont <span class="verified-badge" style="margin-left:0.5rem;"><i class="fas fa-check"></i> Identity Verified</span></span>
     <span><i class="fas fa-layer-group"></i> 500 shares @ XAF 1,000</span>
     <span><i class="fas fa-coins"></i> XAF 500,000</span>
     <span><i class="fas fa-shield-alt"></i> Escrow: Active</span>
@@ -120,7 +121,7 @@
     <span class="text-muted" style="font-size:.76rem;">Trade #T-00240</span>
   </div>
   <div class="trade-confirm-meta">
-    <span><i class="fas fa-user"></i> Marie Ngono</span>
+    <span><i class="fas fa-user"></i> Marie Ngono <span class="verified-badge" style="margin-left:0.5rem;"><i class="fas fa-check"></i> Identity Verified</span></span>
     <span><i class="fas fa-layer-group"></i> 200 shares @ XAF 1,200</span>
     <span><i class="fas fa-coins"></i> XAF 240,000</span>
     <span><i class="fas fa-shield-alt"></i> Escrow: Active</span>
@@ -141,7 +142,7 @@
     <span class="text-muted" style="font-size:.76rem;">Trade #T-00239</span>
   </div>
   <div class="trade-confirm-meta">
-    <span><i class="fas fa-user"></i> Paul Biya Jr.</span>
+    <span><i class="fas fa-user"></i> Paul Biya Jr. <span class="verified-badge" style="margin-left:0.5rem;"><i class="fas fa-check"></i> Identity Verified</span></span>
     <span><i class="fas fa-layer-group"></i> 1000 shares @ XAF 1,000</span>
     <span><i class="fas fa-coins"></i> XAF 1,000,000</span>
     <span><i class="fas fa-shield-alt"></i> Escrow: Active</span>
@@ -162,7 +163,7 @@
     <span class="text-muted" style="font-size:.76rem;">Trade #T-00237</span>
   </div>
   <div class="trade-confirm-meta">
-    <span><i class="fas fa-user"></i> AfroCap Investments</span>
+    <span><i class="fas fa-user"></i> AfroCap Investments <span class="verified-badge" style="margin-left:0.5rem;"><i class="fas fa-check"></i> Corporate KYC</span></span>
     <span><i class="fas fa-layer-group"></i> 2000 shares @ XAF 950</span>
     <span><i class="fas fa-coins"></i> XAF 1,900,000</span>
     <span><i class="fas fa-shield-alt"></i> Escrow: Active</span>
@@ -175,7 +176,8 @@
   </div>
 </div>
 </div>
-    </main>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -198,6 +200,18 @@ if(themeBtn) {
         localStorage.setItem('st-theme', next);
         if(themeIcon && themeIcon.tagName === 'I') {
             themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
+
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
@@ -227,26 +241,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 

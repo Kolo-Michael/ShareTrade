@@ -15,7 +15,8 @@
 </head>
 
 <body>
-<!-- SIDEBAR -->
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <a href="../index.html" class="sidebar-logo">
     <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
@@ -54,8 +55,8 @@
   </div>
 </aside>
 
-<div class="main">
-    <!-- TOPBAR -->
+    <div class="main">
+        <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <!-- Mobile Hamburger -->
@@ -75,8 +76,8 @@
   </div>
 </header>
 
-    <main class="content">
-        <div class="page-header fade-in"><div class="page-header-left"><h2>Escrow Monitor</h2><p>All active fund holds, releases and dispute freezes</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" style="" ><i class="fas fa-download"></i> Export Report</button></div></div>
+        <main class="content">
+            <div class="page-header fade-in"><div class="page-header-left"><h2>Escrow Monitor</h2><p>All active fund holds, releases and dispute freezes</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-outline" style="" ><i class="fas fa-download"></i> Export Report</button></div></div>
 <div class="stats-grid fade-in-2">
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-lock"></i></div><div class="stat-label">Total Currently Locked</div><div class="stat-value">XAF 2.1B</div><div class="stat-change amber"><i class="fas fa-clock"></i> 84 active holds</div></div>
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-label">Avg Hold Duration</div><div class="stat-value">2.4 days</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> Within 7-day SLA</div></div>
@@ -115,7 +116,8 @@
   </div>
   <button class="btn btn-outline" style="font-size:.82rem;flex-shrink:0;" ><i class="fas fa-clock"></i> View Expiring Soon</button>
 </div>
-    </main>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -138,6 +140,18 @@ if(themeBtn) {
         localStorage.setItem('st-theme', next);
         if(themeIcon && themeIcon.tagName === 'I') {
             themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
+
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
@@ -167,26 +181,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 

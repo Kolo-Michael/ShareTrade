@@ -15,7 +15,8 @@
 </head>
 
 <body>
-<!-- SIDEBAR -->
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <a href="../index.html" class="sidebar-logo">
     <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
@@ -54,8 +55,8 @@
   </div>
 </aside>
 
-<div class="main">
-    <!-- TOPBAR -->
+    <div class="main">
+        <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <!-- Mobile Hamburger -->
@@ -75,8 +76,8 @@
   </div>
 </header>
 
-    <main class="content">
-        <div class="page-header fade-in"><div class="page-header-left"><h2>System Settings</h2><p>Platform-wide configuration and administration</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-primary" style="" ><i class="fas fa-save"></i> Save All Changes</button></div></div>
+        <main class="content">
+            <div class="page-header fade-in"><div class="page-header-left"><h2>System Settings</h2><p>Platform-wide configuration and administration</p></div><div class="flex gap-sm" style="flex-wrap:wrap;"><button class="btn btn-primary" style="" ><i class="fas fa-save"></i> Save All Changes</button></div></div>
 <div class="tab-bar fade-in-2"><div class="tab  active">Platform</div><div class="tab">Trading</div><div class="tab">Security</div><div class="tab">Notifications</div><div class="tab">Admin Account</div></div>
 <div class="grid-2 fade-in-2">
 <div style="display:flex;flex-direction:column;gap:1.25rem;">
@@ -89,7 +90,8 @@
 <div class="card "><div class="card-header"><span class="card-title">Notification Preferences</span></div><div class="card-body"><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);gap:1rem;"><div><div style="font-size:.85rem;font-weight:600;color:var(--text);">Admin alert on new dispute filed</div><div style="font-size:.72rem;color:var(--text3);margin-top:.1rem;">Get notified when a dispute is opened</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);gap:1rem;"><div><div style="font-size:.85rem;font-weight:600;color:var(--text);">Alert on KYC submission</div><div style="font-size:.72rem;color:var(--text3);margin-top:.1rem;">Notified when documents are submitted for review</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);gap:1rem;"><div><div style="font-size:.85rem;font-weight:600;color:var(--text);">Alert on company registration</div><div style="font-size:.72rem;color:var(--text3);margin-top:.1rem;">New company sign-up notifications</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);gap:1rem;"><div><div style="font-size:.85rem;font-weight:600;color:var(--text);">Weekly platform report</div><div style="font-size:.72rem;color:var(--text3);margin-top:.1rem;">Automated weekly summary email</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);gap:1rem;"><div><div style="font-size:.85rem;font-weight:600;color:var(--text);">Security incident alerts</div><div style="font-size:.72rem;color:var(--text3);margin-top:.1rem;">Suspicious login or breach alerts</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border);gap:1rem;"><div><div style="font-size:.85rem;font-weight:600;color:var(--text);">Escrow SLA warnings</div><div style="font-size:.72rem;color:var(--text3);margin-top:.1rem;">Alert when escrow approaches 7-day timeout</div></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div></div></div>
 </div>
 </div>
-    </main>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -112,6 +114,18 @@ if(themeBtn) {
         localStorage.setItem('st-theme', next);
         if(themeIcon && themeIcon.tagName === 'I') {
             themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
+
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
@@ -141,26 +155,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 

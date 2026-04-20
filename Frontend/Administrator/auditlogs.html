@@ -15,7 +15,8 @@
 </head>
 
 <body>
-<!-- SIDEBAR -->
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <a href="../index.html" class="sidebar-logo">
     <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
@@ -54,8 +55,8 @@
   </div>
 </aside>
 
-<div class="main">
-    <!-- TOPBAR -->
+    <div class="main">
+        <!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <!-- Mobile Hamburger -->
@@ -75,8 +76,8 @@
   </div>
 </header>
 
-    <main class="content">
-        <div class="page-header fade-in"><div class="page-header-left"><h2>Audit Logs</h2><p>Complete record of all admin and system actions</p></div><div class="flex gap-sm"><button class="btn btn-outline" ><i class="fas fa-download"></i> Export Logs</button><div class="search-bar"><i class="fas fa-search"></i><input placeholder="Search logs..."></div></div></div>
+        <main class="content">
+            <div class="page-header fade-in"><div class="page-header-left"><h2>Audit Logs</h2><p>Complete record of all admin and system actions</p></div><div class="flex gap-sm"><button class="btn btn-outline" ><i class="fas fa-download"></i> Export Logs</button><div class="search-bar"><i class="fas fa-search"></i><input placeholder="Search logs..."></div></div></div>
 <div class="stats-grid fade-in-2">
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-history"></i></div><div class="stat-label">Total Log Entries</div><div class="stat-value">48,204</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> All time</div></div>
 <div class="stat-card fade-in"><div class="stat-icon"><i class="fas fa-user-shield"></i></div><div class="stat-label">Admin Actions</div><div class="stat-value">1,842</div><div class="stat-change up"><i class="fas fa-arrow-up"></i> Logged</div></div>
@@ -97,7 +98,8 @@
 </div>
 <div class="card"><div class="card-header"><span class="card-title">Action Breakdown</span></div><div class="card-body"><div class="metric-row"><div class="metric-label"><span>Admin Actions</span><span>29%</span></div><div class="metric-bar"><div class="metric-fill" style="width:29%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>System Automated</span><span>71%</span></div><div class="metric-bar"><div class="metric-fill" style="width:71%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="divider-x"></div><div class="metric-row"><div class="metric-label"><span>Successful</span><span>96%</span></div><div class="metric-bar"><div class="metric-fill" style="width:96%;background:linear-gradient(90deg,var(--green-dark),var(--green));"></div></div></div><div class="metric-row"><div class="metric-label"><span>Partial / Warning</span><span>3%</span></div><div class="metric-bar"><div class="metric-fill" style="width:3%;background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div></div></div><div class="metric-row"><div class="metric-label"><span>Failed / Error</span><span>1%</span></div><div class="metric-bar"><div class="metric-fill" style="width:1%;background:linear-gradient(90deg,#ef4444,#f87171);"></div></div></div></div></div>
 </div>
-    </main>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -120,6 +122,18 @@ if(themeBtn) {
         localStorage.setItem('st-theme', next);
         if(themeIcon && themeIcon.tagName === 'I') {
             themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    });
+}
+
+// --- Navbar Scroll Effect ---
+const navbar = document.querySelector('.navbar');
+if(navbar) {
+    window.addEventListener('scroll', () => {
+        if(window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
     });
 }
@@ -149,26 +163,6 @@ if(sidebarToggle && sidebar) {
             }
         }
     });
-}
-
-// --- Hero Slideshow (Landing Page) ---
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.slide-dot');
-if(slides.length > 0) {
-    let currentSlide = 0;
-    function goToSlide(i) {
-        slides[currentSlide].classList.remove('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.remove('active');
-        currentSlide = i;
-        slides[currentSlide].classList.add('active');
-        if(dots[currentSlide]) dots[currentSlide].classList.add('active');
-    }
-    let iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    dots.forEach(d => d.addEventListener('click', function() {
-        clearInterval(iv);
-        goToSlide(+this.dataset.index);
-        iv = setInterval(() => goToSlide((currentSlide + 1) % slides.length), 5000);
-    }));
 }
 </script>
 

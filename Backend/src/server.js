@@ -14,8 +14,9 @@ const app = express();
 app.use(helmet());
 
 // CORS — allow the frontend to call the API
+// CORS — allow frontend to call the API
 app.use(cors({
-  origin: env.FRONTEND_URL,
+  origin: env.NODE_ENV === 'development' ? true : env.FRONTEND_URL, // dynamically allow in dev
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
