@@ -52,13 +52,27 @@ app.get('/api/health', (req, res) => {
 // Auth routes
 app.use('/api/auth', require('./routes/auth.routes'));
 
+// KYC routes
+app.use('/api/kyc', require('./routes/kyc.routes'));
+
+// Static uploads folder (for serving images locally before Cloudinary integration)
+const path = require('path');
+app.use('/uploads', express.static(path.join(__dirname, '../../uploads')));
+
+// Trade routes
+app.use('/api/trades', require('./routes/trade.routes'));
+
+// Wallet routes
+app.use('/api/wallet', require('./routes/wallet.routes'));
+
+// Company routes
+app.use('/api/companies', require('./routes/company.routes'));
+
+// Admin routes
+app.use('/api/admin', require('./routes/admin.routes'));
+
 // TODO: Phase 2+ routes
-// app.use('/api/kyc', require('./routes/kyc.routes'));
-// app.use('/api/trades', require('./routes/trade.routes'));
-// app.use('/api/wallet', require('./routes/wallet.routes'));
-// app.use('/api/companies', require('./routes/company.routes'));
 // app.use('/api/investor', require('./routes/investor.routes'));
-// app.use('/api/admin', require('./routes/admin.routes'));
 
 // ═══════════════════════════════════════════════
 //  ERROR HANDLING

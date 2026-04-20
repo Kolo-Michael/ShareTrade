@@ -6,6 +6,7 @@
 <title>Login | ShareTrade P2P</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="api.js"></script>
 <style>
 :root{--green:#22c55e;--green-dark:#16a34a;--green-light:#4ade80;}
 [data-theme="dark"]{--bg:#070d07;--surface:#0f1a0f;--border:rgba(255,255,255,0.08);--text:#f0faf0;--text2:#7a9e7a;--text3:#4a6a4a;--input-bg:#0a120a;--card-bg:rgba(15,26,15,0.9);--placeholder:#3a5a3a;}
@@ -235,20 +236,39 @@ resize();
 applyTheme(localStorage.getItem('st-theme') || 'dark');
 
 // ── Login submit ──
-document.getElementById('loginForm').addEventListener('submit', function(e) {
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
+  const btn = document.querySelector('.btn-submit');
+  const initialText = btn.innerHTML;
+  
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
+  
   if (!email || !password) { showAlert('Please fill in all fields.'); return; }
 
-  // In production: POST to /api/auth/login — redirect based on returned role
-  // Demo: route by email prefix
-  if (email.startsWith('admin')) {
-    window.location.href = 'admin/dashboard.html';
-  } else if (email.startsWith('company') || email.includes('@company') || email.includes('@corp')) {
-    window.location.href = 'company/dashboard.html';
-  } else {
-    window.location.href = 'investor/dashboard.html';
+  try {
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+    btn.disabled = true;
+
+    const res = await window.api.call('/auth/login', 'POST', { email, password });
+    
+    // Store token and user data
+    window.api.setToken(res.data.token);
+    window.api.setUser(res.data.user);
+
+    // Redirect based on role
+    const role = res.data.user.role;
+    if (role === 'ADMIN') {
+      window.location.href = 'Administrator/dashboard.html';
+    } else if (role === 'COMPANY') {
+      window.location.href = 'Company/dashboard.html';
+    } else {
+      window.location.href = 'Investor/idashboard.html';
+    }
+  } catch (error) {
+    showAlert(error.message || 'Invalid email or password');
+    btn.innerHTML = initialText;
+    btn.disabled = false;
   }
 });
 

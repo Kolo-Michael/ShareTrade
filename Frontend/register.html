@@ -6,6 +6,7 @@
     <title>Register | ShareTrade P2P</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="api.js"></script>
     <style>
         :root {
             --green: #22c55e;
@@ -1286,11 +1287,16 @@
         }
 
         // ── Form submit ──
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const terms = document.getElementById('terms').checked;
             if (!terms) { showAlert('Please accept the Terms of Service and KYC Policy.', 'error'); return; }
+
+            const btn = document.querySelector('.btn-submit');
+            const initialText = btn.innerHTML;
+
+            let payload = {};
 
             if (selectedRole === 'investor') {
                 const fn = document.getElementById('inv_firstName').value;
@@ -1301,6 +1307,18 @@
                 if (!fn || !ln || !email || !pw) { showAlert('Please fill in all required personal information.', 'error'); return; }
                 if (pw !== cpw) { showAlert('Passwords do not match.', 'error'); return; }
                 if (pw.length < 8) { showAlert('Password must be at least 8 characters.', 'error'); return; }
+
+                payload = {
+                    role: 'INVESTOR',
+                    firstName: fn,
+                    lastName: ln,
+                    email: email,
+                    password: pw,
+                    phone: document.getElementById('inv_phone').value,
+                    dateOfBirth: document.getElementById('inv_dob').value,
+                    city: document.getElementById('inv_city').value,
+                    region: document.getElementById('inv_region').value
+                };
             } else {
                 const cn = document.getElementById('co_name').value;
                 const rccm = document.getElementById('co_rccm').value;
@@ -1310,12 +1328,49 @@
                 if (!cn || !rccm || !email || !pw) { showAlert('Please fill in all required company information.', 'error'); return; }
                 if (pw !== cpw) { showAlert('Passwords do not match.', 'error'); return; }
                 if (pw.length < 8) { showAlert('Password must be at least 8 characters.', 'error'); return; }
+
+                payload = {
+                    role: 'COMPANY',
+                    companyName: cn,
+                    legalForm: document.getElementById('co_legalForm').value || 'SA', // Fallback if empty
+                    rccmNumber: rccm,
+                    niuNumber: document.getElementById('co_niu').value,
+                    shareCapital: parseFloat(document.getElementById('co_capital').value) || undefined,
+                    incorporationDate: document.getElementById('co_incDate').value,
+                    sector: document.getElementById('co_sector').value.toUpperCase() || undefined,
+                    address: document.getElementById('co_address').value,
+                    city: document.getElementById('co_city').value,
+                    region: document.getElementById('co_region').value,
+                    poBox: document.getElementById('co_bp').value,
+                    companyEmail: email,
+                    companyPhone: document.getElementById('co_phone').value,
+                    website: document.getElementById('co_website').value,
+                    repName: document.getElementById('co_repName').value,
+                    repTitle: document.getElementById('co_repTitle').value,
+                    repEmail: document.getElementById('co_repEmail').value,
+                    repPhone: document.getElementById('co_repPhone').value,
+                    email: document.getElementById('co_repEmail').value || email, // Account email
+                    password: pw
+                };
             }
 
-            showAlert('Account created successfully! Your documents are under review. Redirecting…', 'success');
-            setTimeout(() => {
-                window.location.href = selectedRole === 'company' ? 'company/dashboard.html' : 'investor/dashboard.html';
-            }, 2500);
+            try {
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                btn.disabled = true;
+
+                const res = await window.api.call('/auth/register', 'POST', payload);
+                window.api.setToken(res.data.token);
+                window.api.setUser(res.data.user);
+
+                showAlert('Account created successfully! Redirecting...', 'success');
+                setTimeout(() => {
+                    window.location.href = selectedRole === 'company' ? 'Company/dashboard.html' : 'Investor/idashboard.html';
+                }, 2000);
+            } catch (error) {
+                showAlert(error.message || 'Registration failed', 'error');
+                btn.innerHTML = initialText;
+                btn.disabled = false;
+            }
         });
 
         function showAlert(msg, type) {
