@@ -98,20 +98,25 @@ function showSuccess(msg) {
 
 // ── Protect Routes ──
 // Run this immediately on protected pages (assumes standard dashboard pathing)
-const currentPath = window.location.pathname;
-const isPublicPage = currentPath.endsWith('/') || currentPath.endsWith('index.html') || 
-                     currentPath.endsWith('login.html') || currentPath.endsWith('register.html');
+const currentPath = window.location.pathname.toLowerCase();
+const isPublicPage = currentPath === '/' || 
+                     currentPath.endsWith('/index.html') || 
+                     currentPath.endsWith('/login.html') || 
+                     currentPath.endsWith('/register.html') ||
+                     currentPath.endsWith('index.html') || 
+                     currentPath.endsWith('login.html') || 
+                     currentPath.endsWith('register.html');
 
 if (!isPublicPage && !getToken()) {
-    // Redirect to login if unauthenticated on a protected page
-    // Needs proper relative path handling based on nesting
+    // Prevent redirect loop if already on login page
+    if (currentPath.includes('login.html')) return;
+
     const depth = (currentPath.match(/\//g) || []).length;
     let rootPrefix = './';
     if (depth > 1) {
-        rootPrefix = '../'.repeat(depth - 1); // rough approximation, can be refined
+        rootPrefix = '../'.repeat(depth - 1);
     }
-    // Hard fallback for local testing:
-    window.location.href = currentPath.substring(0, currentPath.indexOf('Frontend') + 9) + 'login.html';
+    window.location.href = rootPrefix + 'login.html';
 }
 
 // Export functions for usage

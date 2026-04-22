@@ -150,7 +150,7 @@ ${sharedJs}
     const indexContentPath = path.join(CONTENT_DIR, "index.html");
     if (fs.existsSync(indexContentPath)) {
         const content = fs.readFileSync(indexContentPath, 'utf8');
-        const head = renderTemplate(templates.head, { title: "Home | ShareTrade P2P", root_path: "./" });
+        const head = renderTemplate(templates.head, { title: "Home", root_path: "./" });
         const nav = renderTemplate(templates.landing_nav, { root_path: "./" });
         const footer = renderTemplate(templates.landing_footer, { root_path: "./" });
         
